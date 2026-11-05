@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #c8d0cb transparent;
+  }
+
+  body {
+    min-width: 320px;
+    background: #f5f6f2;
+    color: #18342a;
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid #438e72;
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: #d8f06b;
+    color: #142821;
+  }
+}
+
+@layer components {
+  .admin-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    color: #3f584e;
+    font-size: 0.61rem;
+    font-weight: 800;
+  }
+
+  .admin-input {
+    width: 100%;
+    min-height: 2.7rem;
+    border: 1px solid rgb(23 62 50 / 11%);
+    border-radius: 0.7rem;
+    background: #f7f8f5;
+    padding: 0.75rem 0.85rem;
+    color: #1b392e;
+    font-size: 0.66rem;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+  }
+
+  .admin-input::placeholder {
+    color: #a0aaa5;
+    font-weight: 500;
+  }
+
+  .admin-input:focus {
+    border-color: #4a997c;
+    box-shadow: 0 0 0 3px rgb(74 153 124 / 10%);
+  }
+
+  .stat-icon {
+    display: grid;
+    width: 2.2rem;
+    height: 2.2rem;
+    place-items: center;
+    border-radius: 0.7rem;
+  }
+
+  .stat-icon--green {
+    background: #e2f1e8;
+    color: #2f7d60;
+  }
+
+  .stat-icon--amber {
+    background: #fff0d8;
+    color: #a16c27;
+  }
+
+  .stat-icon--blue {
+    background: #e1edf4;
+    color: #477691;
+  }
+
+  .stat-icon--purple {
+    background: #ebe8f6;
+    color: #69618f;
+  }
+}
