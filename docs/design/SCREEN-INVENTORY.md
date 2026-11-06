@@ -74,9 +74,9 @@ Em total conformidade com a regra `R11` e `GER-03`, toda tela do ecossistema Sal
   - Acessível diretamente pelo squircle *Produtos* ou pela barra inferior *Produtos*.
   - Lista de produtos adaptada com campos de toque expandidos e barra inferior persistente.
 
-### 2.4 Tela ADM-04: Gestão do Produto (KartControl)
+### 2.4 Tela ADM-04: Gestão e Governança do Produto (KartControl)
 
-- **Objetivo:** Ponto centralizado de gestão técnica, acessos administrativos e controle de credenciais de um produto específico do portfólio.
+- **Objetivo:** Ponto centralizado de governança técnica, comercial e conformidade de um produto específico do portfólio.
 - **Referência Visual Canônica:**
   - Desktop `[D]`: `docs/design/img/kartcontrol/Produtokartcontrol - D.png`
 - **Desktop `[D]`:**
@@ -84,25 +84,34 @@ Em total conformidade com a regra `R11` e `GER-03`, toda tela do ecossistema Sal
   - Hero header com squarcle `KC`, categoria `GESTÃO DO PRODUTO · SISTEMA DE GESTÃO`, descrição institucional, badge `● Piloto`, métrica `1 cliente` e barra de progresso `84%`.
   - Banner informativo `Dados de demonstração` em verde suave.
   - Card `Administração`: ponto de acesso centralizado com status e botão `Entrar`.
-  - Grade de 2 colunas:
+  - Card `Assinaturas e Planos B2C`: agregados de assinantes (Ativos, Em teste, Inadimplentes, Cancelados), prévia dos últimos 4 assinantes vinculados com selo de plano e botão `Ver em Assinaturas` com filtro automático.
+  - Grade de 2 colunas técnicas e credenciais:
     - Coluna 1: `Informações técnicas` (Repositório com Copiar/Abrir/Editar, Banco de dados com Configurar, Endereço web com Copiar/Abrir/Editar).
     - Coluna 2: `Acessos do produto` (Painel de controle com Configurar, E-mail com Configurar, Senha de acesso com bullets mascarados e atalho Alterar senha).
   - Card `Alterar senha`: formulário funcional com Senha atual, Nova senha, Confirmar nova senha e botão `Salvar alteração`.
-  - Rodapé institucional `SalusDev · Informações e acessos do produto`.
+  - Grade de 2 colunas de governança avançada (Plano 0012):
+    - Coluna 1: `Administradores do Produto` (lista com nomes, papéis, status MFA, último acesso e ação de convite seguro via modal).
+    - Coluna 2: `Saúde Operacional e Telemetria` (status com indicador pulsante, uptime 99.98%, latência do edge, versão e botão interativo "Testar agora").
+  - Card `Trilha de Auditoria e Conformidade`: histórico imutável das últimas ações administrativas e verificações técnicas em conformidade com `AUTH-02`.
+  - Rodapé institucional `SalusDev · Informações e governança do produto`.
 - **Mobile `[M]`:**
   - Grade de 2 colunas colapsa fluidamente para 1 coluna vertical.
   - Alvos de toque `>= 44 px` em todos os botões de ação e inputs com fonte `>= 16 px`.
   - Compatibilidade com safe area (`pt-safe` no topo e `pb-32` na base).
 
-### 2.5 Tela ADM-05: Monitoramento e Healthcheck de Sistemas (`/sistemas`)
+### 2.5 Tela ADM-05: Central Global de Gestão de Assinaturas e Planos B2C (`/assinaturas`)
 
-- **Objetivo:** Acompanhar em tempo real a disponibilidade de subdomínios e versões de cada aplicação em produção.
+- **Objetivo:** Fonte canônica única de gestão comercial cross-product do ecossistema SalusDev, centralizando planos B2C, assinantes, estados comerciais e matriz de entitlements.
 - **Desktop `[D]`:**
-  - Painel com grade de cartões operacionais.
-  - Indicadores luminosos de latência, uptime e versão de compilação.
-  - Botão de "Executar Healthcheck Manual" com feedback imediato via Toast.
+  - Topo executivo com eyebrow `Centro de Comando Comercial`, badge `Cross-Product B2C`, título e banner de cobrança futura.
+  - Grade de 5 KPIs operacionais: Ativos (verde), Em Teste (azul), Inadimplentes (âmbar), Cancelados (cinza) e Cobrança B2C com selo `Em breve`.
+  - Barra de filtros avançados: busca por nome/e-mail, seletor de produto com suporte a filtro isolado, seletor de plano (Gratuito, Pro, Premium) e seletor de status.
+  - Tabela completa de assinantes: avatar com iniciais coloridas, nome e e-mail, badge do produto, badge de plano, badge semântico de status, datas de início e renovação, e botão de ação `Gerenciar` abrindo modal de alteração de plano/status.
+  - Catálogo Canônico de Planos B2C: 3 planos propostos (Gratuito, Pro com destaque, Premium), valores "Em breve" e botão modal para visualização da Matriz de 13 Entitlements.
 - **Mobile `[M]`:**
-  - Lista vertical resumida com badges verdes ou vermelhos e botão de teste rápido.
+  - KPIs em grade fluida de 2 colunas.
+  - Assinantes em cartões verticais empilhados com touch target `>= 44 px` no botão de gerenciar.
+  - Filtros colapsáveis e modal otimizado para toque com suporte a fechamento em toque fora e tecla Escape.
 
 ---
 

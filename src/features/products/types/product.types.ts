@@ -5,6 +5,32 @@ export type ProductStatus =
   | "Ativo"
   | "Descontinuado"
 
+export interface ProductAdmin {
+  id: string
+  name: string
+  email: string
+  role: string
+  mfaStatus: "Ativo" | "Pendente" | "Inativo"
+  lastAccessAt: string
+  status: "Ativo" | "Revogado"
+}
+
+export interface ProductHealth {
+  status: "Operacional" | "Degradado" | "Indisponível"
+  uptime: string
+  latencyMs: number
+  version: string
+  lastCheckedAt: string
+}
+
+export interface ProductAuditLog {
+  id: string
+  actor: string
+  action: string
+  target: string
+  timestamp: string
+}
+
 export interface Product {
   id: number
   name: string
@@ -27,6 +53,10 @@ export interface Product {
   adminPanelUrl?: string
   adminEmail?: string
   adminPasswordMasked?: string
+  // Governança de Produto (Plano 0012)
+  admins?: ProductAdmin[]
+  health?: ProductHealth
+  auditLogs?: ProductAuditLog[]
 }
 
 export const statusStyles: Record<ProductStatus, string> = {

@@ -1,12 +1,16 @@
 import { useState } from "react"
 import { ArrowLeft, CheckCircle2 } from "lucide-react"
-import type { Product } from "@/features/products/types/product.types"
+import type { Product, ProductAdmin } from "@/features/products/types/product.types"
 import { ProductHeroHeader } from "./components/ProductHeroHeader"
 import { ProductDemoBanner } from "./components/ProductDemoBanner"
 import { ProductAdminCard } from "./components/ProductAdminCard"
 import { ProductTechnicalInfoCard } from "./components/ProductTechnicalInfoCard"
 import { ProductAccessCard } from "./components/ProductAccessCard"
 import { ProductChangePasswordCard } from "./components/ProductChangePasswordCard"
+import { ProductSubscriptionsCard } from "./components/ProductSubscriptionsCard"
+import { ProductAdminsCard } from "./components/ProductAdminsCard"
+import { ProductHealthCard } from "./components/ProductHealthCard"
+import { ProductAuditCard } from "./components/ProductAuditCard"
 import { ProductConfigModal } from "./components/ProductConfigModal"
 
 export interface ProductManagementScreenProps {
@@ -14,6 +18,7 @@ export interface ProductManagementScreenProps {
   onBackToPortfolio: () => void
   onUpdateProduct: (patch: Partial<Product>) => void
   onEnterAdmin?: () => void
+  onNavigateToSubscriptions?: (productId: number) => void
 }
 
 interface ModalState {
@@ -29,6 +34,7 @@ export function ProductManagementScreen({
   onBackToPortfolio,
   onUpdateProduct,
   onEnterAdmin,
+  onNavigateToSubscriptions,
 }: ProductManagementScreenProps) {
   const [toastMessage, setToastMessage] = useState<string | null>(null)
   const [activeModal, setActiveModal] = useState<ModalState | null>(null)
@@ -38,6 +44,22 @@ export function ProductManagementScreen({
     window.setTimeout(() => {
       setToastMessage((prev) => (prev === message ? null : prev))
     }, 3200)
+  }
+
+  function handleAddAdmin(newAdmin: ProductAdmin) {
+    const currentAdmins = product.admins || []
+    onUpdateProduct({ admins: [...currentAdmins, newAdmin] })
+    showToast(`Convite enviado para ${newAdmin.name}!`)
+  }
+
+  function handleRevokeAdmin(adminId: string) {
+    const currentAdmins = product.admins || []
+    onUpdateProduct({ admins: currentAdmins.filter((a) => a.id !== adminId) })
+    showToast("Acesso administrativo revogado com sucesso.")
+  }
+
+  function handleTestHealth() {
+    showToast("Health check executado com sucesso: todos os serviços operacionais.")
   }
 
   function handleCopy(text: string, label: string) {
@@ -147,7 +169,14 @@ export function ProductManagementScreen({
         onEnterAdmin={handleEnterAdminInternal}
       />
 
-      {/* 4. Grade de 2 colunas: Informações técnicas e Acessos do produto */}
+      {/* 4. Card Resumo de Assinaturas e Planos B2C (Plano 0012) */}
+      <ProductSubscriptionsCard
+        productId={product.id}
+        productName={product.name}
+        onNavigateToSubscriptions={onNavigateToSubscriptions}
+      />
+
+      {/* 5. Grade de 2 colunas: Informações técnicas e Acessos do produto */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <ProductTechnicalInfoCard
           repositoryUrl={product.repositoryUrl || product.repoUrl || "github.com/salusdev/kart-control"}
@@ -167,15 +196,34 @@ export function ProductManagementScreen({
         />
       </div>
 
-      {/* 5. Card Alterar senha */}
+      {/* 6. Card Alterar senha */}
       <ProductChangePasswordCard
         onSavePassword={handleSavePassword}
+      />
+
+      {/* 7. Governança Avançada: Administradores e Telemetria (Plano 0012) */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <ProductAdminsCard
+          admins={product.admins}
+          onAddAdmin={handleAddAdmin}
+          onRevokeAdmin={handleRevokeAdmin}
+        />
+
+        <ProductHealthCard
+          health={product.health}
+          onTestHealth={handleTestHealth}
+        />
+      </div>
+
+      {/* 8. Trilha de Auditoria e Conformidade (Plano 0012) */}
+      <ProductAuditCard
+        logs={product.auditLogs}
       />
 
       {/* Rodapé institucional */}
       <footer className="pt-2 pb-6 text-center">
         <p className="text-[11px] font-semibold text-[#8a9992]">
-          SalusDev · Informações e acessos do produto
+          SalusDev · Informações e governança do produto
         </p>
       </footer>
 

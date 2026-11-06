@@ -2,6 +2,7 @@ import { useState } from "react"
 import { AppShell } from "@/components/layout/AppShell"
 import { ProductsModule } from "@/features/products/ProductsModule"
 import { DashboardModule } from "@/features/dashboard/DashboardModule"
+import { SubscriptionsModule } from "@/features/subscriptions/SubscriptionsModule"
 import { useAuth } from "@/features/auth/hooks/useAuth"
 import { LoginScreen } from "@/features/auth/LoginScreen"
 import { useProducts } from "@/features/products/hooks/useProducts"
@@ -16,6 +17,7 @@ export default function App() {
   const [currentSection, setCurrentSection] = useState<string>("Dashboard")
   const [managingProduct, setManagingProduct] = useState<Product | null>(null)
   const [enteringKartControl, setEnteringKartControl] = useState<boolean>(false)
+  const [subscriptionsProductFilter, setSubscriptionsProductFilter] = useState<number | null>(null)
 
   // Se não estiver autenticado (ou estiver aguardando o segundo fator MFA), exibe o portal de Login
   if (!auth.isAuthenticated) {
@@ -33,6 +35,7 @@ export default function App() {
 
   function handleSelectSection(section: string) {
     setManagingProduct(null)
+    setSubscriptionsProductFilter(null)
     setCurrentSection(section)
   }
 
@@ -74,6 +77,11 @@ export default function App() {
           onEnterAdmin={() => {
             setEnteringKartControl(true)
           }}
+          onNavigateToSubscriptions={(productId) => {
+            setManagingProduct(null)
+            setSubscriptionsProductFilter(productId)
+            setCurrentSection("Assinaturas")
+          }}
         />
       ) : currentSection === "Dashboard" ? (
         <DashboardModule
@@ -89,6 +97,12 @@ export default function App() {
         <ProductsModule
           productsState={productsState}
           onOpenProductManagement={(product) => setManagingProduct(product)}
+        />
+      ) : currentSection === "Assinaturas" ? (
+        <SubscriptionsModule
+          products={productsState.products}
+          initialProductId={subscriptionsProductFilter}
+          onClearProductFilter={() => setSubscriptionsProductFilter(null)}
         />
       ) : (
         <div className="rounded-2xl border border-[#173e32]/10 bg-white p-8 text-center shadow-xs sm:p-12">

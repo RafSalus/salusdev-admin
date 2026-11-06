@@ -205,3 +205,69 @@ Em conformidade com o Plano 0011 (`KART-01`), as seguintes entidades modelam os 
 | `id` | `VARCHAR(32)` | Chave Primária | Identificador slug da unidade (ex.: `kart-apucarana`) |
 | `name` | `VARCHAR(128)` | Não vazio | Nome da praça/kartódromo (ex.: 'Kart Apucarana') |
 
+---
+
+## 6. Modelos Comerciais Globais e Governança de Produtos (Plano 0012)
+
+Em conformidade com o Plano 0012, os modelos a seguir definem a separação estrita entre o domínio comercial cross-product e o domínio de governança de produtos:
+
+### 6.1 Tabela `plans` (Catálogo Canônico de Planos B2C)
+
+| Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
+|---|---|---|---|---|
+| `id` | `VARCHAR(40)` | Não | Chave Primária | Identificador único do plano (ex.: `plan-pro`) |
+| `product_id` | `INTEGER` | Sim | FK (`products.id`) | Produto vinculado (ou nulo se global) |
+| `code` | `VARCHAR(32)` | Não | Check Enum | 'free', 'pro', 'premium' |
+| `name` | `VARCHAR(64)` | Não | Não vazio | Nome amigável do plano ('Gratuito', 'Pro', 'Premium') |
+| `description` | `TEXT` | Não | - | Resumo comercial da proposta de valor |
+| `price_cents` | `INTEGER` | Sim | Nulo = Em breve | Valor em centavos (nulo na fase de validação) |
+| `currency` | `VARCHAR(3)` | Não | Padrão 'BRL' | Moeda de cobrança |
+| `interval` | `VARCHAR(20)` | Não | Check Enum | 'mensal', 'anual' |
+| `features_json` | `JSONB` | Não | Array de strings | Lista canônica de recursos do plano |
+| `active` | `BOOLEAN` | Não | Padrão `TRUE` | Se o plano está disponível para novas assinaturas |
+
+### 6.2 Tabela `subscriptions` (Assinaturas Comerciais Cross-Product)
+
+| Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
+|---|---|---|---|---|
+| `id` | `VARCHAR(40)` | Não | Chave Primária | Identificador universal da assinatura |
+| `customer_id` | `VARCHAR(40)` | Não | Chave Estrangeira | Identificador do cliente/piloto contratante |
+| `product_id` | `INTEGER` | Não | FK (`products.id`) | Produto no qual o serviço é usufruído |
+| `plan_id` | `VARCHAR(40)` | Não | FK (`plans.id`) | Plano ativo contratado |
+| `status` | `VARCHAR(20)` | Não | Check Enum | 'Ativo', 'Em teste', 'Inadimplente', 'Cancelado' |
+| `started_at` | `VARCHAR(20)` | Não | Formato Data | Data de início de vigência |
+| `current_period_end` | `VARCHAR(20)` | Não | Formato Data | Data de vencimento/renovação do ciclo |
+| `provider` | `VARCHAR(60)` | Não | - | Gateway de faturamento ('Em breve' ou manual) |
+
+### 6.3 Tabela `entitlements` (Matriz de Recursos Liberados)
+
+| Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
+|---|---|---|---|---|
+| `id` | `VARCHAR(40)` | Não | Chave Primária | Identificador único da permissão |
+| `feature_key` | `VARCHAR(80)` | Não | Único | Chave funcional (ex.: `stats.advanced`, `export.pdf`) |
+| `name` | `VARCHAR(100)` | Não | Não vazio | Nome comercial do recurso |
+| `description` | `TEXT` | Não | - | Explicação do benefício concedido |
+| `plans_json` | `JSONB` | Não | Array de codes | Lista de planos que liberam o recurso (`['pro', 'premium']`) |
+| `unlimited` | `BOOLEAN` | Não | Padrão `TRUE` | Se o acesso é ilimitado durante a assinatura |
+
+### 6.4 Tabela `product_admins` (Governança e Autorização com MFA)
+
+| Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
+|---|---|---|---|---|
+| `id` | `VARCHAR(40)` | Não | Chave Primária | Identificador único do vínculo administrativo |
+| `product_id` | `INTEGER` | Não | FK (`products.id`) | Produto sob gestão |
+| `name` | `VARCHAR(128)` | Não | Não vazio | Nome completo do operador |
+| `email` | `VARCHAR(255)` | Não | Formato e-mail | E-mail para autenticação e convite |
+| `role` | `VARCHAR(60)` | Não | - | Papel atribuído (ex.: 'Operador de Pista', 'Administrador Geral') |
+| `mfa_status` | `VARCHAR(20)` | Não | Check Enum | 'Ativo' (TOTP configurado), 'Pendente', 'Inativo' |
+| `last_access_at` | `VARCHAR(40)` | Não | - | Registro de data/hora do último login efetuado |
+| `status` | `VARCHAR(20)` | Não | Check Enum | 'Ativo', 'Revogado' |
+
+### 6.5 Tabela `health_checks` e `audit_log` (Telemetria e Auditoria Imutável)
+
+| Entidade | Colunas Chave | Finalidade |
+|---|---|---|
+| `health_checks` | `product_id`, `status`, `latency_ms`, `version`, `checked_at` | Registro contínuo de latência, uptime e integridade da API |
+| `audit_log` | `actor`, `action`, `target`, `timestamp` | Histórico imutável de alterações em conformidade com `AUTH-02` |
+
+
