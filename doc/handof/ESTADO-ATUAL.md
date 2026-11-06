@@ -1,36 +1,28 @@
 # Estado Atual do Trabalho
 
-- **Atualizado em:** 2026-11-06 12:36
+- **Atualizado em:** 2026-11-06 13:30
 - **Agente:** @aiox-master
-- **Plano ativo:** Nenhum plano ativo no momento (Plano 0004 concluído)
-- **Status:** Estável / Organização de Pastas doc/ e docs/
+- **Plano ativo:** Nenhum plano ativo no momento (Plano 0006 concluído)
+- **Status:** Estável / Tela de Login e MFA Concluídos
 - **Branch:** main
 
 ## Ultimo marco concluido
 
-- **Separação Estratégica entre `doc/` e `docs/`:** Conforme solicitação de Rafael:
-  - Pasta `doc/`: Arquivos de processo, governança e regras (`doc/plan/`, `doc/handof/`, `doc/produto/`);
-  - Pasta `docs/`: Documentação técnica permanente pertinente ao projeto (`docs/arquitetura/`, `docs/design/`, `docs/dados/`, `docs/qualidade/`, `docs/devops/`, `docs/bugs/`);
-  - Atualização de 100% dos links e referências cruzadas em todos os arquivos Markdown.
-- **Commit e Push anteriores consolidados:** Entregas dos Planos 0001 a 0005 e modularização de `src/` commitadas e enviadas ao GitHub.
-- **Plano 0004 concluído com sucesso absoluto:** Suíte completa de documentação profissional do ecossistema SalusDev publicada e homologada:
-  - `doc/produto/SITEMAP.md` (@pm - Morgan);
-  - `docs/arquitetura/ARCHITECTURE.md` com 5 ADRs (@architect - Aria);
-  - `docs/design/DESIGN-SYSTEM.md` e `SCREEN-INVENTORY.md` com padrões `[D]` e `[M]` (@ux-design-expert - Uma);
-  - `docs/dados/DATA-DICTIONARY.md` (@data-engineer - Dara);
-  - `docs/qualidade/TEST-PLAN.md` com 5 Quality Gates e matriz de viewports (@qa - Quinn);
-  - `docs/devops/DEPLOYMENT.md` com topologia Netlify, `netlify.toml` e headers de segurança (@devops - Gage);
-  - Relatórios de todos os 6 agentes especializados consolidados no Plano 0004.
-- `RegrasSystema.md` atualizado para v1.4 com exigência de MFA/2FA obrigatório em todos os logins via Supabase Auth TOTP (`AUTH-02`).
-- Plano 0005 concluído previamente (adaptação de `RegrasDesenvolvimento.md` ao molde mestre).
+- **Plano 0006 concluído com sucesso:** Implementação da **Tela de Login com MFA / 2FA (TOTP)** e arquitetura de sessão autenticada:
+  - Módulo `src/features/auth/` com `LoginScreen`, `AuthCard`, `LoginForm`, `MfaChallenge`, `PasswordRecoveryModal`, `useAuth` e `auth.types.ts`;
+  - Desafio de 6 dígitos numéricos com avanço automático, foco ágil e suporte a colar (`paste`);
+  - Proteção progressiva contra força bruta (`AUTH-09`) e mensagens genéricas (`AUTH-10`);
+  - Roteamento de sessão integrado no `App.tsx` e botão de encerramento seguro (`Logout`) no `Header.tsx`;
+  - 40 módulos compilando em 245ms sem erros de tipagem TypeScript.
+- **Separação Estratégica entre `doc/` e `docs/`:** Concluída e commitada anteriormente.
 
 ## Em execucao agora
 
-- Sessão em ponto de alinhamento com Rafael após conclusão do Plano 0004.
+- Sessão em ponto de alinhamento com Rafael após conclusão do Plano 0006.
 
 ## Proximo passo exato
 
-1. Alinhar com Rafael o próximo plano de ação do ecossistema SalusDev (ex.: criação do repositório `salusdev-site` para a vitrine institucional ou avanço das próximas telas do `salusdev-admin`).
+1. Alinhar com Rafael a próxima tela da matriz lógica: **Tela 2: Dashboard Executivo (`/dashboard`)** ou **Tela 6: Gestão de Clientes (`/clientes`)**.
 
 ## Pendencias imediatas
 

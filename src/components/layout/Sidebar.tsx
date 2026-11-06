@@ -6,12 +6,14 @@ export interface SidebarProps {
   open: boolean
   onClose: () => void
   activeItem?: string
+  onSelectSection?: (section: string) => void
 }
 
 export function Sidebar({
   open,
   onClose,
   activeItem = "Produtos",
+  onSelectSection,
 }: SidebarProps) {
   return (
     <>
@@ -53,6 +55,10 @@ export function Sidebar({
                     <button
                       type="button"
                       key={item.label}
+                      onClick={() => {
+                        onSelectSection?.(item.label)
+                        onClose()
+                      }}
                       className={`flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-[12px] font-bold transition ${
                         isActive
                           ? "bg-[#173e32] text-white shadow-sm"
@@ -85,13 +91,29 @@ export function Sidebar({
         <div className="border-t border-[#173e32]/8 pt-4">
           <button
             type="button"
-            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[12px] font-bold text-[#687871] hover:bg-[#f5f6f2]"
+            onClick={() => {
+              onSelectSection?.("Configurações")
+              onClose()
+            }}
+            className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[12px] font-bold transition ${
+              activeItem === "Configurações"
+                ? "bg-[#173e32] text-white shadow-sm"
+                : "text-[#687871] hover:bg-[#f5f6f2] hover:text-[#173e32]"
+            }`}
           >
             <Icon name="settings" size={18} /> Configurações
           </button>
           <button
             type="button"
-            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[12px] font-bold text-[#687871] hover:bg-[#f5f6f2]"
+            onClick={() => {
+              onSelectSection?.("Configurações")
+              onClose()
+            }}
+            className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[12px] font-bold transition ${
+              activeItem === "Configurações"
+                ? "bg-[#173e32] text-white shadow-sm"
+                : "text-[#687871] hover:bg-[#f5f6f2] hover:text-[#173e32]"
+            }`}
           >
             <Icon name="help" size={18} /> Ajuda
           </button>

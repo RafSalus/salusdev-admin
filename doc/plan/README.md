@@ -1,4 +1,4 @@
-﻿# Planos de Desenvolvimento - SalusDev Prototypes
+# Planos de Desenvolvimento - SalusDev Prototypes
 
 Pasta de planos numerados do repositório conforme definido em `doc/produto/RegrasDesenvolvimento.md`.
 
@@ -15,3 +15,4 @@ Pasta de planos numerados do repositório conforme definido em `doc/produto/Regr
 | 0003 | [Refatoração Arquitetural e Modularização do Centro de Comando](file:///D:/SalusDev%20-%20Admin/doc/plan/0003%20-%20refatoracao-arquitetural-e-modularizacao-do-admin.md) | Concluído | 1.1 | @aiox-master |
 | 0004 | [Suíte de Documentação Profissional do Ecossistema SalusDev](file:///D:/SalusDev%20-%20Admin/doc/plan/0004%20-%20suite-de-documentacao-profissional-do-ecossistema.md) | Concluído | 1.1 | @aiox-master |
 | 0005 | [Adaptação das Regras de Desenvolvimento ao Molde Mestre](file:///D:/SalusDev%20-%20Admin/doc/plan/0005%20-%20adaptacao-das-regras-de-desenvolvimento-ao-molde-mestre.md) | Concluído | 1.0 | @aiox-master |
+| 0006 | [Tela de Login com MFA e Roteamento de Sessão](file:///D:/SalusDev%20-%20Admin/doc/plan/0006%20-%20tela-de-login-com-mfa-e-roteamento-de-sessao.md) | Concluído | 1.0 | @aiox-master |
