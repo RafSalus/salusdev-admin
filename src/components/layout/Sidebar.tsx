@@ -1,0 +1,117 @@
+import { Icon } from "@/components/ui/Icon"
+import { Logo } from "./Logo"
+import { navGroups } from "@/shared/constants/navigation"
+
+export interface SidebarProps {
+  open: boolean
+  onClose: () => void
+  activeItem?: string
+}
+
+export function Sidebar({
+  open,
+  onClose,
+  activeItem = "Produtos",
+}: SidebarProps) {
+  return (
+    <>
+      {open && (
+        <button
+          type="button"
+          onClick={onClose}
+          className="fixed inset-0 z-40 bg-[#0c1d17]/35 backdrop-blur-sm lg:hidden"
+          aria-label="Fechar menu"
+        />
+      )}
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 flex w-[252px] flex-col border-r border-[#173e32]/8 bg-white px-4 py-5 transition-transform duration-300 lg:translate-x-0 ${
+          open ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between px-2">
+          <Logo />
+          <button
+            type="button"
+            onClick={onClose}
+            className="grid h-9 w-9 place-items-center rounded-lg text-[#687871] hover:bg-[#f0f2ed] lg:hidden"
+            aria-label="Fechar menu"
+          >
+            <Icon name="close" size={19} />
+          </button>
+        </div>
+
+        <nav className="mt-9 flex-1 overflow-y-auto" aria-label="Navegação administrativa">
+          {navGroups.map((group) => (
+            <div key={group.label} className="mb-7">
+              <p className="mb-2 px-3 text-[9px] font-extrabold uppercase tracking-[.16em] text-[#9ca6a1]">
+                {group.label}
+              </p>
+              <div className="space-y-1">
+                {group.items.map((item) => {
+                  const isActive = item.label === activeItem
+                  return (
+                    <button
+                      type="button"
+                      key={item.label}
+                      className={`flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-[12px] font-bold transition ${
+                        isActive
+                          ? "bg-[#173e32] text-white shadow-sm"
+                          : "text-[#586b63] hover:bg-[#f4f6f1] hover:text-[#173e32]"
+                      }`}
+                    >
+                      <span className="flex items-center gap-3">
+                        <Icon name={item.icon} size={18} />
+                        {item.label}
+                      </span>
+                      {item.count !== undefined && (
+                        <span
+                          className={`grid h-5 min-w-[20px] place-items-center rounded-full px-1.5 text-[9px] font-extrabold ${
+                            isActive
+                              ? "bg-white/20 text-white"
+                              : "bg-[#eaf1ed] text-[#337a5f]"
+                          }`}
+                        >
+                          {item.count}
+                        </span>
+                      )}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+        </nav>
+
+        <div className="border-t border-[#173e32]/8 pt-4">
+          <button
+            type="button"
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[12px] font-bold text-[#687871] hover:bg-[#f5f6f2]"
+          >
+            <Icon name="settings" size={18} /> Configurações
+          </button>
+          <button
+            type="button"
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[12px] font-bold text-[#687871] hover:bg-[#f5f6f2]"
+          >
+            <Icon name="help" size={18} /> Ajuda
+          </button>
+        </div>
+
+        <div className="mt-4 flex items-center gap-3 rounded-xl bg-[#f5f6f2] p-3">
+          <div className="grid h-9 w-9 place-items-center rounded-full bg-[#173e32] text-[10px] font-extrabold text-white">
+            RA
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[11px] font-extrabold text-[#243d34]">
+              Rafael Salustiano
+            </p>
+            <p className="mt-0.5 text-[9px] font-semibold text-[#8a9791]">
+              Administrador
+            </p>
+          </div>
+          <Icon name="dots" size={17} />
+        </div>
+      </aside>
+    </>
+  )
+}

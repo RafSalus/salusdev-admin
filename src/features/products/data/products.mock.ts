@@ -1,0 +1,76 @@
+import type { Product } from "../types/product.types"
+
+export const initialProducts: Product[] = [
+  {
+    id: 1,
+    name: "SalusDev Institucional",
+    short: "SD",
+    category: "Site institucional",
+    status: "Ativo",
+    description:
+      "Presença digital, captação de leads e apresentação do portfólio da SalusDev.",
+    clients: 1,
+    updated: "Hoje, 09:42",
+    progress: 100,
+    color: "#173e32",
+    appUrl: "salusdev.com",
+    repoUrl: "github.com/salusdev/site",
+  },
+  {
+    id: 2,
+    name: "Salus Oficina",
+    short: "SO",
+    category: "SaaS para oficinas",
+    status: "Desenvolvimento",
+    description:
+      "Gestão de ordens de serviço, clientes, veículos e rotina financeira para oficinas.",
+    clients: 2,
+    updated: "Ontem, 16:20",
+    progress: 62,
+    color: "#2f8064",
+    appUrl: "oficina.salusdev.com",
+    repoUrl: "github.com/salusdev/oficina",
+  },
+  {
+    id: 3,
+    name: "Finanças Pessoais",
+    short: "FP",
+    category: "Aplicação web",
+    status: "Planejamento",
+    description:
+      "Organização financeira pessoal com visão clara de despesas, metas e evolução mensal.",
+    clients: 0,
+    updated: "02 nov, 2026",
+    progress: 18,
+    color: "#6d7e76",
+    repoUrl: "github.com/salusdev/financas",
+  },
+  {
+    id: 4,
+    name: "Kart Control",
+    short: "KC",
+    category: "Sistema de gestão",
+    status: "Piloto",
+    description:
+      "Controle de baterias, pilotos, tempos e manutenção para operações de kart indoor.",
+    clients: 1,
+    updated: "30 out, 2026",
+    progress: 84,
+    color: "#c18442",
+    appUrl: "kart.salusdev.com",
+    repoUrl: "github.com/salusdev/kart-control",
+  },
+  {
+    id: 5,
+    name: "Salus Commerce",
+    short: "SC",
+    category: "E-commerce",
+    status: "Planejamento",
+    description:
+      "Base de comércio eletrônico adaptável para lojas e pequenos negócios da região.",
+    clients: 0,
+    updated: "26 out, 2026",
+    progress: 8,
+    color: "#6d7093",
+  },
+]
