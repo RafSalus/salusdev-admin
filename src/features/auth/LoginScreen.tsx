@@ -64,7 +64,7 @@ export function LoginScreen({ auth }: LoginScreenProps) {
       </section>
 
       {/* PAINEL DIREITO: Fundo branco no Mobile, Fundo suave no Desktop */}
-      <section className="flex flex-1 flex-col justify-between bg-white px-5 py-6 sm:px-8 lg:bg-[#f8faf8] lg:p-12">
+      <section className="flex flex-1 flex-col justify-between bg-white px-5 py-6 pt-safe pb-safe sm:px-8 lg:bg-[#f8faf8] lg:p-12">
         {/* Topo Mobile: Logotipo SalusDev (exibido apenas em mobile conforme Login - M.png) */}
         <div className="flex items-center justify-between lg:hidden pt-2 pb-6">
           <div className="flex items-center gap-2.5">
