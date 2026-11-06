@@ -1,4 +1,4 @@
-﻿# Inventário de Telas e Especificação de Viewports [D] e [M]
+# Inventário de Telas e Especificação de Viewports [D] e [M]
 
 - **Documento:** Catálogo e Comportamento Responsivo das Telas
 - **Versão:** 1.0
@@ -20,14 +20,16 @@ Em total conformidade com a regra `R11` e `GER-03`, toda tela do ecossistema Sal
 ### 2.1 Tela ADM-01: Login e Autenticação Multifator (MFA / 2FA)
 
 - **Objetivo:** Autenticar o operador via e-mail e senha e exigir validação de segundo fator (TOTP) antes de conceder acesso.
+- **Referência Visual Canônica:** Imagem de referência `docs/design/img/login.png`.
 - **Desktop `[D]`:**
-  - Card centralizado na tela com largura fixa de 420px, sombra suave e fundo limpo.
-  - Teclado com foco automático no primeiro campo de texto.
-  - Na tela de MFA, campos de 6 dígitos com avanço automático ao digitar cada dígito.
+  - Layout dividido em duas colunas (split-screen institucional 45/55):
+    - **Coluna Esquerda:** Fundo verde institucional profundo (`#163e32`) com logotipo `</> SalusDev`, headline de alto impacto (*"Sua operação, em um só lugar."*), descrição de autoridade e links legais de rodapé (*Privacidade* e *Termos de uso*).
+    - **Coluna Direita:** Fundo suave (`#f8faf8`), selo de *"Acesso seguro"* no topo direito, card flutuante centralizado (`#ffffff`, border `#eaecf0`) com badge `</> SalusDev`, saudação *"Boas-vindas de volta"*, campos com tipografia e espaçamentos precisos, checkbox *"Lembrar de mim"*, atalho *"Esqueci minha senha"*, botão verde floresta *"Entrar →"* e rodapé com link *"Precisa de ajuda?"*.
+    - **Etapa MFA:** Transição suave no mesmo card, mantendo o cabeçalho e exibindo a grade de 6 dígitos numéricos com avanço automático.
 - **Mobile `[M]`:**
-  - Card ocupando 100% da largura da tela (com padding lateral de 16px).
+  - Layout empilhado verticalmente: faixa superior compacta verde escura com logotipo e mensagem de impacto, seguida pelo card de formulário em largura completa (com padding lateral de 16px).
   - O campo de código de 6 dígitos ativa automaticamente o teclado numérico virtual (`inputMode="numeric"`).
-  - Botão de envio fixo com altura mínima de 48px para facilitar o toque.
+  - Botão de envio fixo com altura de 48px (atendendo ao critério de alvos de toque >= 44 px).
 
 ### 2.2 Tela ADM-02: Catálogo Central de Produtos e Sistemas (`/produtos`)
 

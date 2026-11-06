@@ -1,19 +1,18 @@
 # Estado Atual do Trabalho
 
-- **Atualizado em:** 2026-11-06 13:30
-- **Agente:** @aiox-master
-- **Plano ativo:** Nenhum plano ativo no momento (Plano 0006 concluído)
-- **Status:** Estável / Tela de Login e MFA Concluídos
+- **Atualizado em:** 2026-11-06 13:41
+- **Agente:** @ux-design-expert (Uma) / @dev (Dex)
+- **Plano ativo:** Nenhum plano ativo no momento (Plano 0006 refinado)
+- **Status:** Estável / Tela de Login 100% Fiel à Imagem de Referência
 - **Branch:** main
 
 ## Ultimo marco concluido
 
-- **Plano 0006 concluído com sucesso:** Implementação da **Tela de Login com MFA / 2FA (TOTP)** e arquitetura de sessão autenticada:
-  - Módulo `src/features/auth/` com `LoginScreen`, `AuthCard`, `LoginForm`, `MfaChallenge`, `PasswordRecoveryModal`, `useAuth` e `auth.types.ts`;
-  - Desafio de 6 dígitos numéricos com avanço automático, foco ágil e suporte a colar (`paste`);
-  - Proteção progressiva contra força bruta (`AUTH-09`) e mensagens genéricas (`AUTH-10`);
-  - Roteamento de sessão integrado no `App.tsx` e botão de encerramento seguro (`Logout`) no `Header.tsx`;
-  - 40 módulos compilando em 245ms sem erros de tipagem TypeScript.
+- **Refinamento Visual da Tela de Login (ADM-01):** A `@ux-design-expert` reformulou a tela para reproduzir fielmente a imagem de referência [docs/design/img/login.png](file:///D:/SalusDev%20-%20Admin/docs/design/img/login.png):
+  - Layout dividido em duas colunas (split-screen): painel esquerdo institucional em verde floresta profundo (`#163e32`) com headline de impacto e links legais, e painel direito claro (`#f8faf8`) com card de login, selo de acesso seguro e link *"Precisa de ajuda?"*;
+  - Form com campos, textos, checkbox *"Lembrar de mim"*, atalho *"Esqueci minha senha"* e botão *"Entrar →"* exatamente idênticos ao layout da imagem;
+  - Desafio MFA/2FA integrado no mesmo card com avanço automático;
+  - Documentação atualizada em `docs/design/SCREEN-INVENTORY.md`.
 - **Separação Estratégica entre `doc/` e `docs/`:** Concluída e commitada anteriormente.
 
 ## Em execucao agora
