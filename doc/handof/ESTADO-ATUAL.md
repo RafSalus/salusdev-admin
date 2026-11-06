@@ -1,16 +1,19 @@
 # Estado Atual do Trabalho
 
-- **Atualizado em:** 2026-11-06 13:41
+- **Atualizado em:** 2026-11-06 13:52
 - **Agente:** @ux-design-expert (Uma) / @dev (Dex)
 - **Plano ativo:** Nenhum plano ativo no momento (Plano 0006 refinado)
-- **Status:** Estável / Tela de Login 100% Fiel à Imagem de Referência
+- **Status:** Estável / Login Desktop e Mobile 100% Fiéis às Imagens de Referência
 - **Branch:** main
 
 ## Ultimo marco concluido
 
-- **Refinamento Visual da Tela de Login (ADM-01):** A `@ux-design-expert` reformulou a tela para reproduzir fielmente a imagem de referência [docs/design/img/login.png](file:///D:/SalusDev%20-%20Admin/docs/design/img/login.png):
-  - Layout dividido em duas colunas (split-screen): painel esquerdo institucional em verde floresta profundo (`#163e32`) com headline de impacto e links legais, e painel direito claro (`#f8faf8`) com card de login, selo de acesso seguro e link *"Precisa de ajuda?"*;
-  - Form com campos, textos, checkbox *"Lembrar de mim"*, atalho *"Esqueci minha senha"* e botão *"Entrar →"* exatamente idênticos ao layout da imagem;
+- **Identidade no Navegador e Ícone Oficial:**
+  - Criação do favicon SVG oficial em `public/favicon.svg` com o emblema SalusDev `< />` em fundo verde floresta;
+  - Atualização do título do navegador para `SalusDev | Centro de Comando` e metadados de tema no `index.html`.
+- **Fidelidade Visual Desktop e Mobile (ADM-01):**
+  - **Desktop `[D]`:** Fiel a `docs/design/img/login.png` (split-screen bi-colunar com painel institucional verde e card flutuante);
+  - **Mobile `[M]`:** Fiel a `docs/design/img/Login - M.png` (fundo branco limpo, logo no topo, formulário fluido, chamada "Ainda não tem uma conta? Criar conta", "Precisa de ajuda?" e rodapé legal);
   - Desafio MFA/2FA integrado no mesmo card com avanço automático;
   - Documentação atualizada em `docs/design/SCREEN-INVENTORY.md`.
 - **Separação Estratégica entre `doc/` e `docs/`:** Concluída e commitada anteriormente.

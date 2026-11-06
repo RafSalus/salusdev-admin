@@ -20,16 +20,22 @@ Em total conformidade com a regra `R11` e `GER-03`, toda tela do ecossistema Sal
 ### 2.1 Tela ADM-01: Login e Autenticação Multifator (MFA / 2FA)
 
 - **Objetivo:** Autenticar o operador via e-mail e senha e exigir validação de segundo fator (TOTP) antes de conceder acesso.
-- **Referência Visual Canônica:** Imagem de referência `docs/design/img/login.png`.
+- **Referência Visual Canônica:**
+  - Desktop `[D]`: `docs/design/img/login - D .png`
+  - Mobile `[M]`: `docs/design/img/Login - M.png`
 - **Desktop `[D]`:**
   - Layout dividido em duas colunas (split-screen institucional 45/55):
     - **Coluna Esquerda:** Fundo verde institucional profundo (`#163e32`) com logotipo `</> SalusDev`, headline de alto impacto (*"Sua operação, em um só lugar."*), descrição de autoridade e links legais de rodapé (*Privacidade* e *Termos de uso*).
     - **Coluna Direita:** Fundo suave (`#f8faf8`), selo de *"Acesso seguro"* no topo direito, card flutuante centralizado (`#ffffff`, border `#eaecf0`) com badge `</> SalusDev`, saudação *"Boas-vindas de volta"*, campos com tipografia e espaçamentos precisos, checkbox *"Lembrar de mim"*, atalho *"Esqueci minha senha"*, botão verde floresta *"Entrar →"* e rodapé com link *"Precisa de ajuda?"*.
     - **Etapa MFA:** Transição suave no mesmo card, mantendo o cabeçalho e exibindo a grade de 6 dígitos numéricos com avanço automático.
 - **Mobile `[M]`:**
-  - Layout empilhado verticalmente: faixa superior compacta verde escura com logotipo e mensagem de impacto, seguida pelo card de formulário em largura completa (com padding lateral de 16px).
+  - Superfície 100% branca e limpa (sem banner escuro, exatamente conforme `Login - M.png`).
+  - Topo: Logotipo `< /> SalusDev` com badge em fundo menta claro (`#eef7f2`) e tipografia escura.
+  - Formulário fluido ocupando a largura total (sem bordas de card externo), com títulos em destaque, campos em cantos arredondados, toggle de visualização de senha e botão *"Entrar →"*.
+  - Rodapé do formulário: chamada *"Ainda não tem uma conta? Criar conta"*.
+  - Rodapé inferior centralizado: link *"Precisa de ajuda?"* e links legais em cinza *"Privacidade • Termos de uso"*.
   - O campo de código de 6 dígitos ativa automaticamente o teclado numérico virtual (`inputMode="numeric"`).
-  - Botão de envio fixo com altura de 48px (atendendo ao critério de alvos de toque >= 44 px).
+  - Alvos de toque `>= 44 px`.
 
 ### 2.2 Tela ADM-02: Catálogo Central de Produtos e Sistemas (`/produtos`)
 

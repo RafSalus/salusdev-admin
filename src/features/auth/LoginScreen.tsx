@@ -13,14 +13,15 @@ export interface LoginScreenProps {
 export function LoginScreen({ auth }: LoginScreenProps) {
   const [showRecovery, setShowRecovery] = useState(false)
   const [showHelp, setShowHelp] = useState(false)
+  const [showSignUpHint, setShowSignUpHint] = useState(false)
   const [legalModal, setLegalModal] = useState<"privacidade" | "termos" | null>(null)
 
   const isMfa = auth.stage === "mfa"
 
   return (
     <div className="flex min-h-screen flex-col bg-white lg:flex-row">
-      {/* PAINEL ESQUERDO: Identidade Institucional Verde Escura */}
-      <section className="flex flex-col justify-between bg-[#163e32] p-6 text-white sm:p-10 lg:w-[46%] lg:min-h-screen lg:p-14 xl:w-[44%] xl:p-20">
+      {/* PAINEL ESQUERDO (Desktop apenas, oculto em Mobile como em Login - M.png) */}
+      <section className="hidden lg:flex flex-col justify-between bg-[#163e32] p-10 text-white lg:w-[46%] lg:min-h-screen lg:p-14 xl:w-[44%] xl:p-20">
         {/* Topo: Logo SalusDev com badge verde */}
         <div className="flex items-center gap-3">
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#245846] font-mono text-xs font-bold text-[#34d399] select-none shadow-xs">
@@ -62,19 +63,31 @@ export function LoginScreen({ auth }: LoginScreenProps) {
         </div>
       </section>
 
-      {/* PAINEL DIREITO: Formulário de Autenticação Limpo */}
-      <section className="flex flex-1 flex-col justify-between bg-[#f8faf8] p-4 sm:p-8 lg:p-12">
-        {/* Topo direito: Selo discreto de acesso seguro */}
-        <div className="flex items-center justify-end w-full">
+      {/* PAINEL DIREITO: Fundo branco no Mobile, Fundo suave no Desktop */}
+      <section className="flex flex-1 flex-col justify-between bg-white px-5 py-6 sm:px-8 lg:bg-[#f8faf8] lg:p-12">
+        {/* Topo Mobile: Logotipo SalusDev (exibido apenas em mobile conforme Login - M.png) */}
+        <div className="flex items-center justify-between lg:hidden pt-2 pb-6">
+          <div className="flex items-center gap-2.5">
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#eef7f2] font-mono text-xs font-bold text-[#2d6a4f] select-none">
+              &lt;/&gt;
+            </span>
+            <span className="text-xl font-bold tracking-tight text-[#101828]">
+              SalusDev
+            </span>
+          </div>
+        </div>
+
+        {/* Topo Desktop: Selo discreto de acesso seguro */}
+        <div className="hidden lg:flex items-center justify-end w-full">
           <div className="flex items-center gap-1.5 text-xs font-medium text-[#5f7369]">
             <Icon name="lock" size={14} />
             <span>Acesso seguro</span>
           </div>
         </div>
 
-        {/* Centro: Card Branco Flutuante com o formulário */}
-        <div className="my-auto flex w-full justify-center py-6 sm:py-8">
-          <div className="w-full max-w-[460px] rounded-2xl border border-[#eaecf0] bg-white p-6 shadow-sm sm:p-10">
+        {/* Centro: Formulário de Autenticação */}
+        <div className="my-auto flex w-full justify-center py-4 sm:py-8">
+          <div className="w-full max-w-[460px] rounded-2xl border-0 bg-transparent p-0 shadow-none lg:border lg:border-[#eaecf0] lg:bg-white lg:p-10 lg:shadow-sm">
             {isMfa ? (
               <MfaChallenge
                 email={auth.tempEmail}
@@ -87,6 +100,7 @@ export function LoginScreen({ auth }: LoginScreenProps) {
               <LoginForm
                 onSubmit={auth.submitCredentials}
                 onForgotPassword={() => setShowRecovery(true)}
+                onSignUpClick={() => setShowSignUpHint(true)}
                 isLoading={auth.isLoading}
                 error={auth.error}
                 isLocked={auth.isLocked}
@@ -95,15 +109,34 @@ export function LoginScreen({ auth }: LoginScreenProps) {
           </div>
         </div>
 
-        {/* Rodapé direito: Link de Ajuda */}
-        <div className="text-center pt-2 pb-4">
+        {/* Rodapé: Links de Ajuda e Conformidade Legal */}
+        <div className="text-center pt-4 pb-2">
           <button
             type="button"
             onClick={() => setShowHelp(true)}
-            className="text-xs font-semibold text-[#285b49] hover:underline cursor-pointer"
+            className="text-xs sm:text-sm font-semibold text-[#285b49] hover:underline cursor-pointer"
           >
             Precisa de ajuda?
           </button>
+
+          {/* Links legais exibidos no rodapé inferior em Mobile conforme Login - M.png */}
+          <div className="mt-3 flex items-center justify-center gap-3 text-xs text-[#667085] lg:hidden">
+            <button
+              type="button"
+              onClick={() => setLegalModal("privacidade")}
+              className="hover:text-[#101828] cursor-pointer"
+            >
+              Privacidade
+            </button>
+            <span>•</span>
+            <button
+              type="button"
+              onClick={() => setLegalModal("termos")}
+              className="hover:text-[#101828] cursor-pointer"
+            >
+              Termos de uso
+            </button>
+          </div>
         </div>
       </section>
 
@@ -117,6 +150,51 @@ export function LoginScreen({ auth }: LoginScreenProps) {
 
       {showHelp && (
         <HelpModal onClose={() => setShowHelp(false)} />
+      )}
+
+      {showSignUpHint && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0c1d17]/45 p-4 backdrop-blur-xs"
+        >
+          <div className="w-full max-w-md rounded-2xl border border-[#173e32]/10 bg-white p-6 shadow-2xl sm:p-7">
+            <div className="flex items-center justify-between border-b border-[#173e32]/8 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#eef7f2] font-mono text-xs font-bold text-[#2d6a4f]">
+                  &lt;/&gt;
+                </span>
+                <h3 className="text-base font-bold text-[#18342a]">
+                  Criação de Conta
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowSignUpHint(false)}
+                className="grid h-8 w-8 place-items-center rounded-lg text-[#71827b] hover:bg-[#f2f4ef]"
+              >
+                <Icon name="close" size={17} />
+              </button>
+            </div>
+            <div className="mt-4 text-xs text-[#52655d] leading-relaxed space-y-3">
+              <p>
+                O Centro de Comando SalusDev é um portal restrito de governança corporativa.
+              </p>
+              <p>
+                O provisionamento de novas contas de operadores administrativos é realizado internamente pela equipe de segurança. Caso necessite de acesso, solicite diretamente ao administrador principal.
+              </p>
+            </div>
+            <div className="mt-6 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setShowSignUpHint(false)}
+                className="h-10 rounded-xl bg-[#285b49] px-4 text-xs font-bold text-white hover:bg-[#1f4739] cursor-pointer"
+              >
+                Entendido
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {legalModal && (
@@ -150,7 +228,7 @@ export function LoginScreen({ auth }: LoginScreenProps) {
               <button
                 type="button"
                 onClick={() => setLegalModal(null)}
-                className="h-10 rounded-xl bg-[#285b49] px-4 text-xs font-bold text-white hover:bg-[#1f4739]"
+                className="h-10 rounded-xl bg-[#285b49] px-4 text-xs font-bold text-white hover:bg-[#1f4739] cursor-pointer"
               >
                 Fechar
               </button>

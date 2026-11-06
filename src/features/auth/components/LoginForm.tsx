@@ -4,6 +4,7 @@ import { Icon } from "@/components/ui/Icon"
 export interface LoginFormProps {
   onSubmit: (email: string, pass: string) => Promise<boolean>
   onForgotPassword: () => void
+  onSignUpClick?: () => void
   isLoading: boolean
   error: string | null
   isLocked: boolean
@@ -12,6 +13,7 @@ export interface LoginFormProps {
 export function LoginForm({
   onSubmit,
   onForgotPassword,
+  onSignUpClick,
   isLoading,
   error,
   isLocked,
@@ -34,8 +36,8 @@ export function LoginForm({
 
   return (
     <div className="w-full">
-      {/* Badge de cabeçalho do card */}
-      <div className="mb-4 inline-flex items-center gap-1.5 rounded-md bg-[#eef7f2] px-2.5 py-1 text-xs font-semibold text-[#1e4638]">
+      {/* Badge de cabeçalho do card (visível no Desktop, pois no Mobile o logo fica no topo) */}
+      <div className="mb-4 hidden items-center gap-1.5 rounded-md bg-[#eef7f2] px-2.5 py-1 text-xs font-semibold text-[#1e4638] lg:inline-flex">
         <span className="font-mono text-[11px] font-bold text-[#2d6a4f]">&lt;/&gt;</span>
         <span>SalusDev</span>
       </div>
@@ -151,7 +153,7 @@ export function LoginForm({
           <button
             type="submit"
             disabled={isLoading || isLocked}
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#285b49] px-4 text-sm font-bold text-white shadow-xs transition hover:bg-[#1f4739] focus:ring-2 focus:ring-[#285b49] focus:ring-offset-2 focus:outline-hidden disabled:opacity-50"
+            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#285b49] px-4 text-sm font-bold text-white shadow-xs transition hover:bg-[#1f4739] focus:ring-2 focus:ring-[#285b49] focus:ring-offset-2 focus:outline-hidden disabled:opacity-50 cursor-pointer"
           >
             {isLoading ? (
               <>
@@ -165,6 +167,20 @@ export function LoginForm({
               </>
             )}
           </button>
+        </div>
+
+        {/* Linha adicional da imagem Mobile: Ainda não tem uma conta? Criar conta */}
+        <div className="pt-4 text-center">
+          <p className="text-xs text-[#667085]">
+            Ainda não tem uma conta?{" "}
+            <button
+              type="button"
+              onClick={onSignUpClick}
+              className="font-bold text-[#285b49] hover:underline cursor-pointer"
+            >
+              Criar conta
+            </button>
+          </p>
         </div>
       </form>
 
