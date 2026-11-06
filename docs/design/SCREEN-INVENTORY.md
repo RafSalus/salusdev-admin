@@ -74,15 +74,27 @@ Em total conformidade com a regra `R11` e `GER-03`, toda tela do ecossistema Sal
   - Acessível diretamente pelo squircle *Produtos* ou pela barra inferior *Produtos*.
   - Lista de produtos adaptada com campos de toque expandidos e barra inferior persistente.
 
-- **Objetivo:** Consultar histórico de contratação, produtos ativos por cliente e status de atendimento.
-- **Desktop `[D]`:**
-  - Tabela densa com colunas: Razão Social, Contato Principal, Cidade/Região, Produtos Contratados, Status e Ações.
-  - Filtros avançados por cidade e por produto no topo da listagem.
-- **Mobile `[M]`:**
-  - Transformação da tabela em lista de cartões expansíveis (estilo acordeon).
-  - Cada cartão destaca o nome da empresa e o status, com botão direto de atalho para conversa no WhatsApp com um único toque.
+### 2.4 Tela ADM-04: Gestão do Produto (KartControl)
 
-### 2.4 Tela ADM-04: Monitoramento e Healthcheck de Sistemas (`/sistemas`)
+- **Objetivo:** Ponto centralizado de gestão técnica, acessos administrativos e controle de credenciais de um produto específico do portfólio.
+- **Referência Visual Canônica:**
+  - Desktop `[D]`: `docs/design/img/kartcontrol/Produtokartcontrol - D.png`
+- **Desktop `[D]`:**
+  - Header com breadcrumb dinâmico `Produtos > KartControl > Gestão` e link de retorno `← Voltar ao portfólio`.
+  - Hero header com squarcle `KC`, categoria `GESTÃO DO PRODUTO · SISTEMA DE GESTÃO`, descrição institucional, badge `● Piloto`, métrica `1 cliente` e barra de progresso `84%`.
+  - Banner informativo `Dados de demonstração` em verde suave.
+  - Card `Administração`: ponto de acesso centralizado com status e botão `Entrar`.
+  - Grade de 2 colunas:
+    - Coluna 1: `Informações técnicas` (Repositório com Copiar/Abrir/Editar, Banco de dados com Configurar, Endereço web com Copiar/Abrir/Editar).
+    - Coluna 2: `Acessos do produto` (Painel de controle com Configurar, E-mail com Configurar, Senha de acesso com bullets mascarados e atalho Alterar senha).
+  - Card `Alterar senha`: formulário funcional com Senha atual, Nova senha, Confirmar nova senha e botão `Salvar alteração`.
+  - Rodapé institucional `SalusDev · Informações e acessos do produto`.
+- **Mobile `[M]`:**
+  - Grade de 2 colunas colapsa fluidamente para 1 coluna vertical.
+  - Alvos de toque `>= 44 px` em todos os botões de ação e inputs com fonte `>= 16 px`.
+  - Compatibilidade com safe area (`pt-safe` no topo e `pb-32` na base).
+
+### 2.5 Tela ADM-05: Monitoramento e Healthcheck de Sistemas (`/sistemas`)
 
 - **Objetivo:** Acompanhar em tempo real a disponibilidade de subdomínios e versões de cada aplicação em produção.
 - **Desktop `[D]`:**

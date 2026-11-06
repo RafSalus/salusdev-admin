@@ -6,9 +6,15 @@ export interface ProductPanelProps {
   product: Product
   onClose: () => void
   onEdit: () => void
+  onOpenManagement?: () => void
 }
 
-export function ProductPanel({ product, onClose, onEdit }: ProductPanelProps) {
+export function ProductPanel({
+  product,
+  onClose,
+  onEdit,
+  onOpenManagement,
+}: ProductPanelProps) {
   return (
     <>
       <button
@@ -149,13 +155,28 @@ export function ProductPanel({ product, onClose, onEdit }: ProductPanelProps) {
           </div>
         </div>
 
-        <button
-          type="button"
-          onClick={onEdit}
-          className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#173e32] px-5 py-3.5 text-[11px] font-extrabold text-white hover:bg-[#235343] transition"
-        >
-          Editar produto <Icon name="arrow" size={16} />
-        </button>
+        <div className="mt-8 flex flex-col gap-2.5">
+          {onOpenManagement && (
+            <button
+              type="button"
+              onClick={onOpenManagement}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#173e32] px-5 py-3.5 text-[11px] font-extrabold text-white hover:bg-[#235343] transition shadow-xs"
+            >
+              Acessar gestão do produto <Icon name="arrow" size={16} />
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={onEdit}
+            className={`flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-[11px] font-extrabold transition ${
+              onOpenManagement
+                ? "border border-[#173e32]/12 bg-white text-[#173e32] hover:bg-[#f7f9f7]"
+                : "bg-[#173e32] text-white hover:bg-[#235343]"
+            }`}
+          >
+            Editar informações <Icon name="pencil" size={15} />
+          </button>
+        </div>
       </aside>
     </>
   )

@@ -7,6 +7,7 @@ import { MobileMenuDrawer } from "./MobileMenuDrawer"
 export interface AppShellProps {
   children: ReactNode
   currentSection?: string
+  breadcrumbOverride?: ReactNode
   userName?: string
   userEmail?: string
   userRole?: string
@@ -18,6 +19,7 @@ export interface AppShellProps {
 export function AppShell({
   children,
   currentSection = "Dashboard",
+  breadcrumbOverride,
   userName,
   userEmail,
   userRole,
@@ -45,6 +47,7 @@ export function AppShell({
         <Header
           onOpenSidebar={() => setSidebarOpen(true)}
           currentSection={currentSection}
+          breadcrumbOverride={breadcrumbOverride}
           userName={userName}
           userEmail={userEmail}
           userRole={userRole}

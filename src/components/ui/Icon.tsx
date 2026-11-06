@@ -28,6 +28,7 @@ import {
   Menu,
   CreditCard,
   Plus,
+  Pencil,
   RefreshCw,
   Search,
   Settings,
@@ -65,6 +66,7 @@ export type IconName =
   | "mail"
   | "menu"
   | "payments"
+  | "pencil"
   | "plus"
   | "refresh"
   | "search"
@@ -101,6 +103,7 @@ const iconMap: Record<IconName, ComponentType<LucideProps>> = {
   mail: Mail,
   menu: Menu,
   payments: CreditCard,
+  pencil: Pencil,
   plus: Plus,
   refresh: RefreshCw,
   search: Search,

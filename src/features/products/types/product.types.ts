@@ -18,6 +18,15 @@ export interface Product {
   color: string
   appUrl?: string
   repoUrl?: string
+  // Campos de Gestão Técnica e Acessos (ADM-04)
+  repositoryUrl?: string
+  databaseName?: string
+  webUrl?: string
+  adminConfigured?: boolean
+  adminPanelConfigured?: boolean
+  adminPanelUrl?: string
+  adminEmail?: string
+  adminPasswordMasked?: string
 }
 
 export const statusStyles: Record<ProductStatus, string> = {

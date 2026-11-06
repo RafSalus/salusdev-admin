@@ -49,6 +49,15 @@ export function useProducts() {
     window.setTimeout(() => setToast(""), 3200)
   }
 
+  function updateProductDetails(productId: number, patch: Partial<Product>) {
+    setProducts((current) =>
+      current.map((item) => (item.id === productId ? { ...item, ...patch } : item))
+    )
+    setSelectedProduct((prev) =>
+      prev && prev.id === productId ? { ...prev, ...patch } : prev
+    )
+  }
+
   return {
     products,
     filteredProducts,
@@ -62,8 +71,10 @@ export function useProducts() {
     modalOpen,
     setModalOpen,
     toast,
+    setToast,
     openNewProduct,
     openEditProduct,
     saveProduct,
+    updateProductDetails,
   }
 }

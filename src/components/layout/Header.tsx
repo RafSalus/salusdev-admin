@@ -8,6 +8,7 @@ import type { NotificationItem } from "@/shared/types/notification.types"
 export interface HeaderProps {
   onOpenSidebar: () => void
   currentSection?: string
+  breadcrumbOverride?: React.ReactNode
   userName?: string
   userEmail?: string
   userRole?: string
@@ -18,6 +19,7 @@ export interface HeaderProps {
 export function Header({
   onOpenSidebar,
   currentSection = "Produtos",
+  breadcrumbOverride,
   userName = "Rafael Amaral Salustiano",
   userEmail = "rafael@salusdev.com",
   userRole = "Administrador Geral",
@@ -64,10 +66,14 @@ export function Header({
           </div>
 
           {/* Breadcrumb visível a partir de tablet/desktop */}
-          <div className="hidden items-center gap-2 text-[10px] font-bold text-[#95a09b] lg:flex">
-            Centro de Comando <Icon name="chevron" size={13} />{" "}
-            <span className="text-[#476057]">{currentSection}</span>
-          </div>
+          {breadcrumbOverride ? (
+            <div className="hidden lg:block">{breadcrumbOverride}</div>
+          ) : (
+            <div className="hidden items-center gap-2 text-[10px] font-bold text-[#95a09b] lg:flex">
+              Centro de Comando <Icon name="chevron" size={13} />{" "}
+              <span className="text-[#476057]">{currentSection}</span>
+            </div>
+          )}
         </div>
 
         {/* Lado Direito: Notificações e Perfil */}

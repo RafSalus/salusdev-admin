@@ -6,12 +6,17 @@ import { ProductGrid } from "./components/ProductGrid"
 import { ProductPanel } from "./components/ProductPanel"
 import { ProductModal } from "./components/ProductModal"
 import { useProducts } from "./hooks/useProducts"
+import type { Product } from "./types/product.types"
 
 export interface ProductsModuleProps {
   productsState?: ReturnType<typeof useProducts>
+  onOpenProductManagement?: (product: Product) => void
 }
 
-export function ProductsModule({ productsState: externalState }: ProductsModuleProps = {}) {
+export function ProductsModule({
+  productsState: externalState,
+  onOpenProductManagement,
+}: ProductsModuleProps = {}) {
   const localState = useProducts()
   const {
     products,
@@ -78,6 +83,11 @@ export function ProductsModule({ productsState: externalState }: ProductsModuleP
           product={selectedProduct}
           onClose={() => setSelectedProduct(null)}
           onEdit={() => openEditProduct(selectedProduct)}
+          onOpenManagement={() => {
+            const prod = selectedProduct
+            setSelectedProduct(null)
+            onOpenProductManagement?.(prod)
+          }}
         />
       )}
 

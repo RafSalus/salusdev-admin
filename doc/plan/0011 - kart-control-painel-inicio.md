@@ -1,13 +1,15 @@
 # Plano 0011 - Painel Administrativo do KartControl (Início)
 
 - **Código:** 0011
-- **Versão:** 1.0
-- **Status:** Rascunho (aguardando revisão de Rafael Amaral Salustiano)
+- **Versão:** 1.1
+- **Status:** Adiado (aguardando a base do plano de controle SalusDev)
 - **Criado em:** 2026-11-06
 - **Atualizado em:** 2026-11-06
 - **Responsável:** @aiox-master
 
 > **Regra de execução:** este plano foi criado somente para revisão. Nenhum código deve ser implementado até a aprovação explícita de Rafael.
+
+> **Plano adiado em 2026-11-06.** Por decisão de Rafael, o painel operacional do KartControl será tratado em planos futuros, após a base do plano de controle SalusDev estar pronta. O conteúdo abaixo fica preservado como referência e não deve ser executado agora.
 
 ## Releitura obrigatória das regras
 
@@ -30,21 +32,23 @@ Planejar a implementação da tela **Início** do painel administrativo do KartC
 
 ## Dependência com o Plano 0010
 
-- O Plano 0011 depende do Plano 0010 para o gate de acesso do produto.
-- A integração ocorre pelo callback `onEnterProductApp(product)` da tela de gestão do produto.
-- Se o Plano 0010 ainda não estiver implementado, o módulo pode ser desenvolvido e validado com um harness interno temporário, removido antes do fechamento.
+> **Atualização em 2026-11-06:** o Plano 0010 v2.0 removeu o gate de acesso e as credenciais do produto. Quando este plano for retomado, a dependência deverá ser revista para usar a governança do produto e um login próprio do `kart-admin`, com 2FA, em plano futuro.
+
+- O Plano 0011 dependia do gate de acesso da versão 1.0 do Plano 0010.
+- Na retomada, a integração deverá ocorrer a partir da governança do produto e do login próprio do `kart-admin`, com 2FA.
+- Enquanto o login próprio não existir, o módulo pode ser validado com um harness interno temporário, removido antes do fechamento.
 - Nenhuma credencial ou fluxo de autenticação será duplicado no Plano 0011.
 
 ## Referências
 
 - Regras do Sistema: `doc/produto/RegrasSystema.md` (`GER-03`, `GER-04`, `GER-07`, `GER-08`, `GER-10`, `BTN-*`, `A11Y-*`, `PWA-*`)
 - Regras de Desenvolvimento: `doc/produto/RegrasDesenvolvimento.md` (R1, R9, R11, R16, R18, R20)
-- Plano de acesso ao produto: `doc/plan/0010 - gestao-produto-kart-control-autenticacao.md`
+- Governança do produto: `doc/plan/0010 - governanca-produto-kart-control.md`
 - PRD: `doc/produto/PRD-SalusDev-v0.3.md` (v0.4)
 - Inventário de Telas: `docs/design/SCREEN-INVENTORY.md` (nova entrada `KART-01`)
 - Design System: `docs/design/DESIGN-SYSTEM.md`
 - Dicionário de Dados: `docs/dados/DATA-DICTIONARY.md`
-- Referência visual: `docs/design/img/KartControl - Inicio - D.png` (imagem fornecida por Rafael em 2026-11-06 e que deve ser versionada antes do fechamento)
+- Referência visual: imagem fornecida por Rafael em 2026-11-06 (reversionar antes da implementação)
 - Código atual:
   - `src/App.tsx`
   - `src/components/ui/Icon.tsx`
@@ -378,3 +382,4 @@ export type KartSection = "Início" | "Pilotos" | "Calendário" | "Resultados" |
 | Versão | Data | Alteração | Agente |
 | --- | --- | --- | --- |
 | 1.0 | 2026-11-06 | Criação do plano do painel administrativo do KartControl com a tela Início | @aiox-master |
+| 1.1 | 2026-11-06 | Plano adiado por decisão de Rafael; dependência com o Plano 0010 v2.0 registrada | @aiox-master |
