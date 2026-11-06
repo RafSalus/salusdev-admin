@@ -115,29 +115,51 @@ Implementar a **Tela de Login do Centro de Comando** com suporte obrigatório a 
 - **Observações:** Esteira pronta para as próximas telas da matriz (Dashboard e Clientes).
 
 ### Relatório - `@ux-design-expert` (Uma)
-- **Status:** [Concluído]
-- **Entregas realizadas:** Card de autenticação com foco visual, inputs OTP em grade de 6 caixas, alvos de toque >= 44px, contraste WCAG 2.1 AA e transição fluida entre etapas.
-- **Observações:** Experiência consistente entre Desktop `[D]` e Mobile `[M]`.
+- **Status:** [Concluído e Aprovado por Rafael]
+- **Entregas realizadas:** Especificação visual e refinamento 100% fiel às imagens de referência:
+  - **Desktop `[D]`:** `docs/design/img/login - D .png` (Split-screen 45/55 com painel institucional verde floresta `#163e32` e card flutuante à direita);
+  - **Mobile `[M]`:** `docs/design/img/Login - M.png` (Superfície branca limpa, logo `< /> SalusDev` no topo, formulário fluido sem bordas externas, chamada "Ainda não tem uma conta? Criar conta", "Precisa de ajuda?" e rodapé legal);
+  - Alvos de toque `>= 44 px` e ativação de teclado numérico no OTP;
+  - Aprovado formalmente pelo usuário em 2026-11-06.
+- **Observações:** Experiência consistente e validada para Desktop `[D]` e Mobile `[M]`.
 
 ### Relatório - `@dev` (Dex)
 - **Status:** [Concluído]
-- **Entregas realizadas:** Módulo `src/features/auth/` implementado com arquitetura limpa, hook `useAuth`, suporte a TOTP AAL2, bloqueio progressivo por tentativas, novos ícones no `Icon.tsx`, logout no `Header.tsx` e roteamento de sessão no `App.tsx`.
-- **Observações:** 40 módulos compilando em 245ms.
+- **Entregas realizadas:**
+  - Implementação modular de `src/features/auth/` com `LoginScreen`, `LoginForm`, `MfaChallenge`, `HelpModal`, `PasswordRecoveryModal`, `useAuth` e `auth.types.ts`;
+  - Criação do favicon SVG oficial em `public/favicon.svg` com o emblema da marca SalusDev `< />`;
+  - Atualização do título da aba do navegador para `SalusDev | Centro de Comando` e metadados no `index.html`;
+  - Desafio OTP de 6 dígitos com avanço automático, foco ágil e suporte a colar (`paste`);
+  - Roteamento de sessão no `App.tsx` e botão de logout seguro no `Header.tsx`.
+- **Observações:** 40 módulos compilando em 227ms sem dependências legadas.
 
 ### Relatório - `@qa` (Quinn)
-- **Status:** [Concluído]
+- **Status:** [Concluído - Parecer: PASS]
 - **Testes executados:**
-  - Viewports testados: 360px, 768px, 1024px e 1440px sem overflow horizontal;
-  - Desafio OTP testado com código válido (123456) e falha simulada (000000);
-  - Bloqueio progressivo de tentativas validado (`AUTH-09`);
-  - Botão de logout testado, retornando ao estado desautenticado;
-  - `npx tsc --noEmit` executado com 0 erros.
-- **Observações:** Parecer final: **PASS**.
+  - **Gate 1 (Tipagem Estrita):** `npx tsc --noEmit` executado com **0 erros** de TypeScript;
+  - **Gate 2 (Build de Produção):** `npm run build` concluído com sucesso em **227ms** (40 módulos);
+  - **Gate 3 (Matriz de Viewports `GER-03` e `R11`):**
+    - `360 px` [M]: Fundo branco, sem scroll horizontal (`GER-04`), alvos de toque >= 44px, teclado numérico ativado no OTP (`inputMode="numeric"`);
+    - `768 px`: Transição equilibrada com formulário centralizado;
+    - `1024 px` [D]: Ativação do split-screen com painel verde e card flutuante;
+    - `1440 px` [D]: Proporção áurea 45/55 simétrica, com foco visível e navegação por teclado (`GER-08`);
+  - **Gate 4 (Segurança e Regras do Sistema):**
+    - `AUTH-02`: Obrigatoriedade do segundo fator TOTP antes de liberar a sessão (AAL1 -> AAL2);
+    - `AUTH-09`: Bloqueio temporário progressivo testado após 5 tentativas consecutivas;
+    - `AUTH-10`: Mensagens genéricas de erro ("Credenciais inválidas") sem revelar existência de conta;
+    - `GER-07`: Ausência total de `window.alert` ou `confirm` nativos;
+    - `GER-10`: Português do Brasil com acentuação correta e ausência do caractere `&` em texto visível.
+  - **Gate 5 (Registro de Bugs):** Nenhum bug aberto em `docs/bugs/INDEX.md`.
+- **Parecer final:** **PASS** (100% conforme).
 
 ### Relatório - `@devops` (Gage)
 - **Status:** [Concluído]
-- **Entregas realizadas:** Build de produção validado (`npm run build` em 245ms) e código pronto para versionamento e push.
-- **Observações:** Integridade total da esteira.
+- **Entregas realizadas:**
+  - Pipeline de compilação validado (< 300ms);
+  - Repositório remoto configurado para a URL canônica `https://github.com/RafSalus/salusdev-admin.git`;
+  - Todos os artefatos, imagens de referência e documentação sincronizados na branch `main`;
+  - Árvore de trabalho limpa (`working tree clean`).
+- **Observações:** Esteira de deploy íntegra e pronta para a próxima fase.
 
 ## Riscos e bloqueios
 
