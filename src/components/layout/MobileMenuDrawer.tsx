@@ -7,9 +7,6 @@ export interface MobileMenuDrawerProps {
   onClose: () => void
   activeItem?: string
   onSelectSection?: (section: string) => void
-  userName?: string
-  userInitials?: string
-  onLogout?: () => void
 }
 
 export function MobileMenuDrawer({
@@ -17,9 +14,6 @@ export function MobileMenuDrawer({
   onClose,
   activeItem = "Dashboard",
   onSelectSection,
-  userName = "Rafael Salustiano",
-  userInitials = "RA",
-  onLogout,
 }: MobileMenuDrawerProps) {
   const [dragY, setDragY] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
@@ -33,7 +27,7 @@ export function MobileMenuDrawer({
     }
   }, [open])
 
-  // Suporte a gesto de arrastar para baixo com o dedo
+  // Suporte a gesto de arrastar restrito à alça superior (BUG-0001 corrigido)
   function handleTouchStart(e: React.TouchEvent) {
     startYRef.current = e.touches[0].clientY
     setIsDragging(true)
@@ -42,7 +36,6 @@ export function MobileMenuDrawer({
   function handleTouchMove(e: React.TouchEvent) {
     if (!isDragging) return
     const delta = e.touches[0].clientY - startYRef.current
-    // Permite apenas arrastar para baixo
     if (delta > 0) {
       setDragY(delta)
     }
@@ -51,7 +44,6 @@ export function MobileMenuDrawer({
   function handleTouchEnd() {
     if (!isDragging) return
     setIsDragging(false)
-    // Se arrastou mais de 75px para baixo, fecha suavemente o drawer
     if (dragY > 75) {
       onClose()
     }
@@ -77,9 +69,6 @@ export function MobileMenuDrawer({
 
       {/* Painel Bottom Sheet (desliza suavemente de baixo para cima) */}
       <div
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
         style={{
           transform: isDragging
             ? `translateY(${dragY}px)`
@@ -88,10 +77,16 @@ export function MobileMenuDrawer({
             : "translateY(100%)",
           transition: isDragging ? "none" : "transform 320ms cubic-bezier(0.16, 1, 0.3, 1)",
         }}
-        className="fixed inset-x-0 bottom-0 z-50 flex max-h-[88vh] flex-col rounded-t-[32px] border-t border-[#163e32]/12 bg-white shadow-[0_-12px_44px_rgba(15,35,27,0.22)]"
+        className="fixed inset-x-0 bottom-0 z-50 flex max-h-[85vh] flex-col rounded-t-[32px] border-t border-[#163e32]/12 bg-white shadow-[0_-12px_44px_rgba(15,35,27,0.22)]"
       >
-        {/* Barra de puxar com o dedo (Drag Handle) */}
-        <div className="pt-3 pb-1 flex justify-center cursor-grab active:cursor-grabbing">
+        {/* Barra de puxar com o dedo (Drag Handle) com touch-action: none exclusiva */}
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          style={{ touchAction: "none" }}
+          className="pt-3 pb-2 flex justify-center cursor-grab active:cursor-grabbing select-none"
+        >
           <span className="h-1.5 w-12 rounded-full bg-[#cbd5d0]" />
         </div>
 
@@ -111,7 +106,7 @@ export function MobileMenuDrawer({
             </div>
           </div>
 
-          {/* Botão de Fechar no 'X' com alvo de toque amplo */}
+          {/* Botão de Fechar no 'X' */}
           <button
             type="button"
             onClick={onClose}
@@ -122,27 +117,10 @@ export function MobileMenuDrawer({
           </button>
         </div>
 
-        {/* Conteúdo rolável do menu */}
-        <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
-          {/* Cartão do Usuário Conectado */}
-          <div className="flex items-center gap-3.5 rounded-2xl bg-[#f6f8f5] border border-[#163e32]/8 p-3.5">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#163e32] text-xs font-black text-white shadow-xs">
-              {userInitials}
-            </div>
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-xs font-black text-[#142821]">
-                {userName}
-              </p>
-              <p className="text-[10px] text-[#708078] font-medium">Administrador Geral</p>
-            </div>
-            <span className="flex items-center gap-1 rounded-full bg-[#eef7f2] px-2.5 py-1 text-[9px] font-extrabold text-[#23634e]">
-              <Icon name="shield" size={12} />
-              MFA Ativo
-            </span>
-          </div>
-
+        {/* Conteúdo rolável do menu (rola livremente sem disparar fechamento) */}
+        <div className="flex-1 overflow-y-auto px-6 py-5 space-y-6">
           {/* Grupos de Navegação com ícones Lucide */}
-          <nav aria-label="Navegação móvel completa" className="space-y-5">
+          <nav aria-label="Navegação móvel completa" className="space-y-6">
             {navGroups.map((group) => (
               <div key={group.label}>
                 <p className="mb-2 text-[10px] font-black uppercase tracking-[0.16em] text-[#8c9992]">
@@ -226,35 +204,6 @@ export function MobileMenuDrawer({
               </div>
             </div>
           </nav>
-
-          {/* Botão de Logout Exclusivo no Menu Hamburguer (Atende à solicitação do usuário) */}
-          {onLogout && (
-            <div className="pt-2 pb-4 border-t border-[#163e32]/8">
-              <button
-                type="button"
-                onClick={() => {
-                  onClose()
-                  onLogout()
-                }}
-                className="flex min-h-[50px] w-full items-center justify-between rounded-2xl border border-rose-200 bg-rose-50/80 px-4 py-3 text-left transition active:scale-[0.98] active:bg-rose-100 hover:bg-rose-100/70"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-rose-100 text-rose-700">
-                    <Icon name="logout" size={18} />
-                  </span>
-                  <div>
-                    <p className="text-xs font-extrabold text-rose-800">
-                      Encerrar Sessão Segura
-                    </p>
-                    <p className="text-[10px] text-rose-600/90 font-medium">
-                      Desconectar deste dispositivo
-                    </p>
-                  </div>
-                </div>
-                <Icon name="chevron" size={16} className="text-rose-400" />
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>

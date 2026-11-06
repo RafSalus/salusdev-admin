@@ -1,4 +1,4 @@
-import { Search, Plus, Code2, Users, Menu, type LucideIcon } from "lucide-react"
+import { Home, Plus, Code2, Users, Menu, type LucideIcon } from "lucide-react"
 
 export interface MobileTabBarProps {
   currentSection: string
@@ -19,7 +19,7 @@ export function MobileTabBar({
   onOpenMenu,
 }: MobileTabBarProps) {
   const tabs: TabDef[] = [
-    { key: "Dashboard", label: "Início", icon: Search },
+    { key: "Dashboard", label: "Início", icon: Home },
     { key: "Leads", label: "Leads", icon: Plus },
     { key: "Produtos", label: "Produtos", icon: Code2 },
     { key: "Clientes", label: "Clientes", icon: Users },
@@ -42,6 +42,7 @@ export function MobileTabBar({
           <button
             key={tab.key}
             type="button"
+            aria-current={isActive ? "page" : undefined}
             onClick={() => {
               if (tab.isAction) {
                 onOpenMenu()

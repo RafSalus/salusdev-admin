@@ -8,6 +8,8 @@ export interface AppShellProps {
   children: ReactNode
   currentSection?: string
   userName?: string
+  userEmail?: string
+  userRole?: string
   userInitials?: string
   onSelectSection?: (section: string) => void
   onLogout?: () => void
@@ -17,6 +19,8 @@ export function AppShell({
   children,
   currentSection = "Dashboard",
   userName,
+  userEmail,
+  userRole,
   userInitials,
   onSelectSection,
   onLogout,
@@ -42,29 +46,29 @@ export function AppShell({
           onOpenSidebar={() => setSidebarOpen(true)}
           currentSection={currentSection}
           userName={userName}
+          userEmail={userEmail}
+          userRole={userRole}
           userInitials={userInitials}
+          onLogout={onLogout}
         />
         <main className="mx-auto max-w-[1400px] px-4 py-6 sm:px-7 sm:py-9 pb-24 lg:pb-9">
           {children}
         </main>
       </div>
 
-      {/* Barra de navegação inferior persistente no Mobile (fiel a Dashboard - M.png) */}
+      {/* Barra de navegação inferior persistente no Mobile */}
       <MobileTabBar
         currentSection={currentSection}
         onSelectSection={(sec) => onSelectSection?.(sec)}
         onOpenMenu={() => setSidebarOpen(true)}
       />
 
-      {/* Menu Hamburguer Bottom Sheet para Mobile (de baixo para cima com suporte a gesto de arrastar e botão 'X') */}
+      {/* Menu Hamburguer Bottom Sheet para Mobile (de baixo para cima com suporte a gesto na alça e botão 'X') */}
       <MobileMenuDrawer
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
         activeItem={currentSection}
         onSelectSection={onSelectSection}
-        userName={userName}
-        userInitials={userInitials}
-        onLogout={onLogout}
       />
     </div>
   )

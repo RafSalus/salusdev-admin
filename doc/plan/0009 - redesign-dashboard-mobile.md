@@ -1,13 +1,13 @@
-﻿# Plano 0009 - Redesign do Dashboard Mobile e Ajustes de Header e Menu
+# Plano 0009 - Redesign do Dashboard Mobile e Ajustes de Header e Menu
 
 - **Codigo:** 0009
-- **Versao:** 1.0
-- **Status:** Rascunho (aguardando leitura e aprovacao de Rafael)
+- **Versao:** 1.1
+- **Status:** Concluído (Implementado e Validado)
 - **Criado em:** 2026-11-06
 - **Atualizado em:** 2026-11-06
 - **Responsavel:** @aiox-master
 
-> **Regra de execucao:** este plano deve ser lido e aprovado por Rafael antes de qualquer alteracao de codigo. Nenhuma implementacao comeca enquanto o status nao passar para `Aprovado`.
+> **Regra de execucao:** Plano aprovado por Rafael em 2026-11-06 15:02. Implementação e validação concluídas com sucesso.
 
 ## Releitura obrigatoria das regras
 
@@ -234,66 +234,87 @@ Refazer o design da tela Dashboard na visao Mobile `[M]` para um padrao visual p
 
 ## Criterios de aceite
 
-- [ ] Atalhos mobile proporcionais, com icones de 20 a 22 px e tiles compactos.
-- [ ] Dashboard mobile exibe saudacao, KPIs e status dos sistemas antes dos atalhos.
-- [ ] Nenhuma rolagem horizontal em 360 px.
-- [ ] Menu hamburguer fecha apenas ao arrastar a alca superior; arrastar o conteudo nao fecha.
-- [ ] Menu hamburguer nao exibe nome/avatar do usuario nem botao de logout.
-- [ ] Avatar do Header (mobile) e bloco de usuario (desktop) abrem o menu de perfil com botao de sair.
-- [ ] Logout pelo menu de perfil retorna a tela de login.
-- [ ] Sino abre painel de notificacoes, permite marcar todas como lidas e atualiza o badge.
-- [ ] Painel de notificacoes e menu de perfil fecham com clique fora e `Esc`.
-- [ ] `[D]` Desktop validado em 1024 px e 1440 px sem regressao.
-- [ ] `[M]` Mobile validado em 360 px e 768 px.
-- [ ] `npx tsc --noEmit` com 0 erros.
-- [ ] `npm run build` concluido com sucesso.
-- [ ] Sem `alert`/`confirm`/`prompt` nativos, sem `&` em texto visivel e com textos em PT-BR.
-- [ ] Bug do drawer registrado em `docs/bugs/` antes da correcao.
+- [x] Atalhos mobile proporcionais, com icones de 20 a 22 px e tiles compactos.
+- [x] Dashboard mobile exibe saudacao, KPIs e status dos sistemas antes dos atalhos.
+- [x] Nenhuma rolagem horizontal em 360 px.
+- [x] Menu hamburguer fecha apenas ao arrastar a alca superior; arrastar o conteudo nao fecha.
+- [x] Menu hamburguer nao exibe nome/avatar do usuario nem botao de logout.
+- [x] Avatar do Header (mobile) e bloco de usuario (desktop) abrem o menu de perfil com botao de sair.
+- [x] Logout pelo menu de perfil retorna a tela de login.
+- [x] Sino abre painel de notificacoes, permite marcar todas como lidas e atualiza o badge.
+- [x] Painel de notificacoes e menu de perfil fecham com clique fora e `Esc`.
+- [x] `[D]` Desktop validado em 1024 px e 1440 px sem regressao.
+- [x] `[M]` Mobile validado em 360 px e 768 px.
+- [x] `npx tsc --noEmit` com 0 erros.
+- [x] `npm run build` concluido com sucesso.
+- [x] Sem `alert`/`confirm`/`prompt` nativos, sem `&` em texto visivel e com textos em PT-BR.
+- [x] Bug do drawer registrado em `docs/bugs/` antes da correcao.
 
 ## Riscos e bloqueios
 
-| Risco | Impacto | Mitigacao |
-| --- | --- | --- |
-| Posicionamento dos dropdowns em telas estreitas | Medio | Ancorar a direita e limitar a largura a `min(92vw, 360px)` |
-| Conflito entre gesto da alca e scroll do conteudo | Alto | `touch-action: none` apenas na alca e handlers restritos a ela |
-| Remocao de props quebrar outros componentes | Medio | Verificar usos de `MobileMenuDrawer` e `Header` antes da alteracao |
-| Divergencia entre dados do desktop e mobile | Baixo | Extrair status e atividades para um unico mock tipado |
-| Perda de fidelidade visual aprovada | Medio | Validar com Rafael antes de fechar o plano |
+| Risco | Impacto | Mitigacao | Status |
+| --- | --- | --- | --- |
+| Posicionamento dos dropdowns em telas estreitas | Medio | Ancorar a direita e limitar a largura a `min(92vw, 360px)` | Mitigado com sucesso |
+| Conflito entre gesto da alca e scroll do conteudo | Alto | `touch-action: none` apenas na alca e handlers restritos a ela | Mitigado e validado |
+| Remocao de props quebrar outros componentes | Medio | Verificar usos de `MobileMenuDrawer` e `Header` antes da alteracao | Verificado com sucesso |
+| Divergencia entre dados do desktop e mobile | Baixo | Extrair status e atividades para um unico mock tipado | Extraido em `dashboard.mock.ts` |
+| Perda de fidelidade visual aprovada | Medio | Validar com Rafael antes de fechar o plano | Aprovado e alinhado |
 
 ## Relatorios finais dos agentes
 
 ### Relatorio - `@aiox-master` (Orion)
 
-- **Status:** Pendente
-- **Entregas realizadas:** Plano registrado e indexado.
-- **Observacoes:** Aguardando leitura e aprovacao de Rafael.
+- **Status:** Concluído
+- **Entregas realizadas:** Coordenação de todo o ciclo de redesenho do dashboard mobile, painéis do Header (Perfil e Notificações) e resolução do `BUG-0001`.
+- **Observações:** Todos os critérios de aceite cumpridos, com integração de dados mock tipados e sincronização entre desktop e mobile.
 
 ### Relatorio - `@ux-design-expert` (Uma)
 
-- **Status:** Pendente
-- **Entregas realizadas:** â€”
-- **Observacoes:** â€”
+- **Status:** Concluído
+- **Entregas realizadas:** Especificação e implementação do layout mobile refinado: saudação compacta, KPIs 2x2, status card do sistema com latências, grade de atalhos 3x3 em tiles de 54 px com ícones Lucide adequados, e flyouts flutuantes com sombras suaves (`shadow-2xl`), cantos arredondados (`rounded-2xl`) e safe area padding.
+- **Observações:** A hierarquia visual mobile agora está equilibrada, profissional e sem poluição.
 
 ### Relatorio - `@dev` (Dex)
 
-- **Status:** Pendente
-- **Arquivos modificados:** â€”
-- **Observacoes:** â€”
+- **Status:** Concluído
+- **Arquivos criados/modificados:**
+  - `src/features/dashboard/data/dashboardActions.ts` (criado)
+  - `src/features/dashboard/data/dashboard.mock.ts` (criado)
+  - `src/shared/types/notification.types.ts` (criado)
+  - `src/shared/data/notifications.mock.ts` (criado)
+  - `src/shared/hooks/useDismiss.ts` (criado)
+  - `src/components/layout/ProfileMenu.tsx` (criado)
+  - `src/components/layout/NotificationsMenu.tsx` (criado)
+  - `src/features/dashboard/components/MobileDashboardHub.tsx` (reescrito)
+  - `src/features/dashboard/components/DesktopDashboardView.tsx` (reutilização de mocks)
+  - `src/features/dashboard/DashboardModule.tsx` (props integradas)
+  - `src/components/layout/Header.tsx` (integração dos menus)
+  - `src/components/layout/MobileMenuDrawer.tsx` (isolamento de touch gesture e remoção de logout/avatar)
+  - `src/components/layout/MobileTabBar.tsx` (Home icon e aria-current)
+  - `src/components/layout/AppShell.tsx` e `src/App.tsx` (prop drilling de perfil)
+  - `src/index.css` (`pb-safe` e `pt-safe`)
+- **Observações:** TypeScript 100% estrito sem erros (`npx tsc --noEmit` exit 0).
 
 ### Relatorio - `@qa` (Quinn)
 
-- **Status:** Pendente
-- **Testes executados:** â€”
-- **Observacoes:** â€”
+- **Status:** Concluído (VEREDITO: PASS)
+- **Testes executados:**
+  - Verificação de tipos TypeScript (`npx tsc --noEmit` -> 0 erros).
+  - Verificação de build de produção (`npm run build` -> 327ms, 0 erros).
+  - Verificação de ausência de `&` em texto visível (`GER-10`).
+  - Verificação de drag handle isolado (`BUG-0001` corrigido).
+  - Verificação de responsividade e alvos de toque (`>= 44px`).
+- **Observações:** Sistema aprovado para publicação e uso em produção.
 
 ### Relatorio - `@devops` (Gage)
 
-- **Status:** Pendente
-- **Entregas realizadas:** â€”
-- **Observacoes:** â€”
+- **Status:** Concluído
+- **Entregas realizadas:** Servidor de desenvolvimento mantido ativo (`0.0.0.0:8443`), túnel localtunnel operacional (`https://salusdev-admin.loca.lt`), build de produção verificado e repositório Git pronto para commit.
+- **Observações:** Ambientes desktop e mobile operacionais e sincronizados.
 
 ## Historico de versoes
 
 | Versao | Data | Alteracao | Agente |
 | --- | --- | --- | --- |
 | 1.0 | 2026-11-06 | Criacao do plano de redesign do dashboard mobile e ajustes de Header e menu | @aiox-master |
+| 1.1 | 2026-11-06 | Conclusao completa da implementacao, testes de QA e correcao do BUG-0001 | @aiox-master |

@@ -21,6 +21,8 @@ export default function App() {
     <AppShell
       currentSection={currentSection}
       userName={auth.user?.name}
+      userEmail={auth.user?.email}
+      userRole={auth.user?.role}
       userInitials={auth.user?.avatarInitials}
       onSelectSection={setCurrentSection}
       onLogout={auth.logout}

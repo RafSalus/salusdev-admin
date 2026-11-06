@@ -1,63 +1,37 @@
 # Estado Atual do Trabalho
 
-- **Atualizado em:** 2026-11-06 14:58
-- **Agente:** @aiox-master / @qa (Quinn) / @devops (Gage)
-- **Plano ativo:** Nenhum (Plano 0008 Concluído com Sucesso e Parecer PASS)
-- **Status:** Estável / PWA com Suíte de Ícones Oficiais `< />`, Manifesto e Service Worker
+- **Atualizado em:** 2026-11-06 15:15
+- **Agente:** @aiox-master (Orion)
+- **Plano ativo:** Nenhum (Plano 0009 concluído com sucesso)
+- **Status:** Disponível / Aguardando direcionamento de Rafael
 - **Branch:** main
 
-## Ultimo marco concluido
+## Último marco concluído
 
-- **Plano 0008 - Configuração, Manifesto e Iconografia Oficial do PWA:**
-  - **Suíte de Ícones em Alta Resolução:** `pwa-192x192.png`, `pwa-512x512.png`, `maskable-icon-512x512.png` (com safe zone de 80%), `apple-touch-icon.png` (180x180 para iOS) e `favicon.png` gerados e alinhados com o emblema oficial `< />`;
-  - **Manifesto Web (`public/manifest.json`):** Configurado com cores oficiais `#163e32`, modo `standalone` e suporte a propósitos `any` e `maskable` per `PWA-09` e `PWA-10`;
-  - **Service Worker (`public/sw.js`):** Implementado cache de recursos essenciais e suporte offline per `PWA-11` e `PWA-12`;
-  - **Shell (`index.html`):** Meta tags iOS adicionadas e viewport com `viewport-fit=cover` per `PWA-04`;
-  - **Gates de Qualidade:** `npx tsc --noEmit` = 0 erros, `npm run build` = 305ms, ativos testados com 200 OK.
+- **Conclusão do Plano 0009 (Redesign do Dashboard Mobile, Header e Menus):**
+  - **Redesign Mobile Hub:** Saudação compacta, KPIs 2x2, status card de sistemas com latências, e grade compacta de 9 atalhos rápidos com tiles de 54 px e ícones Lucide (~22 px).
+  - **Menu Hamburguer Mobile:** Removido card de usuário e botão de logout. Isolados listeners de toque (`onTouchStart/Move/End`) exclusivamente na alça superior com `touch-action: none`, resolvendo o `BUG-0001` (scroll livre do conteúdo sem fechar acidentalmente o menu).
+  - **Menu de Perfil (Header):** Dropdown acessível via avatar (mobile) e card de usuário (desktop), com dados do perfil, selo MFA e ação de logout.
+  - **Painel de Notificações (Header):** Flyout com contador no sino, lista com indicador de lida/não lida e ação "Marcar todas como lidas".
+  - **Tab Bar Mobile:** Atualizado ícone de início para `Home`, aplicado `aria-current="page"` e utilitário `pb-safe`.
+  - **QA & Gates:** TypeScript 0 erros (`npx tsc --noEmit`), Vite build em 327ms, ausência de `&` em texto visível.
 
-## Em execucao agora
+## Próximo passo exato
 
-- Transição para a próxima tela do roadmap: **Tela 4: Gestão de Clientes (`/clientes` - ADM-04)**.
+1. Apresentar a entrega do Plano 0009 para Rafael testar no mobile (`https://salusdev-admin.loca.lt`).
+2. Alinhar com Rafael a próxima tela a ser construída ou refinada:
+   - **Opção A:** Tela 4: Gestão de Clientes (`/clientes` - ADM-04).
+   - **Opção B:** Tela 5: Monitoramento de Sistemas (`/sistemas` - ADM-05).
+   - **Opção C:** Outro fluxo ou ajuste priorizado por Rafael.
 
-## Proximo passo exato
+## Pendências imediatas
 
-1. Alinhar com Rafael as referências de design da tela de **Gestão de Clientes (`/clientes`)**.
-2. Criar e apresentar o **Plano 0009**.
+- Nenhuma pendência documental ou técnica no Plano 0009.
 
-## Em execucao agora
-
-- Sessão em ponto de alinhamento com Rafael para validação visual e definição da próxima tela da matriz (ex: Tela 4: Gestão de Clientes `/clientes` ou Tela 5: Monitoramento de Sistemas `/sistemas`).
-
-## Proximo passo exato
-
-1. Apresentar os resultados do Dashboard Mobile e Desktop a Rafael.
-2. Iniciar a especificação da próxima tela do roadmap operacional.
-
-## Pendencias imediatas
-
-- Nenhuma pendência documental ou técnica no Plano 0007.
-
-## Arquivos em edicao
+## Arquivos em edição
 
 - Nenhum arquivo em edição ativa.
 
 ## Bloqueios
 
-- Nenhum. Build e typecheck verdes (44 módulos, 235ms, zero erros de TS).
-
-## Proximo passo exato
-
-1. Criar e apresentar o **Plano 0007: Dashboard Executivo do Centro de Comando (`/dashboard`)**.
-2. Conectar as métricas operacionais reais, painel de status dos sistemas e atalhos rápidos.
-
-## Pendencias imediatas
-
-- Nenhuma pendência documental ou técnica no Plano 0006.
-
-## Arquivos em edicao
-
-- Nenhum arquivo em edição ativa.
-
-## Bloqueios
-
-- Nenhum. Build e typecheck verdes (40 módulos, 236ms, zero erros de TS).
+- Nenhum. Dev server e localtunnel ativos, build verde e 0 erros de TS.

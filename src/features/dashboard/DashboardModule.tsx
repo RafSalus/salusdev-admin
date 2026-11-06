@@ -20,6 +20,7 @@ export function DashboardModule({
       {/* Visualização Mobile: Fiel a Dashboard - M.png */}
       <div className="lg:hidden">
         <MobileDashboardHub
+          products={products}
           userName={userName}
           onSelectSection={onSelectSection}
         />
