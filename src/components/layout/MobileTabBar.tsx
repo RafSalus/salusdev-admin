@@ -1,4 +1,4 @@
-import { Icon, type IconName } from "@/components/ui/Icon"
+import { Search, Plus, Code2, Users, Menu, type LucideIcon } from "lucide-react"
 
 export interface MobileTabBarProps {
   currentSection: string
@@ -9,7 +9,7 @@ export interface MobileTabBarProps {
 interface TabDef {
   key: string
   label: string
-  icon: IconName
+  icon: LucideIcon
   isAction?: boolean
 }
 
@@ -19,23 +19,24 @@ export function MobileTabBar({
   onOpenMenu,
 }: MobileTabBarProps) {
   const tabs: TabDef[] = [
-    { key: "Dashboard", label: "Início", icon: "search" },
-    { key: "Leads", label: "Leads", icon: "plus" },
-    { key: "Produtos", label: "Produtos", icon: "code" },
-    { key: "Clientes", label: "Clientes", icon: "clients" },
-    { key: "menu", label: "Menu", icon: "menu", isAction: true },
+    { key: "Dashboard", label: "Início", icon: Search },
+    { key: "Leads", label: "Leads", icon: Plus },
+    { key: "Produtos", label: "Produtos", icon: Code2 },
+    { key: "Clientes", label: "Clientes", icon: Users },
+    { key: "menu", label: "Menu", icon: Menu, isAction: true },
   ]
 
   return (
     <nav
       aria-label="Navegação inferior mobile"
-      className="fixed bottom-0 inset-x-0 z-40 flex h-16 items-center justify-around border-t border-[#163e32]/8 bg-white/95 px-2 pb-safe backdrop-blur-md lg:hidden"
+      className="fixed bottom-0 inset-x-0 z-40 flex h-[68px] items-center justify-around border-t border-[#163e32]/8 bg-white/95 px-3 pb-safe backdrop-blur-xl lg:hidden shadow-[0_-4px_20px_rgba(20,40,33,0.04)]"
     >
       {tabs.map((tab) => {
         const isActive =
           !tab.isAction &&
           (currentSection === tab.key ||
             (tab.key === "Dashboard" && currentSection === "Início"))
+        const IconComponent = tab.icon
 
         return (
           <button
@@ -48,22 +49,26 @@ export function MobileTabBar({
                 onSelectSection(tab.key)
               }
             }}
-            className={`flex min-h-[48px] min-w-[56px] flex-1 flex-col items-center justify-center gap-1 rounded-xl py-1 transition-colors ${
+            className={`flex min-h-[50px] min-w-[54px] flex-1 flex-col items-center justify-center gap-1 rounded-2xl py-1 transition-all active:scale-95 ${
               isActive
                 ? "text-[#163e32]"
                 : "text-[#7a8a83] hover:text-[#163e32]"
             }`}
           >
             <span
-              className={`grid h-6 w-6 place-items-center transition-transform ${
-                isActive ? "scale-110 font-bold" : ""
+              className={`grid h-7 w-7 place-items-center transition-transform ${
+                isActive ? "scale-110" : ""
               }`}
             >
-              <Icon name={tab.icon} size={19} />
+              <IconComponent
+                size={22}
+                strokeWidth={isActive ? 2.4 : 2}
+                className={isActive ? "text-[#163e32]" : "text-[#7a8a83]"}
+              />
             </span>
             <span
               className={`text-[10px] tracking-tight ${
-                isActive ? "font-extrabold text-[#163e32]" : "font-semibold text-[#7a8a83]"
+                isActive ? "font-black text-[#163e32]" : "font-bold text-[#7a8a83]"
               }`}
             >
               {tab.label}

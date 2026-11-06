@@ -2,6 +2,7 @@ import { useState, type ReactNode } from "react"
 import { Sidebar } from "./Sidebar"
 import { Header } from "./Header"
 import { MobileTabBar } from "./MobileTabBar"
+import { MobileMenuDrawer } from "./MobileMenuDrawer"
 
 export interface AppShellProps {
   children: ReactNode
@@ -24,20 +25,24 @@ export function AppShell({
 
   return (
     <div className="min-h-screen bg-[#f5f6f2] text-[#18342a]">
+      {/* Sidebar persistente no Desktop */}
       <Sidebar
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
         activeItem={currentSection}
         onSelectSection={onSelectSection}
+        userName={userName}
+        userInitials={userInitials}
+        onLogout={onLogout}
       />
 
+      {/* Conteúdo Principal com Header Desktop/Mobile */}
       <div className="lg:pl-[252px]">
         <Header
           onOpenSidebar={() => setSidebarOpen(true)}
           currentSection={currentSection}
           userName={userName}
           userInitials={userInitials}
-          onLogout={onLogout}
         />
         <main className="mx-auto max-w-[1400px] px-4 py-6 sm:px-7 sm:py-9 pb-24 lg:pb-9">
           {children}
@@ -49,6 +54,17 @@ export function AppShell({
         currentSection={currentSection}
         onSelectSection={(sec) => onSelectSection?.(sec)}
         onOpenMenu={() => setSidebarOpen(true)}
+      />
+
+      {/* Menu Hamburguer Bottom Sheet para Mobile (de baixo para cima com suporte a gesto de arrastar e botão 'X') */}
+      <MobileMenuDrawer
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        activeItem={currentSection}
+        onSelectSection={onSelectSection}
+        userName={userName}
+        userInitials={userInitials}
+        onLogout={onLogout}
       />
     </div>
   )

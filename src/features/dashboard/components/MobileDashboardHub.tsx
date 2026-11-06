@@ -1,4 +1,12 @@
-import { Icon, type IconName } from "@/components/ui/Icon"
+import {
+  Grid2X2,
+  Code2,
+  Check,
+  Users,
+  Plus,
+  Bell,
+  type LucideIcon,
+} from "lucide-react"
 
 export interface MobileDashboardHubProps {
   userName?: string
@@ -8,8 +16,8 @@ export interface MobileDashboardHubProps {
 interface ActionItem {
   id: string
   label: string
-  icon: IconName
-  colorClass: string
+  icon: LucideIcon
+  color: string
   section: string
 }
 
@@ -22,7 +30,6 @@ export function MobileDashboardHub({
   userName = "Rafael",
   onSelectSection,
 }: MobileDashboardHubProps) {
-  // Extrai o primeiro nome para saudação cordial
   const firstName = userName.split(" ")[0] || "Rafael"
 
   const groups: ActionGroup[] = [
@@ -32,22 +39,22 @@ export function MobileDashboardHub({
         {
           id: "dash",
           label: "Dashboard",
-          icon: "grid",
-          colorClass: "text-[#23634e]",
+          icon: Grid2X2,
+          color: "#1f644e",
           section: "Dashboard",
         },
         {
           id: "prod",
           label: "Produtos",
-          icon: "code",
-          colorClass: "text-[#c18442]",
+          icon: Code2,
+          color: "#c07f2b",
           section: "Produtos",
         },
         {
           id: "atend",
           label: "Atendimentos",
-          icon: "check",
-          colorClass: "text-[#3d7ca8]",
+          icon: Check,
+          color: "#2c77aa",
           section: "Atendimentos",
         },
       ],
@@ -58,22 +65,22 @@ export function MobileDashboardHub({
         {
           id: "cli",
           label: "Clientes",
-          icon: "clients",
-          colorClass: "text-[#7d5ba6]",
+          icon: Users,
+          color: "#714fb0",
           section: "Clientes",
         },
         {
           id: "leads",
           label: "Leads",
-          icon: "plus",
-          colorClass: "text-[#2f8064]",
+          icon: Plus,
+          color: "#248263",
           section: "Leads",
         },
         {
           id: "cont",
           label: "Contratos",
-          icon: "bell",
-          colorClass: "text-[#c18442]",
+          icon: Bell,
+          color: "#b87c2b",
           section: "Contratos",
         },
       ],
@@ -84,22 +91,22 @@ export function MobileDashboardHub({
         {
           id: "ass",
           label: "Assinaturas",
-          icon: "check",
-          colorClass: "text-[#3d7ca8]",
+          icon: Check,
+          color: "#2c77aa",
           section: "Assinaturas",
         },
         {
           id: "pag",
           label: "Pagamentos",
-          icon: "clients",
-          colorClass: "text-[#7d5ba6]",
+          icon: Users,
+          color: "#714fb0",
           section: "Pagamentos",
         },
         {
           id: "conf",
           label: "Configurações",
-          icon: "grid",
-          colorClass: "text-[#23634e]",
+          icon: Grid2X2,
+          color: "#1f644e",
           section: "Configurações",
         },
       ],
@@ -107,49 +114,58 @@ export function MobileDashboardHub({
   ]
 
   return (
-    <div className="pb-20 pt-2 lg:hidden">
-      {/* Cabeçalho de Boas-Vindas Mobile */}
-      <header className="mb-6">
-        <h1 className="text-[26px] font-black tracking-[-0.04em] text-[#142821] sm:text-[30px]">
+    <div className="pt-2 pb-24 lg:hidden max-w-[420px] mx-auto">
+      {/* Saudação Nominal Mobile */}
+      <header className="mb-7 px-1">
+        <h1 className="text-[30px] font-black tracking-[-0.04em] text-[#142821]">
           Olá, {firstName}
         </h1>
-        <p className="mt-1 text-[12px] font-medium leading-relaxed text-[#60736a]">
+        <p className="mt-1.5 text-[13px] font-medium leading-relaxed text-[#60736a]">
           Acesse rapidamente as principais áreas do seu portfólio.
         </p>
       </header>
 
-      {/* Categorias com Squircles de Atalhos */}
-      <div className="space-y-6">
+      {/* Categorias e Disposição dos Squircles (Fiel a Dashboard - M.png) */}
+      <div className="space-y-7">
         {groups.map((group) => (
           <section key={group.category} aria-labelledby={`cat-${group.category}`}>
             <h2
               id={`cat-${group.category}`}
-              className="mb-3 text-[10px] font-black uppercase tracking-[0.16em] text-[#8c9992]"
+              className="mb-3.5 px-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#85948c]"
             >
               {group.category}
             </h2>
 
-            <div className="grid grid-cols-3 gap-3">
-              {group.items.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => onSelectSection(item.section)}
-                  className="group flex flex-col items-center justify-center rounded-[24px] border border-[#163e32]/8 bg-white p-3.5 shadow-[0_2px_8px_rgba(20,40,33,0.04)] transition-all duration-200 active:scale-95 active:bg-[#f6f8f5] hover:border-[#163e32]/20 hover:shadow-md"
-                  style={{ minHeight: "100px" }}
-                  aria-label={`Acessar ${item.label}`}
-                >
-                  <span
-                    className={`grid h-11 w-11 place-items-center transition-transform group-hover:scale-110 ${item.colorClass}`}
+            <div className="grid grid-cols-3 gap-x-3.5 gap-y-2">
+              {group.items.map((item) => {
+                const IconComponent = item.icon
+                return (
+                  <div
+                    key={item.id}
+                    className="flex flex-col items-center"
                   >
-                    <Icon name={item.icon} size={28} />
-                  </span>
+                    {/* Botão Squircle Branco (Ícone centralizado no squircle) */}
+                    <button
+                      type="button"
+                      onClick={() => onSelectSection(item.section)}
+                      aria-label={`Acessar ${item.label}`}
+                      className="group flex aspect-square w-full max-w-[96px] items-center justify-center rounded-[28px] border border-[#163e32]/6 bg-white shadow-[0_6px_20px_rgba(20,40,33,0.05)] transition-all duration-200 active:scale-90 active:shadow-xs hover:border-[#163e32]/15 hover:shadow-[0_8px_24px_rgba(20,40,33,0.08)]"
+                    >
+                      <IconComponent
+                        size={30}
+                        strokeWidth={2.2}
+                        style={{ color: item.color }}
+                        className="transition-transform duration-200 group-hover:scale-110"
+                      />
+                    </button>
 
-                  <span className="mt-2 text-center text-[11px] font-bold tracking-tight text-[#18372c]">
-                    {item.label}
-                  </span>
-                </button>
-              ))}
+                    {/* Rótulo abaixo do squircle */}
+                    <span className="mt-2 text-center text-[12px] font-bold tracking-tight text-[#142821]">
+                      {item.label}
+                    </span>
+                  </div>
+                )
+              })}
             </div>
           </section>
         ))}

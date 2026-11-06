@@ -5,7 +5,6 @@ export interface HeaderProps {
   currentSection?: string
   userName?: string
   userInitials?: string
-  onLogout?: () => void
 }
 
 export function Header({
@@ -13,11 +12,10 @@ export function Header({
   currentSection = "Produtos",
   userName = "Rafael Amaral Salustiano",
   userInitials = "RA",
-  onLogout,
 }: HeaderProps) {
   return (
     <header className="sticky top-0 z-30 flex h-[68px] items-center justify-between border-b border-[#173e32]/8 bg-white/95 px-4 backdrop-blur-xl sm:px-7">
-      {/* Lado Esquerdo: Mobile exibe Logo oficial (fiel a Dashboard - M.png) / Desktop exibe Breadcrumbs */}
+      {/* Lado Esquerdo: Mobile exibe Logo oficial / Desktop exibe Breadcrumbs */}
       <div className="flex items-center gap-3">
         {/* Marca SalusDev visível no Mobile */}
         <div className="flex items-center gap-2 lg:hidden">
@@ -36,7 +34,7 @@ export function Header({
         </div>
       </div>
 
-      {/* Lado Direito: Notificações, Perfil e Logout */}
+      {/* Lado Direito: Notificações e Perfil (Sem botão de sair no header, conforme solicitação) */}
       <div className="flex items-center gap-2 sm:gap-3">
         {/* Selo de Ambiente Protótipo visível no Desktop */}
         <div className="hidden items-center gap-2 rounded-full bg-[#eff4ef] px-3 py-1.5 text-[9px] font-extrabold text-[#39735d] sm:flex">
@@ -44,10 +42,10 @@ export function Header({
           Ambiente de protótipo
         </div>
 
-        {/* Botão de Notificações com indicador vermelho (Fiel aos designs D e M) */}
+        {/* Botão de Notificações com indicador vermelho */}
         <button
           type="button"
-          className="relative grid h-10 w-10 place-items-center rounded-xl border border-[#173e32]/8 bg-white text-[#60736a] transition hover:bg-[#f8f9f6]"
+          className="relative grid h-10 w-10 place-items-center rounded-xl border border-[#173e32]/8 bg-white text-[#60736a] transition hover:bg-[#f8f9f6] active:scale-95"
           aria-label="Notificações"
         >
           <Icon name="bell" size={19} />
@@ -55,7 +53,7 @@ export function Header({
         </button>
 
         {/* Informações do usuário logado no Desktop */}
-        <div className="hidden items-center gap-2.5 rounded-xl border border-[#173e32]/8 bg-white px-2.5 py-1.5 sm:flex">
+        <div className="hidden items-center gap-2.5 rounded-xl border border-[#173e32]/8 bg-white px-3 py-1.5 sm:flex">
           <div className="grid h-7 w-7 place-items-center rounded-lg bg-[#173e32] text-[10px] font-extrabold text-white">
             {userInitials}
           </div>
@@ -67,27 +65,16 @@ export function Header({
           </div>
         </div>
 
-        {/* Botão de Logout seguro */}
-        {onLogout && (
-          <button
-            type="button"
-            onClick={onLogout}
-            title="Encerrar sessão com segurança"
-            aria-label="Encerrar sessão"
-            className="flex h-10 items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50/70 px-3 text-xs font-bold text-rose-700 transition hover:bg-rose-100/80"
-          >
-            <Icon name="logout" size={16} />
-            <span className="hidden md:inline">Sair</span>
-          </button>
-        )}
-
-        {/* Avatar Circular no Mobile: Fiel a Dashboard - M.png (fundo menta com texto escuro) */}
-        <div
-          title={userName}
-          className="grid h-10 w-10 place-items-center rounded-full bg-[#eaf3ee] border border-[#163e32]/10 text-[11px] font-extrabold text-[#163e32] sm:hidden"
+        {/* Avatar Circular no Mobile: Aciona o menu hamburguer ao toque */}
+        <button
+          type="button"
+          onClick={onOpenSidebar}
+          title="Abrir menu de controle"
+          aria-label="Abrir menu de controle"
+          className="grid h-10 w-10 place-items-center rounded-full bg-[#eaf3ee] border border-[#163e32]/10 text-[11px] font-extrabold text-[#163e32] transition active:scale-95 sm:hidden"
         >
           {userInitials}
-        </div>
+        </button>
       </div>
     </header>
   )
