@@ -9,7 +9,7 @@
 
 ## Releitura obrigatoria das regras
 
-- [x] Reler integralmente `docs/produto/RegrasSystema.md` (v1.4) antes de iniciar a execução deste plano.
+- [x] Reler integralmente `doc/produto/RegrasSystema.md` (v1.4) antes de iniciar a execução deste plano.
 - **Registro da releitura:** 2026-11-06 12:20 - @aiox-master
 
 ## Objetivo
@@ -18,8 +18,8 @@ Estruturar, produzir e publicar a suíte completa de documentação de engenhari
 
 ## Referencias
 
-- PRD v0.4: `docs/produto/PRD-SalusDev-v0.3.md` (Fonte única da verdade de produto)
-- Regras de Desenvolvimento: `docs/produto/RegrasDesenvolvimento.md` (R3, R11, R16)
+- PRD v0.4: `doc/produto/PRD-SalusDev-v0.3.md` (Fonte única da verdade de produto)
+- Regras de Desenvolvimento: `doc/produto/RegrasDesenvolvimento.md` (R3, R11, R16)
 - Código fonte modular: `src/` (Arquitetura Feature-Driven implementada)
 
 ## Agentes participantes
@@ -63,7 +63,7 @@ Estruturar, produzir e publicar a suíte completa de documentação de engenhari
 ## Escopo
 
 - [x] Estruturação das pastas de documentação sob `docs/`.
-- [x] Homologação do PRD v0.4 por `@pm` e publicação de `docs/produto/SITEMAP.md`.
+- [x] Homologação do PRD v0.4 por `@pm` e publicação de `doc/produto/SITEMAP.md`.
 - [x] Criação de `docs/arquitetura/ARCHITECTURE.md` por `@architect`.
 - [x] Criação de `docs/design/DESIGN-SYSTEM.md` e `SCREEN-INVENTORY.md` por `@ux-design-expert`.
 - [x] Criação de `docs/dados/DATA-DICTIONARY.md` por `@data-engineer`.
@@ -78,7 +78,7 @@ Estruturar, produzir e publicar a suíte completa de documentação de engenhari
 ## Tarefas
 
 - [x] `@aiox-master`: Registrar Plano 0004 e criar subpastas de documentação sob `docs/`.
-- [x] `@pm`: Validar integridade do PRD v0.4 e redigir mapa de informação em `docs/produto/SITEMAP.md`.
+- [x] `@pm`: Validar integridade do PRD v0.4 e redigir mapa de informação em `doc/produto/SITEMAP.md`.
 - [x] `@architect`: Redigir especificação técnica em `docs/arquitetura/ARCHITECTURE.md`.
 - [x] `@ux-design-expert`: Redigir `docs/design/DESIGN-SYSTEM.md` e `docs/design/SCREEN-INVENTORY.md`.
 - [x] `@data-engineer`: Redigir `docs/dados/DATA-DICTIONARY.md`.
@@ -88,16 +88,16 @@ Estruturar, produzir e publicar a suíte completa de documentação de engenhari
 
 ## Rotas e arquivos afetados
 
-- `docs/produto/SITEMAP.md`
+- `doc/produto/SITEMAP.md`
 - `docs/arquitetura/ARCHITECTURE.md`
 - `docs/design/DESIGN-SYSTEM.md`
 - `docs/design/SCREEN-INVENTORY.md`
 - `docs/dados/DATA-DICTIONARY.md`
 - `docs/qualidade/TEST-PLAN.md`
 - `docs/devops/DEPLOYMENT.md`
-- `docs/plan/0004 - suite-de-documentacao-profissional-do-ecossistema.md`
-- `docs/plan/README.md`
-- `docs/handof/ESTADO-ATUAL.md`
+- `doc/plan/0004 - suite-de-documentacao-profissional-do-ecossistema.md`
+- `doc/plan/README.md`
+- `doc/handof/ESTADO-ATUAL.md`
 
 ## Criterios de aceite
 
@@ -116,7 +116,7 @@ Estruturar, produzir e publicar a suíte completa de documentação de engenhari
 
 ### Relatório - `@pm` (Morgan)
 - **Status:** [Concluído]
-- **Entregas realizadas:** Redação e homologação de `docs/produto/SITEMAP.md`, cobrindo as rotas e diretrizes de conteúdo do Site Institucional e do Centro de Comando, alinhado 100% com o PRD v0.4.
+- **Entregas realizadas:** Redação e homologação de `doc/produto/SITEMAP.md`, cobrindo as rotas e diretrizes de conteúdo do Site Institucional e do Centro de Comando, alinhado 100% com o PRD v0.4.
 - **Observações:** Ausência total de dúvidas de escopo; foco mantido em autoridade, proximidade regional em Apucarana e vitrine sem expor tabelas públicas de preços.
 
 ### Relatório - `@architect` (Aria)

@@ -5,7 +5,7 @@
 - **Data:** 2026-11-06
 - **Agente:** `@qa` (Quinn)
 - **Status:** Homologado
-- **Referências:** [RegrasSystema.md](file:///D:/SalusDev%20-%20Admin/docs/produto/RegrasSystema.md) (v1.4) e [RegrasDesenvolvimento.md](file:///D:/SalusDev%20-%20Admin/docs/produto/RegrasDesenvolvimento.md)
+- **Referências:** [RegrasSystema.md](file:///D:/SalusDev%20-%20Admin/doc/produto/RegrasSystema.md) (v1.4) e [RegrasDesenvolvimento.md](file:///D:/SalusDev%20-%20Admin/doc/produto/RegrasDesenvolvimento.md)
 
 ---
 

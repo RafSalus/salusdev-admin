@@ -15,8 +15,8 @@ Definir e formalizar no PRD (evoluindo para v0.4) a arquitetura de interligaçã
 
 - Repositório do Site: `https://github.com/RafSalus/salusdev-site`
 - Repositório do Admin (Protótipo): `salusdev-prototypes`
-- PRD atual: `docs/produto/PRD-SalusDev-v0.3.md`
-- Regras de Desenvolvimento: `docs/produto/RegrasDesenvolvimento.md` (R3, R11, R16 e Seção 8.4)
+- PRD atual: `doc/produto/PRD-SalusDev-v0.3.md`
+- Regras de Desenvolvimento: `doc/produto/RegrasDesenvolvimento.md` (R3, R11, R16 e Seção 8.4)
 - Protótipo de referência: `src/App.tsx` (catálogo e gestão de produtos com navegação responsiva)
 
 ## Agentes participantes
@@ -74,11 +74,11 @@ Definir e formalizar no PRD (evoluindo para v0.4) a arquitetura de interligaçã
 
 ## Rotas e arquivos afetados
 
-- `docs/produto/RegrasDesenvolvimento.md`
-- `docs/plan/0002 - fundacao-de-interligacao-e-atualizacao-prd.md`
-- `docs/plan/README.md`
-- `docs/produto/PRD-SalusDev-v0.3.md`
-- `docs/handof/ESTADO-ATUAL.md`
+- `doc/produto/RegrasDesenvolvimento.md`
+- `doc/plan/0002 - fundacao-de-interligacao-e-atualizacao-prd.md`
+- `doc/plan/README.md`
+- `doc/produto/PRD-SalusDev-v0.3.md`
+- `doc/handof/ESTADO-ATUAL.md`
 
 ## Criterios de aceite
 
@@ -110,7 +110,7 @@ Definir e formalizar no PRD (evoluindo para v0.4) a arquitetura de interligaçã
 ### Relatório - `@pm` (Morgan)
 - **Status:** Concluído / Aprovado
 - **Entregas realizadas:**
-  - Redação e publicação da versão **v0.4** do PRD em `docs/produto/PRD-SalusDev-v0.3.md`.
+  - Redação e publicação da versão **v0.4** do PRD em `doc/produto/PRD-SalusDev-v0.3.md`.
   - Reestruturação do Roadmap em 5 fases bem delineadas, priorizando a Fundação e Vitrine Digital e postergando automações de leads e pagamentos para as Fases 3 e 4.
   - Matriz de escopo MoSCoW aplicada na Fase 1.
   - Todos os requisitos de experiência e interface reescritos com divisão explícita entre Desktop `[D]` e Mobile `[M]`.

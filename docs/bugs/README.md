@@ -1,6 +1,6 @@
 ﻿# Sistema de Bugs - SalusDev
 
-Registro oficial de bugs do projeto. As regras completas estão em `docs/produto/RegrasSystema.md`, Seção 18.
+Registro oficial de bugs do projeto. As regras completas estão em `doc/produto/RegrasSystema.md`, Seção 18.
 
 ## Como registrar
 

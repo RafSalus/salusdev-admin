@@ -1,17 +1,20 @@
 # Estado Atual do Trabalho
 
-- **Atualizado em:** 2026-11-06 12:34
-- **Agente:** @devops (Gage) / @aiox-master
+- **Atualizado em:** 2026-11-06 12:36
+- **Agente:** @aiox-master
 - **Plano ativo:** Nenhum plano ativo no momento (Plano 0004 concluído)
-- **Status:** Estável / Sincronizado no Remoto (Commit 346335f)
+- **Status:** Estável / Organização de Pastas doc/ e docs/
 - **Branch:** main
 
 ## Ultimo marco concluido
 
-- **Commit e Push realizados com sucesso:** Todas as entregas dos Planos 0001, 0002, 0003, 0004 e 0005, a modularização de `src/`, a suíte profissional em `docs/` e a higienização do `vite.config.ts` foram commitadas (`346335f`) e enviadas para o repositório remoto `https://github.com/RafSalus/salusdev-admin.git`.
-- **Consolidação da pasta oficial `docs/`:** Conforme solicitação de Rafael, toda a documentação do projeto foi movida e padronizada sob o diretório `docs/`, com atualização de 100% das referências e links internos nos arquivos markdown.
+- **Separação Estratégica entre `doc/` e `docs/`:** Conforme solicitação de Rafael:
+  - Pasta `doc/`: Arquivos de processo, governança e regras (`doc/plan/`, `doc/handof/`, `doc/produto/`);
+  - Pasta `docs/`: Documentação técnica permanente pertinente ao projeto (`docs/arquitetura/`, `docs/design/`, `docs/dados/`, `docs/qualidade/`, `docs/devops/`, `docs/bugs/`);
+  - Atualização de 100% dos links e referências cruzadas em todos os arquivos Markdown.
+- **Commit e Push anteriores consolidados:** Entregas dos Planos 0001 a 0005 e modularização de `src/` commitadas e enviadas ao GitHub.
 - **Plano 0004 concluído com sucesso absoluto:** Suíte completa de documentação profissional do ecossistema SalusDev publicada e homologada:
-  - `docs/produto/SITEMAP.md` (@pm - Morgan);
+  - `doc/produto/SITEMAP.md` (@pm - Morgan);
   - `docs/arquitetura/ARCHITECTURE.md` com 5 ADRs (@architect - Aria);
   - `docs/design/DESIGN-SYSTEM.md` e `SCREEN-INVENTORY.md` com padrões `[D]` e `[M]` (@ux-design-expert - Uma);
   - `docs/dados/DATA-DICTIONARY.md` (@data-engineer - Dara);

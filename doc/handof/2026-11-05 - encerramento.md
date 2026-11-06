@@ -10,14 +10,14 @@
 
 1. **Abertura e Governança AIOX:**
    - Leitura integral e execução das regras pelo `@aiox-master`.
-   - Atualização do documento mestre [RegrasDesenvolvimento.md](file:///D:/SalusDev%20-%20Admin/docs/produto/RegrasDesenvolvimento.md) (v1.1, v1.2 e v1.3):
+   - Atualização do documento mestre [RegrasDesenvolvimento.md](file:///D:/SalusDev%20-%20Admin/doc/produto/RegrasDesenvolvimento.md) (v1.1, v1.2 e v1.3):
      - Inclusão da Seção 1 com todos os 12 agentes AIOX e Matriz de Intenção.
      - Inclusão da regra R16 e Seção 5.4 (obrigatoriedade de equipe de agentes, sequência ordenada e relatórios finais em todos os planos).
      - Inclusão da regra R11 e Seção 8.4 definindo Web App com PWA e separação obrigatória entre Desktop `[D]` e Mobile `[M]`.
 2. **Plano 0001 (Centro de Comando - Produtos):**
    - Criação e formalização da tela de catálogo de produtos existente.
 3. **Plano 0002 (Fundação de Interligação e PRD v0.4):**
-   - Redação e homologação do [PRD-SalusDev-v0.3.md](file:///D:/SalusDev%20-%20Admin/docs/produto/PRD-SalusDev-v0.3.md) para a versão v0.4.
+   - Redação e homologação do [PRD-SalusDev-v0.3.md](file:///D:/SalusDev%20-%20Admin/doc/produto/PRD-SalusDev-v0.3.md) para a versão v0.4.
    - Formalização da arquitetura de interligação de sistemas (topologia de subdomínios, catálogo canônico, contratos de healthcheck e separação estrita de dados).
    - Reestruturação do Roadmap em 5 fases (leads e pagamentos postergados para as Fases 3 e 4).
    - Conclusão do plano com emissão dos relatórios finais de `@aiox-master`, `@architect`, `@pm` e `@qa`.
@@ -56,15 +56,15 @@
 
 ## Arquivos alterados
 
-- `docs/produto/RegrasDesenvolvimento.md`
-- `docs/produto/PRD-SalusDev-v0.3.md`
-- `docs/plan/0001 - centro-de-comando-produtos.md`
-- `docs/plan/0002 - fundacao-de-interligacao-e-atualizacao-prd.md`
-- `docs/plan/0003 - refatoracao-arquitetural-e-modularizacao-do-admin.md`
-- `docs/plan/0004 - suite-de-documentacao-profissional-do-ecossistema.md`
-- `docs/plan/README.md`
-- `docs/handof/2026-11-05 - abertura.md`
-- `docs/handof/ESTADO-ATUAL.md`
+- `doc/produto/RegrasDesenvolvimento.md`
+- `doc/produto/PRD-SalusDev-v0.3.md`
+- `doc/plan/0001 - centro-de-comando-produtos.md`
+- `doc/plan/0002 - fundacao-de-interligacao-e-atualizacao-prd.md`
+- `doc/plan/0003 - refatoracao-arquitetural-e-modularizacao-do-admin.md`
+- `doc/plan/0004 - suite-de-documentacao-profissional-do-ecossistema.md`
+- `doc/plan/README.md`
+- `doc/handof/2026-11-05 - abertura.md`
+- `doc/handof/ESTADO-ATUAL.md`
 - `vite.config.ts`
 - `src/App.tsx`
 - `src/components/ui/Icon.tsx`
@@ -94,7 +94,7 @@
 ## Proximo passo exato
 
 1. Iniciar a sessão de amanhã com a rotina de abertura do `@aiox-master` (leitura de regras, leitura deste encerramento e do estado atual).
-2. Retomar o [Plano 0004](file:///D:/SalusDev%20-%20Admin/docs/plan/0004%20-%20suite-de-documentacao-profissional-do-ecossistema.md) na **Etapa 3** com a **`@architect` (Aria)** para redigir o documento oficial `docs/arquitetura/ARCHITECTURE.md`.
+2. Retomar o [Plano 0004](file:///D:/SalusDev%20-%20Admin/doc/plan/0004%20-%20suite-de-documentacao-profissional-do-ecossistema.md) na **Etapa 3** com a **`@architect` (Aria)** para redigir o documento oficial `docs/arquitetura/ARCHITECTURE.md`.
 
 ## O que realizar no proximo dia
 

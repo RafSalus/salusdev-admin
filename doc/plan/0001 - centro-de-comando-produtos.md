@@ -13,8 +13,8 @@ Implementar e validar o protótipo navegável da tela de Gestão de Produtos den
 
 ## Referencias
 
-- PRD: `docs/produto/PRD-SalusDev-v0.3.md` (Seção 1 e Seção 5 - Centro de Comando)
-- Regras de Desenvolvimento: `docs/produto/RegrasDesenvolvimento.md`
+- PRD: `doc/produto/PRD-SalusDev-v0.3.md` (Seção 1 e Seção 5 - Centro de Comando)
+- Regras de Desenvolvimento: `doc/produto/RegrasDesenvolvimento.md`
 - Tela atual: `src/App.tsx`
 
 ## Escopo
@@ -49,8 +49,8 @@ Implementar e validar o protótipo navegável da tela de Gestão de Produtos den
 ## Rotas e arquivos afetados
 
 - `src/App.tsx`
-- `docs/plan/0001 - centro-de-comando-produtos.md`
-- `docs/handof/ESTADO-ATUAL.md`
+- `doc/plan/0001 - centro-de-comando-produtos.md`
+- `doc/handof/ESTADO-ATUAL.md`
 
 ## Criterios de aceite
 

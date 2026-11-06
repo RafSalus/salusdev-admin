@@ -3,14 +3,14 @@
 > **Documento mestre do projeto.** Deve ser lido no início de toda sessão de trabalho, antes de qualquer ação.
 > Contém as regras de processo (Parte I) e o espelho obrigatório das regras de sistema e interface (Parte II).
 >
-> - **Local:** `docs/produto/RegrasDesenvolvimento.md`
+> - **Local:** `doc/produto/RegrasDesenvolvimento.md`
 > - **Repositório:** `salusdev-admin` (ecossistema Multi-Repo SalusDev)
 > - **Versão:** 2.0
 > - **Criado em:** 2026-11-04
 > - **Atualizado em:** 2026-11-06
 > - **Responsável:** Rafael Amaral Salustiano
 > - **Agente orquestrador:** `@aiox-master`
-> - **Fontes:** Parte I (este documento) + Parte II (espelho e leitura obrigatória de `docs/produto/RegrasSystema.md`)
+> - **Fontes:** Parte I (este documento) + Parte II (espelho e leitura obrigatória de `doc/produto/RegrasSystema.md`)
 
 ---
 
@@ -24,19 +24,19 @@ Ler as regras de desenvolvimento e iniciar o dia.
 
 Ao receber esse pedido, o agente deve, **nesta ordem**:
 
-1. Ler este documento inteiro (`docs/produto/RegrasDesenvolvimento.md`) **e obrigatoriamente ler também `docs/produto/RegrasSystema.md` na íntegra**. As duas leituras são mandatórias e indissociáveis.
-2. Ler `docs/handof/ESTADO-ATUAL.md` e o handoff de encerramento mais recente em `docs/handof/`.
-3. Listar e ler os planos em `docs/plan/`, identificando o plano ativo e o primeiro item não concluído.
+1. Ler este documento inteiro (`doc/produto/RegrasDesenvolvimento.md`) **e obrigatoriamente ler também `doc/produto/RegrasSystema.md` na íntegra**. As duas leituras são mandatórias e indissociáveis.
+2. Ler `doc/handof/ESTADO-ATUAL.md` e o handoff de encerramento mais recente em `doc/handof/`.
+3. Listar e ler os planos em `doc/plan/`, identificando o plano ativo e o primeiro item não concluído.
 4. Verificar o estado real do repositório com `git status` e, quando necessário, `git diff`.
 5. Responder com um resumo curto do estado atual e o próximo passo sugerido.
 6. Aguardar a confirmação de Rafael antes de iniciar alterações relevantes.
 
 > **Regra de ouro:** nenhuma implementação começa antes do passo 5. O resumo do estado é obrigatório.
 
-> **Regra mandatória de planos:** todo plano criado para aprovação do usuário **deve constar fisicamente na pasta `docs/plan/`** (`D:\SalusDev - Admin\docs\plan\`) com o nome e a numeração sequencial corretos antes de ser submetido à aprovação e antes de qualquer implementação.
+> **Regra mandatória de planos:** todo plano criado para aprovação do usuário **deve constar fisicamente na pasta `doc/plan/`** (`D:\SalusDev - Admin\doc\plan\`) com o nome e a numeração sequencial corretos antes de ser submetido à aprovação e antes de qualquer implementação.
 
 > **Leitura concomitante e obrigatória de `RegrasSystema.md`:**
-> A leitura de `D:\SalusDev - Admin\docs\produto\RegrasSystema.md` é mandatória toda vez que as regras forem solicitadas.
+> A leitura de `D:\SalusDev - Admin\doc\produto\RegrasSystema.md` é mandatória toda vez que as regras forem solicitadas.
 > **Atenção especial às regras críticas do ecossistema SalusDev:**
 >
 > - **Máscaras obrigatórias (`FRM-01` a `FRM-09`):** todo campo estruturado (CPF, CNPJ, telefone, CEP, data, hora, moeda, placa, CNH e afins) deve ter máscara centralizada em módulo reutilizável, com `react-imask` como biblioteca recomendada.
@@ -128,24 +128,24 @@ Fonte: `.aiox-core/development/agents/` e `.claude/skills/AIOX/agents/`.
 ### 2.0 Localização obrigatória do plano para aprovação
 
 > **Regra mandatória do usuário:**
-> Quando o agente criar o plano para o usuário aprovar, **ele deve obrigatoriamente constar na pasta `D:\SalusDev - Admin\docs\plan\`** com a nomenclatura correta (`NNNN - slug-curto.md`).
+> Quando o agente criar o plano para o usuário aprovar, **ele deve obrigatoriamente constar na pasta `D:\SalusDev - Admin\doc\plan\`** com a nomenclatura correta (`NNNN - slug-curto.md`).
 >
-> **Sempre antes de implementar qualquer funcionalidade ou alteração de código**, é obrigatório criar o plano físico nesta pasta (`docs/plan/`), registrar a entrada no índice `docs/plan/README.md` e aguardar a aprovação expressa do usuário. É expressamente proibido iniciar implementação sem o plano previamente gravado neste caminho.
+> **Sempre antes de implementar qualquer funcionalidade ou alteração de código**, é obrigatório criar o plano físico nesta pasta (`doc/plan/`), registrar a entrada no índice `doc/plan/README.md` e aguardar a aprovação expressa do usuário. É expressamente proibido iniciar implementação sem o plano previamente gravado neste caminho.
 
 ### 2.1 Sequência obrigatória
 
 1. Ler as regras (este documento e `RegrasSystema.md`).
 2. Ler o handoff mais recente e o `ESTADO-ATUAL.md`.
-3. **Procurar um plano existente** em `docs/plan/` relacionado ao pedido (por módulo, tela, palavra-chave e assunto).
+3. **Procurar um plano existente** em `doc/plan/` relacionado ao pedido (por módulo, tela, palavra-chave e assunto).
 4. Se existir plano relacionado, **reutilizar** (ver Seção 3).
-5. Se não existir, **criar o próximo plano numerado diretamente em `docs/plan/`** e registrar em `docs/plan/README.md`.
-6. Submeter o plano na pasta `docs/plan/` para aprovação do usuário.
+5. Se não existir, **criar o próximo plano numerado diretamente em `doc/plan/`** e registrar em `doc/plan/README.md`.
+6. Submeter o plano na pasta `doc/plan/` para aprovação do usuário.
 7. **Só então implementar**, após a aprovação do usuário.
 8. Atualizar o plano durante a execução (checkboxes, status e histórico de versões).
 
 ### 2.2 Numeração e nome do arquivo
 
-- Pasta obrigatória: `D:\SalusDev - Admin\docs\plan\`
+- Pasta obrigatória: `D:\SalusDev - Admin\doc\plan\`
 - Formato: `NNNN - slug-curto.md`
 - Numeração com **4 dígitos**, começando em `0001`, **sequencial e nunca reutilizada**.
 - Separação por `-` (espaço, hífen, espaço).
@@ -154,11 +154,11 @@ Fonte: `.aiox-core/development/agents/` e `.claude/skills/AIOX/agents/`.
 Exemplos reais deste repositório:
 
 ```text
-docs/plan/0001 - centro-de-comando-produtos.md
-docs/plan/0002 - fundacao-de-interligacao-e-atualizacao-prd.md
-docs/plan/0003 - refatoracao-arquitetural-e-modularizacao-do-admin.md
-docs/plan/0004 - suite-de-documentacao-profissional-do-ecossistema.md
-docs/plan/0005 - adaptacao-das-regras-de-desenvolvimento-ao-molde-mestre.md
+doc/plan/0001 - centro-de-comando-produtos.md
+doc/plan/0002 - fundacao-de-interligacao-e-atualizacao-prd.md
+doc/plan/0003 - refatoracao-arquitetural-e-modularizacao-do-admin.md
+doc/plan/0004 - suite-de-documentacao-profissional-do-ecossistema.md
+doc/plan/0005 - adaptacao-das-regras-de-desenvolvimento-ao-molde-mestre.md
 ```
 
 Regras adicionais:
@@ -183,7 +183,7 @@ Rascunho -> Aprovado -> Em andamento -> Em revisao -> Concluido
 
 Todo plano deve conter:
 
-- linha de releitura obrigatória de `docs/produto/RegrasSystema.md` antes do início;
+- linha de releitura obrigatória de `doc/produto/RegrasSystema.md` antes do início;
 - código, título, versão, status e datas;
 - responsável orquestrador;
 - objetivo;
@@ -218,7 +218,7 @@ Todo plano obrigatoriamente deve conter:
 
 ### 3.1 Como decidir
 
-Antes de criar um plano novo, verifique em `docs/plan/`:
+Antes de criar um plano novo, verifique em `doc/plan/`:
 
 1. Existe plano com o **mesmo objetivo**?
 2. Existe plano do **mesmo módulo, tela ou feature**?
@@ -260,9 +260,9 @@ Exemplo de histórico:
 
 | Artefato | Quando atualizar | Para quê |
 | --- | --- | --- |
-| `docs/handof/ESTADO-ATUAL.md` | A cada marco relevante, inclusive no meio do dia | Proteção contra queda de energia e perda de contexto |
-| `docs/handof/AAAA-MM-DD - encerramento.md` | No fim do dia | Fechamento formal e retomada no dia seguinte |
-| `docs/handof/AAAA-MM-DD - abertura.md` | No início do dia | Registrar o ponto de partida e o plano do dia |
+| `doc/handof/ESTADO-ATUAL.md` | A cada marco relevante, inclusive no meio do dia | Proteção contra queda de energia e perda de contexto |
+| `doc/handof/AAAA-MM-DD - encerramento.md` | No fim do dia | Fechamento formal e retomada no dia seguinte |
+| `doc/handof/AAAA-MM-DD - abertura.md` | No início do dia | Registrar o ponto de partida e o plano do dia |
 
 > **Observação:** a pasta existente chama-se `handof` (sem o segundo "f"). Mantenha esse nome para não quebrar a convenção do projeto.
 
@@ -274,8 +274,8 @@ Passos:
 
 1. Atualizar todos os checkboxes do plano ativo.
 2. Registrar o que foi concluído e o que ficou pendente.
-3. Criar ou atualizar `docs/handof/AAAA-MM-DD - encerramento.md`.
-4. Atualizar `docs/handof/ESTADO-ATUAL.md` com o snapshot final.
+3. Criar ou atualizar `doc/handof/AAAA-MM-DD - encerramento.md`.
+4. Atualizar `doc/handof/ESTADO-ATUAL.md` com o snapshot final.
 5. Registrar arquivos alterados, estado do Git, riscos e próximo passo exato.
 6. Opcional: commit local via `@devops` (push só se o usuário pedir).
 
@@ -287,7 +287,7 @@ Passos:
 
 1. Ler `ESTADO-ATUAL.md` e o último encerramento.
 2. Ler o plano ativo.
-3. Criar `docs/handof/AAAA-MM-DD - abertura.md` com o ponto de partida e o objetivo do dia.
+3. Criar `doc/handof/AAAA-MM-DD - abertura.md` com o ponto de partida e o objetivo do dia.
 4. Confirmar com o usuário antes de implementar.
 
 ### 4.4 Recuperação após queda de energia
@@ -296,7 +296,7 @@ Gatilho: usuário relata queda de energia, travamento ou perda de contexto.
 
 Procedimento:
 
-1. Abrir `docs/handof/ESTADO-ATUAL.md` (é o retrato mais recente).
+1. Abrir `doc/handof/ESTADO-ATUAL.md` (é o retrato mais recente).
 2. Abrir o plano ativo e conferir os checkboxes.
 3. Verificar o estado real do código com `git status` e `git diff`.
 4. Comparar o que está marcado como feito com o que realmente está no código.
@@ -363,7 +363,7 @@ D:\SalusDev - Admin\
 └── vite.config.ts
 ```
 
-> **Documentação técnica fora de `docs/produto/`:** `docs/produto/` permanece exclusiva para documentos de produto (PRD, `RegrasSystema.md` e este documento). Arquitetura, design, dados, qualidade, devops e segurança vivem nas pastas próprias indicadas acima.
+> **Documentação técnica fora de `doc/produto/`:** `doc/produto/` permanece exclusiva para documentos de produto (PRD, `RegrasSystema.md` e este documento). Arquitetura, design, dados, qualidade, devops e segurança vivem nas pastas próprias indicadas acima.
 
 ### 5.2 Estrutura profissional de pastas e arquivos do sistema (`src/`)
 
@@ -475,7 +475,7 @@ Regras obrigatórias:
 
 | # | Regra |
 | --- | --- |
-| R1 | **Plano antes de executar.** Nenhum trabalho começa sem plano escrito e salvo fisicamente em `docs/plan/` com a nomenclatura correta e aguardando aprovação expressa do usuário. |
+| R1 | **Plano antes de executar.** Nenhum trabalho começa sem plano escrito e salvo fisicamente em `doc/plan/` com a nomenclatura correta e aguardando aprovação expressa do usuário. |
 | R2 | **Reutilizar plano existente.** Se já há plano do assunto, apenas suba a versão e implemente. |
 | R3 | **Numeração sequencial.** `NNNN - slug-curto.md`, com 4 dígitos, sem reutilização e sem renumerar. |
 | R4 | **Handoff no encerramento e na abertura do dia.** |
@@ -503,7 +503,7 @@ Regras obrigatórias:
 
 ### 7.1 Template de plano
 
-Copie para `docs/plan/NNNN - slug-curto.md`:
+Copie para `doc/plan/NNNN - slug-curto.md`:
 
 ```markdown
 # Plano NNNN - Titulo curto
@@ -517,7 +517,7 @@ Copie para `docs/plan/NNNN - slug-curto.md`:
 
 ## Releitura obrigatoria das regras
 
-- [ ] Reler integralmente `docs/produto/RegrasSystema.md` antes de iniciar este plano.
+- [ ] Reler integralmente `doc/produto/RegrasSystema.md` antes de iniciar este plano.
 - **Registro da releitura:** AAAA-MM-DD HH:MM - @agente
 
 ## Objetivo
@@ -613,7 +613,7 @@ O que este plano resolve, em 1 a 3 frases.
 
 ### 7.2 Template de handoff de encerramento
 
-Copie para `docs/handof/AAAA-MM-DD - encerramento.md`:
+Copie para `doc/handof/AAAA-MM-DD - encerramento.md`:
 
 ```markdown
 # Encerramento do Dia - AAAA-MM-DD
@@ -673,7 +673,7 @@ Copie para `docs/handof/AAAA-MM-DD - encerramento.md`:
 
 ### 7.3 Template de estado atual
 
-Copie para `docs/handof/ESTADO-ATUAL.md` (sobrescreva a cada atualização):
+Copie para `doc/handof/ESTADO-ATUAL.md` (sobrescreva a cada atualização):
 
 ```markdown
 # Estado Atual do Trabalho
@@ -712,7 +712,7 @@ Copie para `docs/handof/ESTADO-ATUAL.md` (sobrescreva a cada atualização):
 
 ### 7.4 Template de handoff de abertura
 
-Copie para `docs/handof/AAAA-MM-DD - abertura.md`:
+Copie para `doc/handof/AAAA-MM-DD - abertura.md`:
 
 ```markdown
 # Abertura do Dia - AAAA-MM-DD
@@ -785,8 +785,8 @@ Copie para `docs/handof/AAAA-MM-DD - abertura.md`:
 - [ ] Li este documento?
 - [ ] Li `RegrasSystema.md` neste pedido?
 - [ ] Li o `ESTADO-ATUAL.md` e o último handoff?
-- [ ] Procurei plano existente em `docs/plan/`?
-- [ ] O plano para aprovação do usuário já foi salvo fisicamente em `docs/plan/` antes de qualquer código?
+- [ ] Procurei plano existente em `doc/plan/`?
+- [ ] O plano para aprovação do usuário já foi salvo fisicamente em `doc/plan/` antes de qualquer código?
 - [ ] Sei qual agente deve executar?
 - [ ] O plano está atualizado (versão e status)?
 - [ ] Verifiquei bugs abertos em `docs/bugs/INDEX.md`?
@@ -807,7 +807,7 @@ Copie para `docs/handof/AAAA-MM-DD - abertura.md`:
 
 ## Parte II — Regras do Sistema (obrigatórias)
 
-> **Origem:** espelho resumido e obrigatório de `docs/produto/RegrasSystema.md` (v1.3).
+> **Origem:** espelho resumido e obrigatório de `doc/produto/RegrasSystema.md` (v1.3).
 > A fonte canônica continua sendo `RegrasSystema.md`; ao alterar uma, sincronize a outra.
 > Em caso de conflito, prevalece o texto canônico de `RegrasSystema.md`.
 
@@ -931,11 +931,11 @@ Copie para `docs/handof/AAAA-MM-DD - abertura.md`:
 
 1. Este repositório de protótipos **não usa histórias de usuário detalhadas**; o controle é feito por planos numerados e tarefas com checkboxes.
 2. Cada plano pode representar uma página, uma tela administrativa, um fluxo navegável, uma rodada de ajustes visuais, uma revisão responsiva, uma demonstração para cliente ou uma configuração técnica do repositório.
-3. Nenhuma tela ou alteração relevante começa sem plano registrado em `docs/plan/`.
+3. Nenhuma tela ou alteração relevante começa sem plano registrado em `doc/plan/`.
 
 ### 11.2 Documentação do sistema
 
-1. `docs/produto/` é exclusiva para documentos de produto (PRD, `RegrasSystema.md` e este documento).
+1. `doc/produto/` é exclusiva para documentos de produto (PRD, `RegrasSystema.md` e este documento).
 2. A documentação técnica vive em `docs/arquitetura/`, `docs/design/`, `docs/dados/`, `docs/qualidade/`, `docs/devops/` e `docs/seguranca/`, conforme o Plano 0004.
 3. Toda decisão técnica estrutural (stack, schema, API, integração) deve ser registrada em `docs/arquitetura/`.
 4. O PRD vigente é a fonte única da verdade de produto e deve ser referenciado em todo plano que altere escopo, fluxo ou conteúdo.
@@ -964,6 +964,6 @@ Copie para `docs/handof/AAAA-MM-DD - abertura.md`:
 | 1.1 | 2026-11-05 | Inclusão da Seção 1 com os agentes AIOX, forma de acionamento e matriz de intenção | @aiox-master |
 | 1.2 | 2026-11-05 | Inclusão obrigatória de lista de agentes participantes, sequência de execução e relatórios finais por agente nos planos (R16, Seção 5.4 e Template 13.1) | @aiox-master |
 | 1.3 | 2026-11-05 | Definição de Web App com suporte a PWA e padronização obrigatória de especificações e testes divididos em Desktop `[D]` e Mobile `[M]` (R11 e Seção 8.4) | @aiox-master |
-| 1.4 | 2026-11-05 | Inclusão da leitura obrigatória de `docs/produto/RegrasSystema.md` na abertura de sessão, no checklist e na regra resumida R2 | @aiox-master |
-| 1.5 | 2026-11-05 | Releitura obrigatória de `docs/produto/RegrasSystema.md` em cada novo pedido, com registro no plano, no checklist e na regra R17 | @aiox-master |
+| 1.4 | 2026-11-05 | Inclusão da leitura obrigatória de `doc/produto/RegrasSystema.md` na abertura de sessão, no checklist e na regra resumida R2 | @aiox-master |
+| 1.5 | 2026-11-05 | Releitura obrigatória de `doc/produto/RegrasSystema.md` em cada novo pedido, com registro no plano, no checklist e na regra R17 | @aiox-master |
 | 2.0 | 2026-11-06 | Adaptação integral ao molde mestre de `Regras Desenvolvimento.md`: Parte I (processo) e Parte II (regras de sistema), com seções 0 a 12, templates unificados, regras numeradas R1 a R21 e seção de arquitetura Multi-Repo, preservando o controle por planos e o escopo de protótipo do SalusDev | @aiox-master |

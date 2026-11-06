@@ -5,7 +5,7 @@
 - **Data:** 2026-11-06
 - **Agente:** `@ux-design-expert` (Uma)
 - **Status:** Homologado
-- **Referências:** [RegrasSystema.md](file:///D:/SalusDev%20-%20Admin/docs/produto/RegrasSystema.md) e [ARCHITECTURE.md](file:///D:/SalusDev%20-%20Admin/docs/arquitetura/ARCHITECTURE.md)
+- **Referências:** [RegrasSystema.md](file:///D:/SalusDev%20-%20Admin/doc/produto/RegrasSystema.md) e [ARCHITECTURE.md](file:///D:/SalusDev%20-%20Admin/docs/arquitetura/ARCHITECTURE.md)
 
 ---
 

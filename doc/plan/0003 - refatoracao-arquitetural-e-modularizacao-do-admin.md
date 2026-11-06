@@ -13,8 +13,8 @@ Eliminar o arquivo monolítico `src/App.tsx` (1.091 linhas) e os resíduos de sc
 
 ## Referencias
 
-- PRD v0.4: `docs/produto/PRD-SalusDev-v0.3.md` (Seção 5 - Catálogo Central e Seção 6 - PWA e [D]/[M])
-- Regras de Desenvolvimento: `docs/produto/RegrasDesenvolvimento.md` (R3, R11, R16 e Seção 7/8)
+- PRD v0.4: `doc/produto/PRD-SalusDev-v0.3.md` (Seção 5 - Catálogo Central e Seção 6 - PWA e [D]/[M])
+- Regras de Desenvolvimento: `doc/produto/RegrasDesenvolvimento.md` (R3, R11, R16 e Seção 7/8)
 - Código fonte atual: `src/App.tsx` e `vite.config.ts`
 
 ## Agentes participantes
@@ -29,7 +29,7 @@ Eliminar o arquivo monolítico `src/App.tsx` (1.091 linhas) e os resíduos de sc
 ## Sequência de execução e responsabilidades
 
 1. **`@aiox-master` (Etapa 1 - Governança):**
-   - O que foi realizado: Abertura e registro do Plano 0003 em `docs/plan/`, atualização do índice e do estado diário.
+   - O que foi realizado: Abertura e registro do Plano 0003 em `doc/plan/`, atualização do índice e do estado diário.
    - Critério de passagem: Concluído.
 2. **`@architect` (Etapa 2 - Limpeza e Contratos):**
    - O que foi realizado: Higienização de `vite.config.ts` (reduzido de 536 linhas para 24 linhas limpas com React 19 e Tailwind v4), exclusão da pasta `.figma/` e desenho das fronteiras de pastas (`components/`, `features/`, `shared/`).

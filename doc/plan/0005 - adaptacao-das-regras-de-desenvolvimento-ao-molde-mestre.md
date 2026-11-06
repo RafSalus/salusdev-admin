@@ -9,18 +9,18 @@
 
 ## Releitura obrigatoria das regras
 
-- [x] Reler integralmente `docs/produto/RegrasSystema.md` antes de iniciar este plano.
+- [x] Reler integralmente `doc/produto/RegrasSystema.md` antes de iniciar este plano.
 - **Registro da releitura:** 2026-11-06 12:20 - @aiox-master
 
 ## Objetivo
 
-Adaptar `docs/produto/RegrasDesenvolvimento.md` ao molde do documento mestre `Regras Desenvolvimento.md` (Parte I de processo e Parte II de sistema), preservando o sentido, o escopo e as regras específicas do repositorio `salusdev-admin`.
+Adaptar `doc/produto/RegrasDesenvolvimento.md` ao molde do documento mestre `Regras Desenvolvimento.md` (Parte I de processo e Parte II de sistema), preservando o sentido, o escopo e as regras específicas do repositorio `salusdev-admin`.
 
 ## Referencias
 
 - Molde de origem: `Regras Desenvolvimento.md` (raiz do repositorio)
-- Fonte canonica de sistema: `docs/produto/RegrasSystema.md` (v1.3)
-- PRD: `docs/produto/PRD-SalusDev-v0.3.md` (v0.4 homologado)
+- Fonte canonica de sistema: `doc/produto/RegrasSystema.md` (v1.3)
+- PRD: `doc/produto/PRD-SalusDev-v0.3.md` (v0.4 homologado)
 
 ## Agentes participantes
 
@@ -37,7 +37,7 @@ Adaptar `docs/produto/RegrasDesenvolvimento.md` ao molde do documento mestre `Re
    - O que e esperado: reescrever `RegrasDesenvolvimento.md` no molde mestre, com o sentido do projeto SalusDev.
    - Criterio de passagem: documento completo, sem contradicao com `RegrasSystema.md` e sem o caractere `&` em texto visivel.
 3. **`@aiox-master` (Etapa 3 - Registro e fechamento):**
-   - O que e esperado: registrar este plano, atualizar `docs/plan/README.md`, `ESTADO-ATUAL.md` e o handoff de abertura do dia.
+   - O que e esperado: registrar este plano, atualizar `doc/plan/README.md`, `ESTADO-ATUAL.md` e o handoff de abertura do dia.
    - Criterio de passagem: governanca atualizada.
 
 ## Escopo
@@ -51,7 +51,7 @@ Adaptar `docs/produto/RegrasDesenvolvimento.md` ao molde do documento mestre `Re
 ## Fora de escopo
 
 - Alteracao de codigo-fonte em `src/`.
-- Alteracao de conteudo de `docs/produto/RegrasSystema.md`.
+- Alteracao de conteudo de `doc/produto/RegrasSystema.md`.
 - Redacao dos documentos tecnicos do Plano 0004.
 
 ## Premissas e dependencias
@@ -68,11 +68,11 @@ Adaptar `docs/produto/RegrasDesenvolvimento.md` ao molde do documento mestre `Re
 
 ## Rotas e arquivos afetados
 
-- `docs/produto/RegrasDesenvolvimento.md`
-- `docs/plan/0005 - adaptacao-das-regras-de-desenvolvimento-ao-molde-mestre.md`
-- `docs/plan/README.md`
-- `docs/handof/ESTADO-ATUAL.md`
-- `docs/handof/2026-11-06 - abertura.md`
+- `doc/produto/RegrasDesenvolvimento.md`
+- `doc/plan/0005 - adaptacao-das-regras-de-desenvolvimento-ao-molde-mestre.md`
+- `doc/plan/README.md`
+- `doc/handof/ESTADO-ATUAL.md`
+- `doc/handof/2026-11-06 - abertura.md`
 
 ## Criterios de aceite
 

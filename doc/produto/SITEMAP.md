@@ -5,7 +5,7 @@
 - **Data:** 2026-11-06
 - **Agente:** `@pm` (Morgan)
 - **Status:** Homologado
-- **Referência:** [PRD-SalusDev-v0.3.md](file:///D:/SalusDev%20-%20Admin/docs/produto/PRD-SalusDev-v0.3.md) (v0.4) e [RegrasSystema.md](file:///D:/SalusDev%20-%20Admin/docs/produto/RegrasSystema.md)
+- **Referência:** [PRD-SalusDev-v0.3.md](file:///D:/SalusDev%20-%20Admin/doc/produto/PRD-SalusDev-v0.3.md) (v0.4) e [RegrasSystema.md](file:///D:/SalusDev%20-%20Admin/doc/produto/RegrasSystema.md)
 
 ---
 
