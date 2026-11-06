@@ -118,7 +118,7 @@ export function MobileMenuDrawer({
         </div>
 
         {/* Conteúdo rolável do menu (rola livremente sem disparar fechamento) */}
-        <div className="flex-1 overflow-y-auto px-6 py-5 space-y-6">
+        <div className="flex-1 overflow-y-auto px-6 py-5 pb-12 pb-safe space-y-6">
           {/* Grupos de Navegação com ícones Lucide */}
           <nav aria-label="Navegação móvel completa" className="space-y-6">
             {navGroups.map((group) => (

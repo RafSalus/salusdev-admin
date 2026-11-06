@@ -29,54 +29,56 @@ export function MobileTabBar({
   return (
     <nav
       aria-label="Navegação inferior mobile"
-      className="fixed bottom-0 inset-x-0 z-40 flex h-[68px] items-center justify-around border-t border-[#163e32]/8 bg-white/95 px-3 pb-safe backdrop-blur-xl lg:hidden shadow-[0_-4px_20px_rgba(20,40,33,0.04)]"
+      className="fixed bottom-0 inset-x-0 z-40 border-t border-[#163e32]/8 bg-white/95 pb-safe backdrop-blur-xl lg:hidden shadow-[0_-4px_20px_rgba(20,40,33,0.04)]"
     >
-      {tabs.map((tab) => {
-        const isActive =
-          !tab.isAction &&
-          (currentSection === tab.key ||
-            (tab.key === "Dashboard" && currentSection === "Início"))
-        const IconComponent = tab.icon
+      <div className="flex h-16 w-full items-center justify-around px-2">
+        {tabs.map((tab) => {
+          const isActive =
+            !tab.isAction &&
+            (currentSection === tab.key ||
+              (tab.key === "Dashboard" && currentSection === "Início"))
+          const IconComponent = tab.icon
 
-        return (
-          <button
-            key={tab.key}
-            type="button"
-            aria-current={isActive ? "page" : undefined}
-            onClick={() => {
-              if (tab.isAction) {
-                onOpenMenu()
-              } else {
-                onSelectSection(tab.key)
-              }
-            }}
-            className={`flex min-h-[50px] min-w-[54px] flex-1 flex-col items-center justify-center gap-1 rounded-2xl py-1 transition-all active:scale-95 ${
-              isActive
-                ? "text-[#163e32]"
-                : "text-[#7a8a83] hover:text-[#163e32]"
-            }`}
-          >
-            <span
-              className={`grid h-7 w-7 place-items-center transition-transform ${
-                isActive ? "scale-110" : ""
+          return (
+            <button
+              key={tab.key}
+              type="button"
+              aria-current={isActive ? "page" : undefined}
+              onClick={() => {
+                if (tab.isAction) {
+                  onOpenMenu()
+                } else {
+                  onSelectSection(tab.key)
+                }
+              }}
+              className={`flex h-[52px] min-w-[54px] flex-1 flex-col items-center justify-center gap-0.5 rounded-2xl py-1 transition-all active:scale-95 ${
+                isActive
+                  ? "text-[#163e32]"
+                  : "text-[#7a8a83] hover:text-[#163e32]"
               }`}
             >
-              <IconComponent
-                size={22}
-                strokeWidth={isActive ? 2.4 : 2}
-                className={isActive ? "text-[#163e32]" : "text-[#7a8a83]"}
-              />
-            </span>
-            <span
-              className={`text-[10px] tracking-tight ${
-                isActive ? "font-black text-[#163e32]" : "font-bold text-[#7a8a83]"
-              }`}
-            >
-              {tab.label}
-            </span>
-          </button>
-        )
-      })}
+              <span
+                className={`grid h-7 w-7 place-items-center transition-transform ${
+                  isActive ? "scale-110" : ""
+                }`}
+              >
+                <IconComponent
+                  size={21}
+                  strokeWidth={isActive ? 2.4 : 2}
+                  className={isActive ? "text-[#163e32]" : "text-[#7a8a83]"}
+                />
+              </span>
+              <span
+                className={`text-[10px] leading-tight tracking-tight ${
+                  isActive ? "font-black text-[#163e32]" : "font-bold text-[#7a8a83]"
+                }`}
+              >
+                {tab.label}
+              </span>
+            </button>
+          )
+        })}
+      </div>
     </nav>
   )
 }

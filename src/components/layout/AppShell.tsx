@@ -51,7 +51,7 @@ export function AppShell({
           userInitials={userInitials}
           onLogout={onLogout}
         />
-        <main className="mx-auto max-w-[1400px] px-4 py-6 sm:px-7 sm:py-9 pb-24 lg:pb-9">
+        <main className="mx-auto max-w-[1400px] px-4 py-6 sm:px-7 sm:py-9 pb-32 lg:pb-9">
           {children}
         </main>
       </div>

@@ -1,13 +1,18 @@
 # Estado Atual do Trabalho
 
-- **Atualizado em:** 2026-11-06 15:15
-- **Agente:** @aiox-master (Orion)
-- **Plano ativo:** Nenhum (Plano 0009 concluído com sucesso)
+- **Atualizado em:** 2026-11-06 15:28
+- **Agente:** @dev (Dex) / @aiox-master (Orion)
+- **Plano ativo:** Nenhum (Plano 0009 e BUG-0002 concluídos)
 - **Status:** Disponível / Aguardando direcionamento de Rafael
 - **Branch:** main
 
 ## Último marco concluído
 
+- **Resolução do BUG-0002 (Ícones da Tab Bar vazando no Safari iOS):**
+  - Desacoplamento da altura rígida `h-[68px]` do container com safe area.
+  - Implementação de linha interna flexível `h-16` (`64px`) com botões de `h-[52px]` e ícones de `21px`, com folga superior e inferior de `6px`.
+  - Suporte legado `constant(safe-area-inset-bottom)` e moderno `env(safe-area-inset-bottom, 0px)` em `.pb-safe`.
+  - Margem inferior de segurança ampliada (`pb-32`) em `AppShell.tsx` e `MobileDashboardHub.tsx`.
 - **Conclusão do Plano 0009 (Redesign do Dashboard Mobile, Header e Menus):**
   - **Redesign Mobile Hub:** Saudação compacta, KPIs 2x2, status card de sistemas com latências, e grade compacta de 9 atalhos rápidos com tiles de 54 px e ícones Lucide (~22 px).
   - **Menu Hamburguer Mobile:** Removido card de usuário e botão de logout. Isolados listeners de toque (`onTouchStart/Move/End`) exclusivamente na alça superior com `touch-action: none`, resolvendo o `BUG-0001` (scroll livre do conteúdo sem fechar acidentalmente o menu).

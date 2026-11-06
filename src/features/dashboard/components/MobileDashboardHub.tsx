@@ -33,7 +33,7 @@ export function MobileDashboardHub({
   const priorityNodes = initialSystemNodes.slice(0, 3)
 
   return (
-    <div className="mx-auto max-w-[420px] pb-28 pt-1 lg:hidden">
+    <div className="mx-auto max-w-[420px] pb-32 pt-1 lg:hidden">
       {/* 1. Saudação Compacta */}
       <header className="mb-5 px-1">
         <h1 className="text-[22px] font-black tracking-tight text-[#142821]">
