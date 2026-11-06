@@ -15,11 +15,11 @@ export default defineConfig({
     },
   },
   server: {
-    host: "0.0.0.0",
+    host: true,
     port: parseInt(process.env.PORT || "8443"),
   },
   preview: {
-    host: "0.0.0.0",
+    host: true,
     port: parseInt(process.env.PORT || "8443"),
   },
 })
