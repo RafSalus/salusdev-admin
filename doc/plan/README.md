@@ -17,4 +17,5 @@ Pasta de planos numerados do repositório conforme definido em `doc/produto/Regr
 | 0005 | [Adaptação das Regras de Desenvolvimento ao Molde Mestre](file:///D:/SalusDev%20-%20Admin/doc/plan/0005%20-%20adaptacao-das-regras-de-desenvolvimento-ao-molde-mestre.md) | Concluído | 1.0 | @aiox-master |
 | 0006 | [Tela de Login com MFA e Roteamento de Sessão](file:///D:/SalusDev%20-%20Admin/doc/plan/0006%20-%20tela-de-login-com-mfa-e-roteamento-de-sessao.md) | Concluído | 1.0 | @aiox-master |
 | 0007 | [Dashboard Executivo e Central de Produtos](file:///D:/SalusDev%20-%20Admin/doc/plan/0007%20-%20dashboard-executivo-e-central-de-produtos.md) | Concluído | 1.1 | @aiox-master |
-| 0008 | [Configuração, Manifesto e Iconografia Oficial do PWA](file:///D:/SalusDev%20-%20Admin/doc/plan/0008%20-%20configuracao-e-iconografia-oficial-do-pwa.md) | Proposto para Aprovação | 1.0 | @aiox-master |
+| 0008 | [Configuração, Manifesto e Iconografia Oficial do PWA](file:///D:/SalusDev%20-%20Admin/doc/plan/0008%20-%20configuracao-e-iconografia-oficial-do-pwa.md) | Concluído | 1.0 | @aiox-master |
+| 0009 | [Redesign do Dashboard Mobile e Ajustes de Header e Menu](file:///D:/SalusDev%20-%20Admin/doc/plan/0009%20-%20redesign-dashboard-mobile.md) | Rascunho | 1.0 | @aiox-master |
