@@ -6,6 +6,7 @@ import { useAuth } from "@/features/auth/hooks/useAuth"
 import { LoginScreen } from "@/features/auth/LoginScreen"
 import { useProducts } from "@/features/products/hooks/useProducts"
 import { ProductManagementScreen } from "@/features/product-management/ProductManagementScreen"
+import { KartControlApp } from "@/features/kart-control/KartControlApp"
 import type { Product } from "@/features/products/types/product.types"
 import { Icon } from "@/components/ui/Icon"
 
@@ -14,10 +15,20 @@ export default function App() {
   const productsState = useProducts()
   const [currentSection, setCurrentSection] = useState<string>("Dashboard")
   const [managingProduct, setManagingProduct] = useState<Product | null>(null)
+  const [enteringKartControl, setEnteringKartControl] = useState<boolean>(false)
 
   // Se não estiver autenticado (ou estiver aguardando o segundo fator MFA), exibe o portal de Login
   if (!auth.isAuthenticated) {
     return <LoginScreen auth={auth} />
+  }
+
+  // Se estiver navegando no painel operacional do KartControl (Plano 0011)
+  if (enteringKartControl) {
+    return (
+      <KartControlApp
+        onExit={() => setEnteringKartControl(false)}
+      />
+    )
   }
 
   function handleSelectSection(section: string) {
@@ -61,7 +72,7 @@ export default function App() {
             setManagingProduct((prev) => (prev ? { ...prev, ...patch } : null))
           }}
           onEnterAdmin={() => {
-            // Futuro: navegação integrada para o painel operacional do produto (Plano 0011)
+            setEnteringKartControl(true)
           }}
         />
       ) : currentSection === "Dashboard" ? (

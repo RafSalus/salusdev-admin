@@ -135,3 +135,23 @@ Em total conformidade com a regra `R11` e `GER-03`, toda tela do ecossistema Sal
   - Layout com índice lateral fixo para navegação rápida entre os capítulos da política.
 - **Mobile `[M]`:**
   - Navegação em fluxo contínuo com botão "Voltar ao Topo" fixo e tipografia otimizada para leitura móvel.
+
+---
+
+## 4. Inventário de Telas - Produto KartControl (`kart-control`)
+
+### 4.1 Tela KART-01: Painel Administrativo do KartControl (Início)
+
+- **Objetivo:** Painel operacional centralizado de uma unidade de kart (ex: Kart Apucarana), com indicadores gerais de pilotos, inscrições, últimos resultados, eventos e lista recente de pilotos inscritos.
+- **Referência Visual Canônica:**
+  - Desktop `[D]`: `docs/design/img/kartcontrol/Kartcontrol - Inicio - D.png`
+- **Desktop `[D]`:**
+  - **Sidebar própria:** Marca `< / > SalusDev CENTRO DE COMANDO` (com retorno ao Centro de Comando), card de unidade com squarcle `KC` (`#b86a2e`), navegação administrativa (`Início`, `Pilotos`, `Calendário`, `Resultados`, `Mesclar`) e rodapé do operador com avatar `A` e menu de encerramento/retorno.
+  - **Topbar:** Breadcrumb `KartControl > Início`, seletor de unidade operacional (`Kart Apucarana`), botão `Voltar ao Site` (com ícone externo) e avatar circular `A`.
+  - **Métricas Operacionais:** 4 KPIs (`Pilotos: 57`, `Inscritos (próxima): 11`, `Último resultado: ETAPA - 10 - OUTUBRO` e `Eventos: 20`).
+  - **Lista de Pilotos:** Card amplo `Últimos pilotos cadastrados` com 10 pilotos reais do protótipo, dados de e-mail e telefone, badges de status (`PENDENTE` em âmbar e `ATIVO` em verde) e botão de edição de cadastro com modal interativo.
+- **Mobile `[M]`:**
+  - Topbar com botão hambúrguer que abre a sidebar em gaveta lateral (drawer).
+  - KPIs em grade 2x2 responsiva.
+  - Lista de pilotos em formato de cartões responsivos fluidos.
+  - Alvos de toque `>= 44 px` e suporte total a áreas seguras (`pt-safe` e `pb-32`).

@@ -20,5 +20,5 @@ Pasta de planos numerados do repositório conforme definido em `doc/produto/Regr
 | 0008 | [Configuração, Manifesto e Iconografia Oficial do PWA](file:///D:/SalusDev%20-%20Admin/doc/plan/0008%20-%20configuracao-e-iconografia-oficial-do-pwa.md) | Concluído | 1.0 | @aiox-master |
 | 0009 | [Redesign do Dashboard Mobile e Ajustes de Header e Menu](file:///D:/SalusDev%20-%20Admin/doc/plan/0009%20-%20redesign-dashboard-mobile.md) | Concluído | 1.1 | @aiox-master |
 | 0010 | [Gestão do Produto KartControl](file:///D:/SalusDev%20-%20Admin/doc/plan/0010%20-%20governanca-produto-kart-control.md) | Concluído | 2.2 | @aiox-master |
-| 0011 | [Painel Administrativo do KartControl (Início)](file:///D:/SalusDev%20-%20Admin/doc/plan/0011%20-%20kart-control-painel-inicio.md) | Adiado | 1.1 | @aiox-master |
+| 0011 | [Painel Administrativo do KartControl (Início)](file:///D:/SalusDev%20-%20Admin/doc/plan/0011%20-%20kart-control-painel-inicio.md) | Concluído | 2.1 | @aiox-master |
 | 0012 | [Arquitetura do Plano de Controle SalusDev](file:///D:/SalusDev%20-%20Admin/doc/plan/0012%20-%20arquitetura-plano-controle-salusdev.md) | Rascunho | 1.0 | @aiox-master |

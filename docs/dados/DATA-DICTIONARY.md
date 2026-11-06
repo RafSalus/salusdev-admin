@@ -1,4 +1,4 @@
-﻿# Dicionário de Dados e Modelagem de Persistência - Ecossistema SalusDev
+# Dicionário de Dados e Modelagem de Persistência - Ecossistema SalusDev
 
 - **Documento:** Modelagem Conceitual, Lógica e Dicionário de Dados
 - **Versão:** 1.0
@@ -169,3 +169,39 @@ Para produtos como o `salus-oficina`, são aplicadas as seguintes diretrizes de 
 2. **Obrigatoriedade de `tenant_id` (`ACL-06`):** Toda tabela operacional em bancos multi-tenant possui a coluna `tenant_id UUID NOT NULL` indexada.
 3. **Políticas de RLS (Row Level Security):** Todas as tabelas operacionais possuem políticas RLS ativadas, garantindo que um cliente só possa consultar e modificar registros associados ao seu próprio `tenant_id`.
 4. **Sem Chaves `service_role` no Frontend (`ACL-08`):** Toda operação no navegador utiliza exclusivamente a chave anônima pública (`anon-key`) com contexto de segurança autenticado.
+
+---
+
+## 5. Entidades e Modelos do KartControl (Painel Administrativo Satélite)
+
+Em conformidade com o Plano 0011 (`KART-01`), as seguintes entidades modelam os dados operacionais do produto satélite KartControl:
+
+### 5.1 Entidade `kart_pilots` (Pilotos do Kartódromo)
+
+| Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
+|---|---|---|---|---|
+| `id` | `INTEGER` | Não | Chave Primária | Identificador único numérico do piloto |
+| `name` | `VARCHAR(128)` | Não | Não vazio | Nome completo de exibição do piloto |
+| `initials` | `VARCHAR(4)` | Não | 1 a 2 caracteres | Iniciais para renderização do avatar visual |
+| `email` | `VARCHAR(255)` | Não | Formato de e-mail | E-mail de cadastro do piloto |
+| `phone` | `VARCHAR(20)` | Não | Padrão celular BR | Telefone formatado com DDD |
+| `status` | `VARCHAR(16)` | Não | Check Enum | 'Pendente' (âmbar) ou 'Ativo' (verde) |
+| `registered_at` | `VARCHAR(16)` | Não | Formato DD/MM/AAAA | Data de realização do cadastro |
+| `color` | `VARCHAR(7)` | Não | Hexadecimal | Cor de fundo do avatar de identificação |
+
+### 5.2 Estrutura `kart_dashboard_metrics` (Agregados Operacionais do Dashboard)
+
+| Atributo | Tipo de Dado | Descrição Semântica |
+|---|---|---|
+| `pilots` | `INTEGER` | Total geral de pilotos cadastrados na unidade |
+| `next_registrations` | `INTEGER` | Quantidade de pilotos pré-inscritos na próxima etapa |
+| `last_result` | `VARCHAR(64)` | Título identificador do último evento/etapa realizada |
+| `events` | `INTEGER` | Contagem total de eventos já realizados na temporada |
+
+### 5.3 Entidade `kart_units` (Unidades/Kartódromos Vinculados)
+
+| Coluna | Tipo de Dado | Restrições | Descrição Semântica |
+|---|---|---|---|
+| `id` | `VARCHAR(32)` | Chave Primária | Identificador slug da unidade (ex.: `kart-apucarana`) |
+| `name` | `VARCHAR(128)` | Não vazio | Nome da praça/kartódromo (ex.: 'Kart Apucarana') |
+
