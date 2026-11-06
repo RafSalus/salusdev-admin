@@ -7,7 +7,12 @@ import { ProductPanel } from "./components/ProductPanel"
 import { ProductModal } from "./components/ProductModal"
 import { useProducts } from "./hooks/useProducts"
 
-export function ProductsModule() {
+export interface ProductsModuleProps {
+  productsState?: ReturnType<typeof useProducts>
+}
+
+export function ProductsModule({ productsState: externalState }: ProductsModuleProps = {}) {
+  const localState = useProducts()
   const {
     products,
     filteredProducts,
@@ -24,7 +29,7 @@ export function ProductsModule() {
     openNewProduct,
     openEditProduct,
     saveProduct,
-  } = useProducts()
+  } = externalState || localState
 
   return (
     <div>

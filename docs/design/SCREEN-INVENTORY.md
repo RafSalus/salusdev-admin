@@ -37,22 +37,42 @@ Em total conformidade com a regra `R11` e `GER-03`, toda tela do ecossistema Sal
   - O campo de código de 6 dígitos ativa automaticamente o teclado numérico virtual (`inputMode="numeric"`).
   - Alvos de toque `>= 44 px`.
 
-### 2.2 Tela ADM-02: Catálogo Central de Produtos e Sistemas (`/produtos`)
+### 2.2 Tela ADM-02: Dashboard Executivo e Hub Mobile (`/dashboard` ou `/`)
+
+- **Objetivo:** Ponto de entrada operacional pós-autenticação. Prover visão executiva consolidada no desktop e atalhos de alta produtividade com um toque no mobile.
+- **Referência Visual Canônica:**
+  - Desktop `[D]`: `docs/design/img/Dashboard - D.png`
+  - Mobile `[M]`: `docs/design/img/Dashboard - M.png`
+- **Mobile `[M]` (Hub Operacional):**
+  - **Topo:** Barra superior com logotipo `< /> SalusDev` (badge menta claro `#eef7f2`), sino de notificações com indicador de não lidas e avatar circular `RA` (`#eaf3ee`).
+  - **Saudação:** Título de alto impacto *"Olá, Rafael"* e subtítulo *"Acesse rapidamente as principais áreas do seu portfólio."*.
+  - **Atalhos Rápidos em Squircles:** Grade de 3 colunas com cartões brancos arredondados (`rounded-[24px]`), elevação suave, feedback ao toque e ícones coloridos:
+    - **Principal:** Dashboard (verde `#23634e`), Produtos (`</>` âmbar `#c18442`), Atendimentos (check azul `#3d7ca8`);
+    - **Comercial:** Clientes (pessoas roxo `#7d5ba6`), Leads (`+` verde `#2f8064`), Contratos (sino âmbar `#c18442`);
+    - **Operacional:** Assinaturas (check azul `#3d7ca8`), Pagamentos (cartão roxo `#7d5ba6`), Configurações (grid verde `#23634e`).
+  - **Barra de Navegação Inferior (Mobile Tab Bar):** Fixa no rodapé (`lg:hidden`), altura 64px, com 5 ações essenciais: *Início*, *Leads*, *Produtos*, *Clientes* e *Menu* (abertura do drawer lateral). Alvos de toque `>= 48 px`.
+- **Desktop `[D]` (Visão Executiva):**
+  - **Sidebar:** Fixa à esquerda (252px) com navegação agrupada em *Visão geral* e *Gestão*, links de *Configurações* e *Ajuda*, e perfil administrativo.
+  - **Header:** Breadcrumbs, indicador de ambiente (*Ambiente de protótipo*), sino de notificações e botão de encerramento seguro de sessão.
+  - **Métricas Operacionais:** 4 cards analíticos (Total de produtos, Em construção, Sistemas ativos e Clientes vinculados) com selo *"Atualizado agora"*.
+  - **Painel de Monitoramento de Sistemas:** Status contínuo (Online, Piloto, Operacional) com latência, uptime e tipo de serviço para cada aplicação.
+  - **Atividades Recentes e Atalhos de Operação:** Acesso imediato a cadastro de produtos, clientes, funil de leads e configurações.
+
+### 2.3 Tela ADM-03: Catálogo Central de Produtos e Sistemas (`/produtos`)
 
 - **Objetivo:** Visualizar, filtrar, pesquisar e gerenciar todas as aplicações do ecossistema SalusDev.
+- **Referência Visual Canônica:** `docs/design/img/Dashboard - D.png`
 - **Desktop `[D]`:**
-  - Sidebar fixa à esquerda com ícones e rótulos completos.
-  - Header com barra de pesquisa rápida, filtros por status em abas e botão primário "Novo Produto".
-  - Seção de métricas (Cards de estatísticas com total de produtos, ativos, pilotos e clientes atendidos) em grade de 4 colunas.
-  - Grid de produtos exibido em 3 ou 4 colunas com cartões ricos contendo tag de status, barra de progresso, botões de ação e links externos.
-  - Painel lateral deslizante (Drawer) para exibição detalhada de metadados ao selecionar um item.
+  - Sidebar fixa à esquerda com logotipo oficial `< /> SalusDev CENTRO DE COMANDO`.
+  - Header com tag superior `PORTFÓLIO DE SISTEMAS`, título `Produtos`, descrição e botão `+ Novo produto`.
+  - Cards de estatísticas com total de produtos (05), em desenvolvimento (01), ativos (01) e clientes vinculados (04).
+  - Barra de pesquisa integrada com abas de filtro por status (*Todos*, *Planejamento*, *Desenvolvimento*, *Piloto*, *Ativo*).
+  - Contador de itens encontrados (*5 produtos encontrados*) e indicador *Visualização em grade*.
+  - Grid de produtos tricolunar (`lg:grid-cols-3`) com cartões contendo selo colorido de iniciais (SD, SO, FP, KC, SC), descrição, barra de progresso com porcentagem, tag de status e contagem de clientes.
+  - Rodapé legal com aviso de dados fictícios de protótipo.
 - **Mobile `[M]`:**
-  - Sidebar oculta por padrão, acessível via botão de menu hambúrguer no topo (alvo de toque de 48x48px).
-  - Métricas dispostas em carrossel horizontal de rolagem suave ou cartões empilhados compactos.
-  - Lista de produtos em coluna única (cards verticais com largura total).
-  - Modal em tela cheia (Fullscreen Drawer) para exibição de detalhes e formulários de edição.
-
-### 2.3 Tela ADM-03: Gestão de Clientes e Assinaturas (`/clientes`)
+  - Acessível diretamente pelo squircle *Produtos* ou pela barra inferior *Produtos*.
+  - Lista de produtos adaptada com campos de toque expandidos e barra inferior persistente.
 
 - **Objetivo:** Consultar histórico de contratação, produtos ativos por cliente e status de atendimento.
 - **Desktop `[D]`:**

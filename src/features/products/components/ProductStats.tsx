@@ -38,27 +38,27 @@ export function ProductStats({ products }: ProductStatsProps) {
   ]
 
   return (
-    <section className="mt-8 grid grid-cols-2 gap-3 xl:grid-cols-4">
+    <section className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
       {stats.map((stat) => (
         <article
           key={stat.label}
-          className="rounded-2xl border border-[#173e32]/7 bg-white p-4 sm:p-5"
+          className="rounded-2xl border border-[#173e32]/8 bg-white p-4 sm:p-5 shadow-xs"
         >
           <div className="flex items-start justify-between">
             <span className={`stat-icon stat-icon--${stat.tone}`}>
               <Icon name={stat.icon} size={18} />
             </span>
-            <span className="hidden text-[8px] font-bold text-[#9ca7a2] sm:inline">
+            <span className="hidden text-[9px] font-bold text-[#9ca7a2] sm:inline">
               Atualizado agora
             </span>
           </div>
-          <p className="mt-5 text-[24px] font-extrabold tracking-[-.05em] text-[#18372c] sm:text-[28px]">
+          <p className="mt-4 text-[26px] font-extrabold tracking-[-.04em] text-[#18372c] sm:text-[30px]">
             {stat.value.toString().padStart(2, "0")}
           </p>
-          <p className="mt-1 text-[10px] font-extrabold text-[#425b51]">
+          <p className="mt-1 text-[11px] font-extrabold text-[#324f44]">
             {stat.label}
           </p>
-          <p className="mt-1 hidden text-[8px] font-semibold text-[#9aa49f] sm:block">
+          <p className="mt-0.5 hidden text-[9px] font-semibold text-[#8a9690] sm:block">
             {stat.detail}
           </p>
         </article>
