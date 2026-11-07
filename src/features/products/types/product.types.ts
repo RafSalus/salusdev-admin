@@ -44,16 +44,12 @@ export interface Product {
   color: string
   appUrl?: string
   repoUrl?: string
-  // Campos de Gestão Técnica e Acessos (ADM-04)
+  // Campos de Governança Técnica (ADM-04)
   repositoryUrl?: string
   databaseName?: string
   webUrl?: string
-  adminConfigured?: boolean
-  adminPanelConfigured?: boolean
   adminPanelUrl?: string
-  adminEmail?: string
-  adminPasswordMasked?: string
-  // Governança de Produto (Plano 0012)
+  // Governança de Produto (Plano 0012 e 0013)
   admins?: ProductAdmin[]
   health?: ProductHealth
   auditLogs?: ProductAuditLog[]

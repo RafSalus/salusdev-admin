@@ -62,11 +62,7 @@ export const initialProducts: Product[] = [
     repositoryUrl: "github.com/salusdev/kart-control",
     databaseName: "Não informado",
     webUrl: "kart.salusdev.com",
-    adminConfigured: false,
-    adminPanelConfigured: false,
     adminPanelUrl: "Não configurado",
-    adminEmail: "Não informado",
-    adminPasswordMasked: "•••••••••••••••",
     admins: [
       {
         id: "adm-01",
@@ -98,8 +94,8 @@ export const initialProducts: Product[] = [
       {
         id: "aud-01",
         actor: "Rafael Amaral",
-        action: "Atualizou credencial técnica",
-        target: "Senha Administrativa",
+        action: "Atualizou parâmetro de ambiente",
+        target: "Configurações de Rede",
         timestamp: "Hoje, 17:12",
       },
       {

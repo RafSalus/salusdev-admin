@@ -22,3 +22,4 @@ Pasta de planos numerados do repositório conforme definido em `doc/produto/Regr
 | 0010 | [Gestão do Produto KartControl](file:///D:/SalusDev%20-%20Admin/doc/plan/0010%20-%20governanca-produto-kart-control.md) | Concluído | 2.2 | @aiox-master |
 | 0011 | [Painel Administrativo do KartControl (Início)](file:///D:/SalusDev%20-%20Admin/doc/plan/0011%20-%20kart-control-painel-inicio.md) | Concluído | 2.1 | @aiox-master |
 | 0012 | [Arquitetura do Plano de Controle SalusDev](file:///D:/SalusDev%20-%20Admin/doc/plan/0012%20-%20arquitetura-plano-controle-salusdev.md) | Concluído | 1.2 | @aiox-master |
+| 0013 | [Correção da Visão SalusDev e Separação do KartControl](file:///D:/SalusDev%20-%20Admin/doc/plan/0013%20-%20correcao-visao-salusdev-governanca.md) | Concluído | 1.1 | @aiox-master |

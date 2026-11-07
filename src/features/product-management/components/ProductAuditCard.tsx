@@ -10,8 +10,8 @@ export function ProductAuditCard({
     {
       id: "aud-01",
       actor: "Rafael Amaral",
-      action: "Atualizou credencial técnica",
-      target: "Senha Administrativa",
+      action: "Atualizou parâmetro de ambiente",
+      target: "Configurações de Rede",
       timestamp: "Hoje, 17:12",
     },
     {

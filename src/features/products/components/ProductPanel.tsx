@@ -162,7 +162,7 @@ export function ProductPanel({
               onClick={onOpenManagement}
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#173e32] px-5 py-3.5 text-[11px] font-extrabold text-white hover:bg-[#235343] transition shadow-xs"
             >
-              Acessar gestão do produto <Icon name="arrow" size={16} />
+              Abrir governança <Icon name="arrow" size={16} />
             </button>
           )}
           <button

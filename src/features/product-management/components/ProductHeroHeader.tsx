@@ -35,7 +35,7 @@ export function ProductHeroHeader({
 
           <div className="min-w-0 flex-1">
             <p className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#718279]">
-              GESTÃO DO PRODUTO · {category}
+              GOVERNANÇA DO PRODUTO · {category}
             </p>
             <h1 className="mt-1 text-2xl sm:text-3xl font-black tracking-tight text-[#142821]">
               {name}

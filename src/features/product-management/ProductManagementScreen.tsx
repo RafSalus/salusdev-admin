@@ -3,11 +3,9 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react"
 import type { Product, ProductAdmin } from "@/features/products/types/product.types"
 import { ProductHeroHeader } from "./components/ProductHeroHeader"
 import { ProductDemoBanner } from "./components/ProductDemoBanner"
-import { ProductAdminCard } from "./components/ProductAdminCard"
-import { ProductTechnicalInfoCard } from "./components/ProductTechnicalInfoCard"
-import { ProductAccessCard } from "./components/ProductAccessCard"
-import { ProductChangePasswordCard } from "./components/ProductChangePasswordCard"
+import { ProductAdminPanelCard } from "./components/ProductAdminPanelCard"
 import { ProductSubscriptionsCard } from "./components/ProductSubscriptionsCard"
+import { ProductTechnicalInfoCard } from "./components/ProductTechnicalInfoCard"
 import { ProductAdminsCard } from "./components/ProductAdminsCard"
 import { ProductHealthCard } from "./components/ProductHealthCard"
 import { ProductAuditCard } from "./components/ProductAuditCard"
@@ -17,7 +15,6 @@ export interface ProductManagementScreenProps {
   product: Product
   onBackToPortfolio: () => void
   onUpdateProduct: (patch: Partial<Product>) => void
-  onEnterAdmin?: () => void
   onNavigateToSubscriptions?: (productId: number) => void
 }
 
@@ -33,7 +30,6 @@ export function ProductManagementScreen({
   product,
   onBackToPortfolio,
   onUpdateProduct,
-  onEnterAdmin,
   onNavigateToSubscriptions,
 }: ProductManagementScreenProps) {
   const [toastMessage, setToastMessage] = useState<string | null>(null)
@@ -78,9 +74,10 @@ export function ProductManagementScreen({
       return
     }
 
-    const normalizedUrl = url.startsWith("http://") || url.startsWith("https://")
-      ? url
-      : `https://${url}`
+    const normalizedUrl =
+      url.startsWith("http://") || url.startsWith("https://")
+        ? url
+        : `https://${url}`
     window.open(normalizedUrl, "_blank", "noopener,noreferrer")
   }
 
@@ -94,43 +91,22 @@ export function ProductManagementScreen({
       field,
       title,
       label,
-      currentValue: currentValue === "Não informado" || currentValue === "Não configurado" ? "" : currentValue,
+      currentValue:
+        currentValue === "Não informado" || currentValue === "Não configurado"
+          ? ""
+          : currentValue,
     })
   }
 
   function handleSaveField(value: string) {
     if (!activeModal) return
 
-    const finalVal = value.trim() || (activeModal.field === "databaseName" || activeModal.field === "adminEmail" ? "Não informado" : "Não configurado")
+    const finalVal =
+      value.trim() ||
+      (activeModal.field === "databaseName" ? "Não informado" : "Não configurado")
     onUpdateProduct({ [activeModal.field]: finalVal })
     showToast(`${activeModal.label} atualizado com sucesso!`)
     setActiveModal(null)
-  }
-
-  function handleSavePassword(_newPassword: string) {
-    onUpdateProduct({
-      adminPasswordMasked: "•••••••••••••••",
-    })
-    showToast("Senha administrativa alterada com sucesso!")
-  }
-
-  function handleEnterAdminInternal() {
-    if (onEnterAdmin) {
-      onEnterAdmin()
-    } else {
-      showToast("Acessando painel administrativo do KartControl...")
-    }
-  }
-
-  function handleScrollToPassword() {
-    const el = document.getElementById("alterar-senha-section")
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" })
-      const firstInput = el.querySelector("input")
-      if (firstInput) {
-        window.setTimeout(() => firstInput.focus(), 300)
-      }
-    }
   }
 
   return (
@@ -162,63 +138,51 @@ export function ProductManagementScreen({
       {/* 2. Banner de Demonstração */}
       <ProductDemoBanner />
 
-      {/* 3. Card Administração */}
-      <ProductAdminCard
-        adminConfigured={product.adminConfigured}
-        adminStatusLabel={product.adminPanelUrl === "Não configurado" ? "Não configurado" : product.adminPanelUrl}
-        onEnterAdmin={handleEnterAdminInternal}
+      {/* 3. Card Painel Administrativo com aviso Em Construção (Plano 0013) */}
+      <ProductAdminPanelCard
+        adminPanelUrl={product.adminPanelUrl}
+        productName={product.name}
+        onNotice={showToast}
       />
 
-      {/* 4. Card Resumo de Assinaturas e Planos B2C (Plano 0012) */}
+      {/* 4. Card Resumo de Assinaturas e Planos B2C */}
       <ProductSubscriptionsCard
         productId={product.id}
         productName={product.name}
         onNavigateToSubscriptions={onNavigateToSubscriptions}
       />
 
-      {/* 5. Grade de 2 colunas: Informações técnicas e Acessos do produto */}
+      {/* 5. Grade de 2 colunas: Informações técnicas + Administradores do Produto */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <ProductTechnicalInfoCard
-          repositoryUrl={product.repositoryUrl || product.repoUrl || "github.com/salusdev/kart-control"}
+          repositoryUrl={product.repositoryUrl || product.repoUrl || "Não configurado"}
           databaseName={product.databaseName || "Não informado"}
-          webUrl={product.webUrl || product.appUrl || "kart.salusdev.com"}
+          webUrl={product.webUrl || product.appUrl || "Não configurado"}
           onCopy={handleCopy}
           onOpenExternal={handleOpenExternal}
-          onEditField={(field, title, label, current) => handleEditField(field, title, label, current)}
+          onEditField={(field, title, label, current) =>
+            handleEditField(field, title, label, current)
+          }
         />
 
-        <ProductAccessCard
-          adminPanelUrl={product.adminPanelUrl || "Não configurado"}
-          adminEmail={product.adminEmail || "Não informado"}
-          adminPasswordMasked={product.adminPasswordMasked || "•••••••••••••••"}
-          onEditField={(field, title, label, current) => handleEditField(field, title, label, current)}
-          onRequestChangePassword={handleScrollToPassword}
-        />
-      </div>
-
-      {/* 6. Card Alterar senha */}
-      <ProductChangePasswordCard
-        onSavePassword={handleSavePassword}
-      />
-
-      {/* 7. Governança Avançada: Administradores e Telemetria (Plano 0012) */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <ProductAdminsCard
           admins={product.admins}
           onAddAdmin={handleAddAdmin}
           onRevokeAdmin={handleRevokeAdmin}
         />
+      </div>
 
+      {/* 6. Grade de 2 colunas: Saúde e Telemetria + Trilha de Auditoria */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <ProductHealthCard
           health={product.health}
           onTestHealth={handleTestHealth}
         />
-      </div>
 
-      {/* 8. Trilha de Auditoria e Conformidade (Plano 0012) */}
-      <ProductAuditCard
-        logs={product.auditLogs}
-      />
+        <ProductAuditCard
+          logs={product.auditLogs}
+        />
+      </div>
 
       {/* Rodapé institucional */}
       <footer className="pt-2 pb-6 text-center">

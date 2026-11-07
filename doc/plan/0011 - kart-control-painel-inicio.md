@@ -8,6 +8,8 @@
 - **Responsável:** @aiox-master
 
 > **Regra de execução:** este plano foi aprovado por Rafael Amaral Salustiano em 2026-11-06 17:28. Implementação, validação e homologação concluídas com sucesso por todos os agentes competentes com base na captura de design `docs/design/img/kartcontrol/Kartcontrol - Inicio - D.png`.
+>
+> > **Atualização arquitetural (Plano 0013):** O protótipo mock operacional implementado neste plano foi reescopado e removido do repositório SalusDev Admin pelo Plano 0013, pertencendo exclusivamente ao projeto dedicado do Kart (`kart-admin`). O SalusDev mantém o link para o painel operacional na tela de governança.
 
 ## Releitura obrigatória das regras
 

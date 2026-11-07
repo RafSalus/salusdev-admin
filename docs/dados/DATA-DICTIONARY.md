@@ -172,46 +172,11 @@ Para produtos como o `salus-oficina`, são aplicadas as seguintes diretrizes de 
 
 ---
 
-## 5. Entidades e Modelos do KartControl (Painel Administrativo Satélite)
+## 5. Modelos Comerciais Globais e Governança de Produtos (Planos 0012 e 0013)
 
-Em conformidade com o Plano 0011 (`KART-01`), as seguintes entidades modelam os dados operacionais do produto satélite KartControl:
+Conforme estabelecido pela arquitetura do plano de controle, os modelos a seguir definem a separação estrita entre o domínio comercial cross-product e o domínio de governança de produtos, assegurando que nenhum dado operacional ou credencial de satélite resida no SalusDev:
 
-### 5.1 Entidade `kart_pilots` (Pilotos do Kartódromo)
-
-| Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
-|---|---|---|---|---|
-| `id` | `INTEGER` | Não | Chave Primária | Identificador único numérico do piloto |
-| `name` | `VARCHAR(128)` | Não | Não vazio | Nome completo de exibição do piloto |
-| `initials` | `VARCHAR(4)` | Não | 1 a 2 caracteres | Iniciais para renderização do avatar visual |
-| `email` | `VARCHAR(255)` | Não | Formato de e-mail | E-mail de cadastro do piloto |
-| `phone` | `VARCHAR(20)` | Não | Padrão celular BR | Telefone formatado com DDD |
-| `status` | `VARCHAR(16)` | Não | Check Enum | 'Pendente' (âmbar) ou 'Ativo' (verde) |
-| `registered_at` | `VARCHAR(16)` | Não | Formato DD/MM/AAAA | Data de realização do cadastro |
-| `color` | `VARCHAR(7)` | Não | Hexadecimal | Cor de fundo do avatar de identificação |
-
-### 5.2 Estrutura `kart_dashboard_metrics` (Agregados Operacionais do Dashboard)
-
-| Atributo | Tipo de Dado | Descrição Semântica |
-|---|---|---|
-| `pilots` | `INTEGER` | Total geral de pilotos cadastrados na unidade |
-| `next_registrations` | `INTEGER` | Quantidade de pilotos pré-inscritos na próxima etapa |
-| `last_result` | `VARCHAR(64)` | Título identificador do último evento/etapa realizada |
-| `events` | `INTEGER` | Contagem total de eventos já realizados na temporada |
-
-### 5.3 Entidade `kart_units` (Unidades/Kartódromos Vinculados)
-
-| Coluna | Tipo de Dado | Restrições | Descrição Semântica |
-|---|---|---|---|
-| `id` | `VARCHAR(32)` | Chave Primária | Identificador slug da unidade (ex.: `kart-apucarana`) |
-| `name` | `VARCHAR(128)` | Não vazio | Nome da praça/kartódromo (ex.: 'Kart Apucarana') |
-
----
-
-## 6. Modelos Comerciais Globais e Governança de Produtos (Plano 0012)
-
-Em conformidade com o Plano 0012, os modelos a seguir definem a separação estrita entre o domínio comercial cross-product e o domínio de governança de produtos:
-
-### 6.1 Tabela `plans` (Catálogo Canônico de Planos B2C)
+### 5.1 Tabela `plans` (Catálogo Canônico de Planos B2C)
 
 | Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
 |---|---|---|---|---|
@@ -226,7 +191,7 @@ Em conformidade com o Plano 0012, os modelos a seguir definem a separação estr
 | `features_json` | `JSONB` | Não | Array de strings | Lista canônica de recursos do plano |
 | `active` | `BOOLEAN` | Não | Padrão `TRUE` | Se o plano está disponível para novas assinaturas |
 
-### 6.2 Tabela `subscriptions` (Assinaturas Comerciais Cross-Product)
+### 5.2 Tabela `subscriptions` (Assinaturas Comerciais Cross-Product)
 
 | Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
 |---|---|---|---|---|
@@ -239,7 +204,7 @@ Em conformidade com o Plano 0012, os modelos a seguir definem a separação estr
 | `current_period_end` | `VARCHAR(20)` | Não | Formato Data | Data de vencimento/renovação do ciclo |
 | `provider` | `VARCHAR(60)` | Não | - | Gateway de faturamento ('Em breve' ou manual) |
 
-### 6.3 Tabela `entitlements` (Matriz de Recursos Liberados)
+### 5.3 Tabela `entitlements` (Matriz de Recursos Liberados)
 
 | Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
 |---|---|---|---|---|
@@ -250,7 +215,7 @@ Em conformidade com o Plano 0012, os modelos a seguir definem a separação estr
 | `plans_json` | `JSONB` | Não | Array de codes | Lista de planos que liberam o recurso (`['pro', 'premium']`) |
 | `unlimited` | `BOOLEAN` | Não | Padrão `TRUE` | Se o acesso é ilimitado durante a assinatura |
 
-### 6.4 Tabela `product_admins` (Governança e Autorização com MFA)
+### 5.4 Tabela `product_admins` (Governança e Autorização com MFA)
 
 | Coluna | Tipo de Dado | Nulo? | Restrições | Descrição Semântica |
 |---|---|---|---|---|
@@ -263,7 +228,7 @@ Em conformidade com o Plano 0012, os modelos a seguir definem a separação estr
 | `last_access_at` | `VARCHAR(40)` | Não | - | Registro de data/hora do último login efetuado |
 | `status` | `VARCHAR(20)` | Não | Check Enum | 'Ativo', 'Revogado' |
 
-### 6.5 Tabela `health_checks` e `audit_log` (Telemetria e Auditoria Imutável)
+### 5.5 Tabela `health_checks` e `audit_log` (Telemetria e Auditoria Imutável)
 
 | Entidade | Colunas Chave | Finalidade |
 |---|---|---|

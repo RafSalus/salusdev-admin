@@ -10,9 +10,9 @@ export interface ProductTechnicalInfoCardProps {
 }
 
 export function ProductTechnicalInfoCard({
-  repositoryUrl = "github.com/salusdev/kart-control",
+  repositoryUrl = "Não configurado",
   databaseName = "Não informado",
-  webUrl = "kart.salusdev.com",
+  webUrl = "Não configurado",
   onCopy,
   onOpenExternal,
   onEditField,

@@ -8,6 +8,8 @@
 - **Responsável:** @aiox-master
 
 > **Regra de execução:** este plano foi aprovado por Rafael Amaral Salustiano em 2026-11-06 17:08. Implementação, testes e validações de qualidade concluídos com sucesso.
+>
+> > **Atualização arquitetural (Plano 0013):** Conforme definido no Plano 0013, o SalusDev Admin atua como plano de controle exclusivo. Credenciais técnicas locais foram removidas e a tela foi atualizada para Governança do Produto, com link para o painel operacional externo (`kart-admin`).
 
 ---
 
